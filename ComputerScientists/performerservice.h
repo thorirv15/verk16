@@ -6,6 +6,11 @@ class PerformerService
 {
 public:
     PerformerService();
+
+
+
+private:
+
 };
 
 #endif // PERFORMERSERVICE_H
