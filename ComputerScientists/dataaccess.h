@@ -8,50 +8,57 @@
 #include <string>
 using namespace std;
 
-class DataAccess
+class DataAccess // Höfum allar private breytur sem string í bili
 {
 public:
+
     DataAccess();
-    void DataFromFile()
+
+    void fromFileToClass ( string inputFirstName , string inputSecondName , string inputGender , string inputBirthyear , string inputDeceased )
     {
-        ifstream theFile;
-        string info;
-
-        theFile.open("scientists.xml");
-
-
-        if(theFile >> info)
-        {
-
-            // Setja hvert og eitt stak í mismunandi tilvik af vektor?
-            // Henda hverju staki í add fall sem er í performerservice laginu.
-            // Höndla villur(ef það er ekkert ár skráð inn td)
-
-
-
-        }
-        else
-        {
-            cout << "File did not open!" << endl;
-        }
-
-
-        theFile.close();
-
-    }
-
-    void DataToFile(string info)
-    {
-        //TODO:
-        //Er info valid
-        //
-
+        firstName   = inputFirstName;       // Nálgumst private breyturnar hérna
+        lastName    = inputSecondName;
+        gender      = inputGender;
+        dateOfBirth = inputBirthyear;
+        deceased    = inputDeceased;
     }
 
 private:
 
-
+    string firstName;
+    string lastName;
+    string gender;
+    string dateOfBirth;
+    string deceased;
 
 };
+
+vector<DataAccess> listOfScientists;  // Vektorinn sem inniheldur klasana með upplýsingunum
+
+void dataFromFile( vector<DataAccess> listOfScientists )
+{
+    ifstream theFile;
+
+    DataAccess tempClass; // Temp klasi til að setja í vektorinn í enda for lykkjunnar
+
+    string inputFirstName;
+    string inputSecondName;
+    string inputGender;
+    string inputBirthyear;
+    string inputDeceased;
+    char stop;
+
+    theFile.open( "scientists.txt" );
+
+    while ( theFile >> inputFirstName >> inputSecondName >> inputGender >> inputBirthyear >> inputDeceased >> stop )
+    {
+        tempClass.fromFileToClass ( inputFirstName , inputSecondName , inputGender , inputBirthyear , inputDeceased )
+        if ( stop == '#' )
+        {
+            listOfScientists.push_back( temp );
+        }
+    }
+
+    theFile.close();
 
 #endif // DATAACCESS_H
