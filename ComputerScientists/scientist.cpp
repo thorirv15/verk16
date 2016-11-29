@@ -4,7 +4,7 @@ scientist::scientist()
 {
 
 }
-scientist::scientist(string firstName, string lastName, string gender, int yearOfBirth, int yearOfDeath)
+scientist::scientist(string firstName, string lastName, string gender, string yearOfBirth, string yearOfDeath)
 {
     _firstName = firstName;
     _lastName = lastName;
@@ -13,23 +13,23 @@ scientist::scientist(string firstName, string lastName, string gender, int yearO
     _yearOfDeath = yearOfDeath;
 
 }
-string scientist::getFirstName()
+string scientist::getFirstName() const
 {
     return _firstName;
 }
-string scientist::getLastName()
+string scientist::getLastName() const
 {
     return _lastName;
 }
-string scientist::getGender()
+string scientist::getGender() const
 {
     return _gender;
 }
-int scientist::getYearOfBirth()
+string scientist::getYearOfBirth() const
 {
     return _yearOfBirth;
 }
-int scientist::getYearOfDeath()
+string scientist::getYearOfDeath() const
 {
     return _yearOfDeath;
 }

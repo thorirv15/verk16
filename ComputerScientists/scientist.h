@@ -9,18 +9,18 @@ class scientist
 {
 public:
     scientist();
-    scientist(string firstName, string lastName, string gender, int yearOfBirth, int yearOfDeath);
-    string getFirstName();
-    string getLastName();
-    string getGender();
-    int getYearOfBirth();
-    int getYearOfDeath();
+    scientist(string firstName, string lastName, string gender, string yearOfBirth, string yearOfDeath);
+    string getFirstName() const;
+    string getLastName() const;
+    string getGender() const;
+    string getYearOfBirth() const;
+    string getYearOfDeath() const;
 private:
     string _firstName;
     string _lastName;
     string _gender;
-    int    _yearOfBirth;
-    int    _yearOfDeath;
+    string _yearOfBirth;
+    string _yearOfDeath;
 };
 
 #endif // SCIENTIST_H
