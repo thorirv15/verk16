@@ -1,7 +1,7 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
 
-#include "performerservice.h"
+#include "scientistservice.h"
 
 /*
  * FYRIR SKIL 1.
@@ -32,7 +32,7 @@ public:
 
 
 private:
-    PerformerService _service;
+    ScientistService _service;
 };
 
 #endif // CONSOLEUI_H
