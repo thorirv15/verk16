@@ -16,20 +16,20 @@ public:
 
     void fromFileToClass ( string inputFirstName , string inputSecondName , string inputGender , string inputBirthyear , string inputDeceased )
     {
-        firstName   = inputFirstName;       // Nálgumst private breyturnar hérna
-        lastName    = inputSecondName;
-        gender      = inputGender;
-        dateOfBirth = inputBirthyear;
-        deceased    = inputDeceased;
+        _firstName   = inputFirstName;       // Nálgumst private breyturnar hérna
+        _lastName    = inputSecondName;
+        _gender      = inputGender;
+        _dateOfBirth = inputBirthyear;
+        _deceased    = inputDeceased;
     }
 
 private:
 
-    string firstName;
-    string lastName;
-    string gender;
-    string dateOfBirth;
-    string deceased;
+    string _firstName;
+    string _lastName;
+    string _gender;
+    string _dateOfBirth;
+    string _deceased;
 
 };
 
@@ -39,7 +39,7 @@ void dataFromFile( vector<DataAccess> listOfScientists )
 {
     ifstream theFile;
 
-    DataAccess tempClass; // Temp klasi til að setja í vektorinn í enda for lykkjunnar
+    DataAccess tempClass; // Temp klasi til að setja í vektorinn í enda while lykkjunnar
 
     string inputFirstName;
     string inputSecondName;
@@ -57,8 +57,11 @@ void dataFromFile( vector<DataAccess> listOfScientists )
         {
             listOfScientists.push_back( temp );
         }
+
     }
 
     theFile.close();
+
+}
 
 #endif // DATAACCESS_H
