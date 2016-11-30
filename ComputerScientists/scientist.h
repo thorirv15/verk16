@@ -5,22 +5,24 @@
 
 using namespace std;
 
-class scientist
+class Scientist
 {
 public:
-    scientist();
-    scientist(string firstName, string lastName, string gender, string yearOfBirth, string yearOfDeath);
-    string getFirstName() const;
-    string getLastName() const;
+    Scientist();
+    void setName(string name);
+    void setGender(string gender);
+    void setYearOfBirth(string yearOfBirth);
+    void setYearOfDeath(string deceased);
+    string getName() const;
     string getGender() const;
     string getYearOfBirth() const;
     string getYearOfDeath() const;
+
 private:
-    string _firstName;
-    string _lastName;
+    string _name;
     string _gender;
     string _yearOfBirth;
-    string _yearOfDeath;
+    string _deceased;
 };
 
 #endif // SCIENTIST_H
