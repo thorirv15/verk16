@@ -29,15 +29,16 @@ void consoleStartPrint()
 void consoleHelp() //skipunnar listi
 {
 
-    cout << "Enter one of the following commands" << endl;
-    cout << "list - This will let you search for a Computer scientist/s" << endl;
-    cout << "add  - This will allow you to add performers to the list" << endl;
-    cout << "help - This will give you a list of command \n" << endl;
+    cout << "  Enter one of the following commands" << endl;
+    cout << "     list - This will let you search for a Computer scientist/s" << endl;
+    cout << "     add  - This will allow you to add performers to the list" << endl;
+    cout << "     help - This will give you a list of command" << endl;
+    cout << "     quit - This command will exit the program from anywhere.\n" << endl;
 }
 
 string userInput(string command)    //spyr notandan um að slá inn skipunn.
 {
-    cout << "Command: ";
+    cout << "  Command: ";
     cin >> command;
     cout << endl;
 
@@ -49,19 +50,66 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
     string list;
     string upplysingar;
 
-    cout << "1. All." << endl;
-    cout << "2. Names of all in the list." << endl;
-    cout << "3. Spesific Name." << endl;
-    cout << "4. Spesific Year of Birth." << endl;
-    cout << "5. Spesific Year of Death." << endl;
-    cout << "6. Gender." << endl << endl;
-    cout << "Enter nr. of information you like to view: ";
+    cout << "  1. All." << endl;
+    cout << "  2. Names of all in the list." << endl;
+    cout << "  3. Spesific Name." << endl;
+    cout << "  4. Spesific Year of Birth." << endl;
+    cout << "  5. Spesific Year of Death." << endl;
+    cout << "  6. Gender." << endl << endl;
+    cout << "  Please enter the number: ";
     cin >> list;
     cout << endl;
 
     if(list == "1")           //senda upplýsingar í Domain um að fá allann listann.ATH breyta í framtíðinni spurja notenda ef hann vill fá röðina í stafr. röð.
     {
         //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
+        cout << "In what order do you wannt to get the list ? \n" << endl;
+        cout << "  1. A - Z" << endl;
+        cout << "  2. Z - A" << endl;
+        cout << "  3. Year of Birth" << endl;
+        cout << "  4. Year of Death" << endl;
+        cout << "  5. Gender" << endl;
+        cout << "  6. Back to Main menu." << endl;
+        cout << "  Please enter the number: ";
+        cin >> list;
+        while(list != "6")
+        {
+            if(list == "1")
+            {
+                //A-Z
+            }
+
+            else if(list == "2")
+            {
+                //Z-A
+            }
+
+            else if(list == "3")
+            {
+                //YoB
+            }
+
+            else if(list == "4")
+            {
+                //YoD
+            }
+
+            else if(list == "5")
+            {
+                //Gender
+            }
+
+            else if(list == "6")
+            {
+                break;
+            }
+
+            else if(list == "quit")
+            {
+                exit(1);
+            }
+
+        }
     }
 
     else if(list == "2")      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
