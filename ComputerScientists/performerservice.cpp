@@ -1,6 +1,6 @@
-#include "scientistservice.h"
+#include "performerservice.h"
 
-ScientistService::ScientistService()
+PerformerService::PerformerService()
 {
 
 }
