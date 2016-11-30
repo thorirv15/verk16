@@ -3,6 +3,7 @@
 #include "consoleui.h"
 #include "scientist.h"
 #include "scientistservice.h"
+#include <cstdlib>
 
 using namespace std;
 
@@ -12,13 +13,26 @@ ConsoleUI::ConsoleUI()
 
 }
 
+void consoleStartPrint()
+{
+    cout << "   ####################################" << endl;
+    cout << "   ####################################" << endl;
+    cout << "   ##  __  __  __        __   _      ##" << endl;
+    cout << "   ## | _ |__||  | |  | |__|  _| |_| ##" << endl;
+    cout << "   ## |__|| \  |__| |__| |     _|   | ##" << endl;
+    cout << "   ##                                ##" << endl;
+    cout << "   ####################################" << endl;
+    cout << "   ####################################" << endl;
+    cout << "       --- Computer scientists --- \n" << endl;
+}
+
 void consoleHelp() //skipunnar listi
 {
-    cout << "-- Computer scientists --" << endl;
+
     cout << "Enter one of the following commands" << endl;
     cout << "list - This will let you search for a Computer scientist/s" << endl;
     cout << "add  - This will allow you to add performers to the list" << endl;
-    cout << "help - This will give you a list of command " << endl;
+    cout << "help - This will give you a list of command \n" << endl;
 }
 
 string userInput(string command)    //spyr notandan um að slá inn skipunn.
@@ -32,7 +46,7 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
 
 void consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
-    int list;
+    string list;
     string upplysingar;
 
     cout << "1. All." << endl;
@@ -45,17 +59,17 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
     cin >> list;
     cout << endl;
 
-    if(list == 1)           //senda upplýsingar í Domain um að fá allann listann.ATH breyta í framtíðinni spurja notenda ef hann vill fá röðina í stafr. röð.
+    if(list == "1")           //senda upplýsingar í Domain um að fá allann listann.ATH breyta í framtíðinni spurja notenda ef hann vill fá röðina í stafr. röð.
     {
         //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
     }
 
-    else if(list == 2)      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
+    else if(list == "2")      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
     {
         //senda int list eins og hann er. Fá tilbaka Öll nöfn.
     }
 
-    else if(list == 3)      //senda upplýsingar í Domain um að fá áhveðið nafn.
+    else if(list == "3")      //senda upplýsingar í Domain um að fá áhveðið nafn.
     {
                             //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
         cout << "Please enter the name of the person you are looking for: ";
@@ -64,22 +78,32 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
         //cout << vector[x]....
     }
 
-    else if(list == 4)      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.
+    else if(list == "4")      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.
     {
         cout << "Please enter the year in question: ";
         cin >> upplysingar;
     }
 
-    else if(list == 5)      //senda upplýsingar í Domain um að fá áhveðið dánar ár.Ath ef fleirri en einn, stafróf...röð.
+    else if(list == "5")      //senda upplýsingar í Domain um að fá áhveðið dánar ár.Ath ef fleirri en einn, stafróf...röð.
     {
         cout << "Please enter the year in question: ";
         cin >> upplysingar;
     }
 
-    else if(list == 6)      //senda upplýsingar í Domain um að fá lista yfir áhveðið kyn.Ath ef fleirri en einn, stafróf...röð.
+    else if(list == "6")      //senda upplýsingar í Domain um að fá lista yfir áhveðið kyn.Ath ef fleirri en einn, stafróf...röð.
     {
         cout << "Please enter the gender (f - female / m - male): ";
         cin >> upplysingar;
+    }
+
+    else if(list == "quit")
+    {
+        exit(1);
+    }
+
+    else
+    {
+        cout << "invalid ";
     }
 
 }
@@ -93,6 +117,7 @@ void ConsoleUI::run()               //----MAINFALL----
 {
     string command = "help";
 
+    consoleStartPrint();
     consoleHelp();
 
     while(command != "quit")
