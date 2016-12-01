@@ -15,15 +15,34 @@ ConsoleUI::ConsoleUI()
 
 void consoleStartPrint()
 {
-    cout << "   ####################################" << endl;
-    cout << "   ####################################" << endl;
-    cout << "   ##  __  __  __        __   _      ##" << endl;
-    cout << "   ## | _ |__||  | |  | |__|  _| |_| ##" << endl;
-    cout << "   ## |__|| \  |__| |__| |     _|   | ##" << endl;
-    cout << "   ##                                ##" << endl;
-    cout << "   ####################################" << endl;
-    cout << "   ####################################" << endl;
-    cout << "       --- Computer scientists --- \n" << endl;
+    cout << endl << endl;
+    cout << "   _________________________________________ " << endl;
+    cout << "  |                                         |" << endl;
+    cout << "  |                                         |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ##  __  __  __        __   _      ##  |" << endl;
+    cout << "  |   ## | _ |__||  | |  | |__|  _| |_| ##  |" << endl;
+    cout << "  |   ## |__|| \  |__| |__| |     _|   | ##  |" << endl;
+    cout << "  |   ##                                ##  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ### --- Computer scientists ---  ###  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |                                     o   |" << endl;
+    cout << "  |_________________________________________|" << endl;
+    cout << "                  |          |               " << endl;
+    cout << "                  |          |               " << endl;
+    cout << "     _____________|__________|____________   " << endl;
+    cout << "    |                                     |  " << endl;
+    cout << "    |   =======                       O   |  " << endl;
+    cout << "    |         o                       0   |  " << endl;
+    cout << "    |                                 0   |  " << endl;
+    cout << "    |_____________________________________|\n" << endl;
+
+
 }
 
 void consoleHelp() //skipunnar listi
@@ -38,7 +57,7 @@ void consoleHelp() //skipunnar listi
 
 string userInput(string command)    //spyr notandan um að slá inn skipunn.
 {
-    cout << "  Command: ";
+    cout << "  Main Menu Command: ";
     cin >> command;
     cout << endl;
 
@@ -72,6 +91,7 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
         cout << "  6. Back to Main menu." << endl;
         cout << "  Please enter the number: ";
         cin >> list;
+
         while(list != "6")
         {
             if(list == "1")
@@ -114,7 +134,54 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
 
     else if(list == "2")      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
     {
-        //senda int list eins og hann er. Fá tilbaka Öll nöfn.
+        cout << "In what order do you wannt to get the list ? \n" << endl;
+        cout << "  1. A - Z" << endl;
+        cout << "  2. Z - A" << endl;
+        cout << "  3. Year of Birth" << endl;
+        cout << "  4. Year of Death" << endl;
+        cout << "  5. Gender" << endl;
+        cout << "  6. Back to Main menu." << endl;
+        cout << "  Please enter the number: ";
+        cin >> list;
+
+        while(list != "6")
+        {
+            if(list == "1")
+            {
+                //A-Z
+            }
+
+            else if(list == "2")
+            {
+                //Z-A
+            }
+
+            else if(list == "3")
+            {
+                //YoB
+            }
+
+            else if(list == "4")
+            {
+                //YoD
+            }
+
+            else if(list == "5")
+            {
+                //Gender
+            }
+
+            else if(list == "6")
+            {
+                break;
+            }
+
+            else if(list == "quit")
+            {
+                exit(1);
+            }
+
+        }
     }
 
     else if(list == "3")      //senda upplýsingar í Domain um að fá áhveðið nafn.
@@ -151,7 +218,7 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
 
     else
     {
-        cout << "invalid ";
+        cout << "invalid going back to main menu" << endl;
     }
 
 }
@@ -192,8 +259,7 @@ void ConsoleUI::run()               //----MAINFALL----
 
         else if(command == "quit")
         {
-
-        break;
+            exit(1);
         }
 
         else if(command != "quit" || command != "help" || command != "add" || command != "list")
