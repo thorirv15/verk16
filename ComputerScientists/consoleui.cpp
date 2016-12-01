@@ -1,10 +1,23 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "consoleui.h"
 #include "scientist.h"
 #include "scientistservice.h"
 
 using namespace std;
+
+ostream& operator <<(ostream& outs, scientist& s)
+{
+   outs << s.getName() << endl;
+   outs << s.getGender() << endl;
+   outs << s.getBirthYear() << endl;
+   outs << s.getYearOfDeath() << endl;
+
+    return outs;
+}
+
+
 
 
 ConsoleUI::ConsoleUI()
@@ -19,6 +32,8 @@ void consoleHelp() //skipunnar listi
     cout << "list - This will let you search for a Computer scientist/s" << endl;
     cout << "add  - This will allow you to add performers to the list" << endl;
     cout << "help - This will give you a list of command " << endl;
+
+
 }
 
 string userInput(string command)    //spyr notandan um að slá inn skipunn.
@@ -47,7 +62,7 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
 
     if(list == 1)           //senda upplýsingar í Domain um að fá allann listann.ATH breyta í framtíðinni spurja notenda ef hann vill fá röðina í stafr. röð.
     {
-        //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
+
     }
 
     else if(list == 2)      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
@@ -93,24 +108,33 @@ void ConsoleUI::run()               //----MAINFALL----
 {
     string command = "help";
 
+
+    vector<scientist> scientists = _service.getAllScientists();
+
+    for(unsigned int i = 0; i < scientists.size(); i++)
+    {
+        cout << scientists[i].getName() << endl;
+    }
+
     consoleHelp();
+
+
 
     while(command != "quit")
     {
         command = userInput(command);
 
-        if(command == "list" | command == "List")
+        if(command == "list" || command == "List")
         {
             consoleList();
         }
 
-        else if(command == "add" | command == "Add")
+        else if(command == "add" || command == "Add")
         {
             consoleAdd();
-
         }
 
-        else if(command == "help" | command == "Help")
+        else if(command == "help" || command == "Help")
         {
             consoleHelp();
             // TODO - Prenta út á skjá command listann aftur

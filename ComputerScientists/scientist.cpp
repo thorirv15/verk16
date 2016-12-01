@@ -1,31 +1,21 @@
 #include "scientist.h"
+using namespace std;
 
 scientist::scientist()
 {
 
 }
-scientist::scientist(string firstName, string lastName, string gender, string yearOfBirth, string yearOfDeath)
-{
-    _firstName = firstName;
-    _lastName = lastName;
-    _gender = gender;
-    _yearOfBirth = yearOfBirth;
-    _yearOfDeath = yearOfDeath;
 
-}
-string scientist::getFirstName() const
+string scientist::getName() const
 {
-    return _firstName;
+    return _Name;
 }
-string scientist::getLastName() const
-{
-    return _lastName;
-}
+
 string scientist::getGender() const
 {
     return _gender;
 }
-string scientist::getYearOfBirth() const
+string scientist::getBirthYear() const
 {
     return _yearOfBirth;
 }

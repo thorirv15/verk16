@@ -1,6 +1,7 @@
 #ifndef SCIENTIST_H
 #define SCIENTIST_H
 
+
 #include <string>
 
 using namespace std;
@@ -9,15 +10,31 @@ class scientist
 {
 public:
     scientist();
-    scientist(string firstName, string lastName, string gender, string yearOfBirth, string yearOfDeath);
-    string getFirstName() const;
-    string getLastName() const;
+
+    void setName(string name)
+    {
+        _Name = name;
+    }
+    void setGender(string gender)
+    {
+        _gender = gender;
+    }
+    void setBirthYear(string yearOfBirth)
+    {
+        _yearOfBirth = yearOfBirth;
+
+    }
+    void setYearOfDeath(string yearOfDeath)
+    {
+        _yearOfDeath = yearOfDeath;
+    }
+
+    string getName() const;
     string getGender() const;
-    string getYearOfBirth() const;
+    string getBirthYear() const;
     string getYearOfDeath() const;
 private:
-    string _firstName;
-    string _lastName;
+    string _Name;
     string _gender;
     string _yearOfBirth;
     string _yearOfDeath;

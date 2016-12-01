@@ -1,10 +1,10 @@
 #ifndef DATAACCESS_H
 #define DATAACCESS_H
-
-#include "scientistservice.h"
+#include "scientist.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -13,17 +13,12 @@ class DataAccess // Höfum allar private breytur sem string í bili
 public:
 
     DataAccess();
+    vector<scientist> dataFromFile();
 
-    void fromFileToClass ( string inputFirstName , string inputSecondName , string inputGender , string inputBirthyear , string inputDeceased );
 
 private:
 
-    string _firstName;
-    string _lastName;
-    string _gender;
-    string _dateOfBirth;
-    string _deceased;
-
 };
+
 
 #endif // DATAACCESS_H

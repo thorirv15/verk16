@@ -27,12 +27,14 @@ birtist á notendavænan hátt.
 class ConsoleUI
 {
 public:
+    friend ostream& operator <<(ostream& outs, scientist& s);
     ConsoleUI();
     void run();
 
 
 private:
     ScientistService _service;
+
 };
 
 #endif // CONSOLEUI_H
