@@ -91,15 +91,21 @@ Makefile: ../ComputerScientists/ComputerScientists.pro C:/Qt/5.7/mingw53_32/mksp
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri \
+<<<<<<< HEAD
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_charts.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_charts_private.pri \
+=======
+>>>>>>> 14b5316a4b9a68ce61aef9bb29f068bfea1800f4
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_clucene_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core_private.pri \
+<<<<<<< HEAD
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_datavisualization.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_datavisualization_private.pri \
+=======
+>>>>>>> 14b5316a4b9a68ce61aef9bb29f068bfea1800f4
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri \
@@ -241,15 +247,21 @@ C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri:
+<<<<<<< HEAD
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_charts.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_charts_private.pri:
+=======
+>>>>>>> 14b5316a4b9a68ce61aef9bb29f068bfea1800f4
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_clucene_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core_private.pri:
+<<<<<<< HEAD
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_datavisualization.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_datavisualization_private.pri:
+=======
+>>>>>>> 14b5316a4b9a68ce61aef9bb29f068bfea1800f4
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri:
