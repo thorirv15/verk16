@@ -1,0 +1,42 @@
+Charles Babbage:male:1791:1871
+Ada Lovelace:female:1815:1852
+Alan Turing:male:1912:1954
+Jean Bartik:male:1924:2011
+John von Neumann:male:1903:1957
+Linus Torvalds:male:1969:N/A
+Tim Berners-Lee:male:1955:N/A
+Dougles Engelbart:male:1925:2013
+Maragret Hamilton:female:1936:N/A
+Max Newman:male:1897:1984:
+Sophie Wilson:female:1957:N/A
+Emil L. Post:male:1897:1954
+John Atanasoff:male:1903:1995
+John Backus:male:1924:2007
+David Caminer:male:1915:2008
+Stephen Cook:male:1939:N/A
+Edsger W. Dijkstra:male:1930:2002
+Tommy Flowers:male:1905:1998
+Seymour Ginsburg:male:1927:2004
+Lois Haibt:male:1934:N/A
+Alonzo Church:male:1903:1995
+Steve Wozniak:male:1950:N/A
+Peter Wegner:male:1932:N/A
+Kathleen Booth:female:1922:N/A
+Grace Hooper:female:1906:1992
+Evelyn Granville:female:1924:N/A
+Mary Kenneth Keller:female:1913:1985
+Pierre Jaquet-Droz:male:1721:1790
+Frederic Williams:male:1911:1977
+Tom Kilburn:male:1921:2001
+Danese Cooper:female:1959:N/A
+Charles Stark Drape:male:1901:1987
+Philip Donald Estridge:male:1927:1985
+Ken Thompson:male:1943:N/A
+Dennis Ritchie:male:1941:2011
+Bjarne Stroustroup:male:1950:N/A
+Richard Stallman:male:1953:N/A
+Nikolay Brusentsov:male:1925:2014
+George Boole:male:1815:1864
+Margaret Hamilton:female:1936:N/A
+John McCarthy:male:1927:2011
+Sergei Lebedev:male:1902:1974

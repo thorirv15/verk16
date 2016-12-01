@@ -1,6 +1,6 @@
 #ifndef SCIENTIST_H
 #define SCIENTIST_H
-
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -25,5 +25,8 @@ private:
     string _yearOfBirth;
     string _yearOfDeath;
 };
+
+
+
 
 #endif // SCIENTIST_H

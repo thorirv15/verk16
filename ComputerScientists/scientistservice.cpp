@@ -31,48 +31,45 @@ vector<Scientist> ScientistService::getAllScientists()
     return _scientists;
 }
 
-//1.Fall sem lætur dataaccess ná í einhverjar upplýsingar úr skránni
-//2.
-
-string ScientistService::getName()
-{
-    return _name;
-}
-
-string ScientistService::getGender()
-{
-    return _gender;
-}
-
-string ScientistService::getDoB()
-{
-    return _dateOfBirth;
-}
-
-string ScientistService::getDeath()
-{
-    return _deceased;
-}
-
-
 /*
-bool SortingFunctions::sortNameAsc ( const ScientistService& lhs, const ScientistService& rhs )
+
+bool SortingFunctions::sortNameAsc ( const Scientist& lhs, const Scientist& rhs )
 {
     return lhs.getName() < rhs.getName();
 }
 
-bool SortingFunctions::sortNameDesc ( const ScientistService& lhs, const ScientistService& rhs )
+bool SortingFunctions::sortNameDesc ( const Scientist& lhs, const Scientist& rhs )
 {
     return rhs.getName() < lhs.getName();
 }
 
-void SortingFunctions::alphabetAsc ( vector<ScientistService> allScientists )
+void SortingFunctions::alphabetAsc (vector<Scientist> allScientists )
 {
-    sort ( allScientists.begin() , allScientists.end() , sortNameAsc )
+    sort(allScientists.begin() , allScientists.end(), sortNameAsc(const Scientist& lhs, const Scientist& rhs));
 }
 
-void SortingFunctions::alphabetDesc ( vector<ScientistService> allScientists )
+void SortingFunctions::alphabetDesc ( vector<Scientist> allScientists )
 {
-    sort ( allScientists.begin() , allScientists.end() , sortNameDesc )
+    sort ( allScientists.begin() , allScientists.end() , sortNameDesc ( const Scientist& lhs , const Scientist& rhs ) );
+}
+
+bool SortingFunctions::sortDoBAsc ( const Scientist& lhs, const Scientist& rhs )
+{
+    return lhs.getYearOfBirth() < rhs.getYearOfBirth();
+}
+
+bool SortingFunctions::sortDoBDesc ( const Scientist& lhs, const Scientist& rhs )
+{
+    return rhs.getYearOfBirth() < lhs.getYearOfBirth();
+}
+
+void SortingFunctions::DateOfBirthAsc ( vector<Scientist> allScientists )
+{
+    sort (allScientists.begin() ,allScientists.end() ,sortDoBAsc(const Scientist& lhs, const Scientist& rhs));
+}
+
+void SortingFunctions::DateOfBirthDesc (vector<Scientist> allScientists)
+{
+    sort(allScientists.begin() ,allScientists.end() ,sortDoBDesc(const Scientist& lhs, const Scientist& rhs));
 }
 */
