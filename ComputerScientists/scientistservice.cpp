@@ -46,20 +46,37 @@ vector<string> ScientistService::getAllScientistsNames()
     return s;
 
 }
-/*
+
+
+bool caseInsensitiveLessThan(const QString &s1, const QString &s2)
+{
+    return s1.toLower() < s2.toLower();
+}
+
+
 vector<Scientist> ScientistService::sortAllScientistsAtoZ()
 {
     DataAccess _dataAccess;
     vector<QString> s = _dataAccess.dataFromFile();
+    vector<Scientist> sAtoZ;
 
     for (unsigned int i = 0; i < s.size(); i++)
     {
         QString line = s.at(i);
         QStringList list = line.split(QRegularExpression(":"));
+        qSort(list.at(0).begin(), list.end(), caseInsensitiveLessThan);
+        Scientist newScientist(
+            list.at(0).toStdString(),
+            list.at(1).toStdString(),
+            list.at(2).toStdString(),
+            list.at(3).toStdString()
+        );
+        sAtoZ.push_back(newScientist);
     }
 
+    return sAtoZ;
 }
-/*
+
 /*
 
 bool SortingFunctions::sortNameAsc ( const Scientist& lhs, const Scientist& rhs )

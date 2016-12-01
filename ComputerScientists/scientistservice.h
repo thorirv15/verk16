@@ -17,6 +17,7 @@ public:
     void setAllScientists();
     vector<Scientist> getAllScientists();
     vector<string> getAllScientistsNames();
+    vector<Scientist> sortAllScientistsAtoZ();
 
 private:
 
