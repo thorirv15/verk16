@@ -67,14 +67,6 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
 
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
-   /* _service.setAllScientists();
-    vector<Scientist> scientists = _service.getAllScientists();
-
-    for (unsigned int i; i < scientists.size(); i++)
-    {
-        cout << scientists[i].getName() << endl;
-    }
-    */
 
     string list;
     string upplysingar;
@@ -107,19 +99,23 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         {
             if(list == "1")         //AS IS.
             {
-                /*
-                ScientistService ss;
-                Scientist s;
+                _service.setAllScientists();
+                vector<Scientist> scientists = _service.getAllScientists();
 
-                ss.setAllScientists();
-                vector<Scientist> scientists = ss.getAllScientists();
+                cout << scientists.size() << endl;
 
-                for (unsigned int i; i < scientists.size(); i++)
+                for(unsigned int i = 0; i < scientists.size(); i++)
                 {
-                    cout << s[i].name << endl;
+                    cout << "Name: " << scientists[i].getName() << endl;
+                    cout << "Gender: " << scientists[i].getGender() << endl;
+                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << endl;
                 }
-                */
+
+                break;
             }
+
 
             else if(list == "2")    //A-Z
             {
@@ -275,16 +271,7 @@ void ConsoleUI::run()               //----MAINFALL----
 {
     string command = "help";
 
-        _service.setAllScientists();
-        vector<Scientist> scientists = _service.getAllScientists();
 
-        for(unsigned int i = 0; i < scientists.size(); i++)
-        {
-            cout << "Name: " << scientists[i].getName() << endl;
-            cout << "Gender: " << scientists[i].getGender() << endl;
-            cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-            cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
-        }
 
     consoleStartPrint();
     consoleHelp();
