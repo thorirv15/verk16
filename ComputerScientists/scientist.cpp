@@ -2,46 +2,49 @@
 using namespace std;
 
 
-scientist::scientist()
+Scientist::Scientist(string name, string gender, string yob, string yod)
 {
-
+    _name = name;
+    _gender = gender;
+    _yearOfBirth = yob;
+    _yearOfDeath = yod;
 }
 
-string scientist::getName()
+string Scientist::getName() const
 {
     return _name;
 }
 
-string scientist::getGender()
+string Scientist::getGender() const
 {
     return _gender;
 }
 
-string scientist::getYearOfBirth()
+string Scientist::getYearOfBirth() const
 {
     return _yearOfBirth;
 }
 
-string scientist::getYearOfDeath()
+string Scientist::getYearOfDeath() const
 {
     return _yearOfDeath;
 }
 
-void scientist::setName(string name)
+void Scientist::setName(string name)
 {
     _name = name;
 }
 
-void scientist::setGender(string gender)
+void Scientist::setGender(string gender)
 {
     _gender = gender;
 }
-void scientist::setYearOfBirth(string yearOfBirth)
+void Scientist::setYearOfBirth(string yearOfBirth)
 {
     _yearOfBirth = yearOfBirth;
 }
 
-void scientist::setYearOfDeath(string deceased)
+void Scientist::setYearOfDeath(string deceased)
 {
     _yearOfDeath = deceased;
 }

@@ -16,7 +16,7 @@ public:
 
     ScientistService();
     void setAllScientists();
-    vector<scientist> getAllScientists();
+    vector<Scientist> getAllScientists();
     string getName();
     string getGender();
     string getDoB();
@@ -27,7 +27,7 @@ private:
     string _gender;
     string _dateOfBirth;
     string _deceased;
-    vector<scientist> _scientists;
+    vector<Scientist> _scientists;
 };
 
 struct SortingFunctions

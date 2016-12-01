@@ -234,7 +234,7 @@ void ConsoleUI::run()               //----MAINFALL----
     string command = "help";
 
     _service.setAllScientists();
-    vector<scientist> scientists = _service.getAllScientists();
+    vector<Scientist> scientists = _service.getAllScientists();
         cout << scientists.size() << endl;
 
         for(unsigned int i = 0; i < scientists.size(); i++)

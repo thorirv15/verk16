@@ -1,8 +1,8 @@
 #include "scientistservice.h"
 #include "scientist.h"
-
-
-
+#include <QString>
+#include <QStringList>
+#include <QRegularExpression>
 
 ScientistService::ScientistService()
 {
@@ -12,10 +12,21 @@ ScientistService::ScientistService()
 void ScientistService::setAllScientists()
 {
         DataAccess _dataAccess;
-        _scientists = _dataAccess.dataFromFile();
+        vector<QString> v = _dataAccess.dataFromFile();
+        for (unsigned int i = 0; i < v.size(); i++) {
+            QString line = v.at(i);
+            QStringList list = line.split(QRegularExpression(":"));
+            Scientist newScientist(
+                list.at(0).toStdString(),
+                list.at(1).toStdString(),
+                list.at(2).toStdString(),
+                list.at(3).toStdString()
+            );
+            _scientists.push_back(newScientist);
+        }
 }
 
-vector<scientist> ScientistService::getAllScientists()
+vector<Scientist> ScientistService::getAllScientists()
 {
     return _scientists;
 }
@@ -42,8 +53,9 @@ string ScientistService::getDeath()
 {
     return _deceased;
 }
-/*
 
+
+/*
 bool SortingFunctions::sortNameAsc ( const ScientistService& lhs, const ScientistService& rhs )
 {
     return lhs.getName() < rhs.getName();

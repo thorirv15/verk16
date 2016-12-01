@@ -5,6 +5,10 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <QFile>
+#include <QString>
+#include <QTextStream>
+
 
 using namespace std;
 
@@ -13,7 +17,7 @@ class DataAccess // Höfum allar private breytur sem string í bili
 public:
 
     DataAccess();
-    vector<scientist> dataFromFile();
+    vector<QString> dataFromFile();
 
 
 private:

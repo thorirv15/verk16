@@ -27,7 +27,7 @@ birtist á notendavænan hátt.
 class ConsoleUI
 {
 public:
-    friend ostream& operator <<(ostream& outs, scientist& s);
+    friend ostream& operator <<(ostream& outs, Scientist& s);
     ConsoleUI();
     void run();
     void consoleList();
