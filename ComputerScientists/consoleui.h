@@ -29,6 +29,8 @@ class ConsoleUI
 public:
     ConsoleUI();
     void run();
+    void consoleList();
+    void consoleAdd();
 
 
 private:
