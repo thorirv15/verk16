@@ -136,6 +136,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     else if(list == "2")      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
     {
         cout << "In what order do you wannt to get the list ? \n" << endl;
+        cout << "  1. No sortation.";
         cout << "  1. A - Z" << endl;
         cout << "  2. Z - A" << endl;
         cout << "  3. Year of Birth" << endl;
@@ -147,37 +148,47 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
         while(list != "6")
         {
-            if(list == "1")
+            if(list == "1")         //AS IS.
             {
-                //A-Z
+                _service.setAllScientists();
+                vector<scientist> scientists = _service.getAllScientists();
+                for (int i; i < scientists.size(); i++)
+                {
+                    cout << scientists[i] << endl;
+                }
             }
 
-            else if(list == "2")
+            else if(list == "2")    //A-Z.
             {
-                //Z-A
+
             }
 
-            else if(list == "3")
+            else if(list == "3")    //Z-A.
             {
-                //YoB
+
             }
 
-            else if(list == "4")
+            else if(list == "4")    //YoB.
             {
-                //YoD
+
             }
 
-            else if(list == "5")
+            else if(list == "5")    //YoD.
             {
-                //Gender
+
             }
 
-            else if(list == "6")
+            else if(list == "6")    //Gender.
+            {
+
+            }
+
+            else if(list == "7")    //to main menu.
             {
                 break;
             }
 
-            else if(list == "quit")
+            else if(list == "quit") //exit program.
             {
                 exit(1);
             }
@@ -233,9 +244,6 @@ void ConsoleUI::run()               //----MAINFALL----
 {
     string command = "help";
 
-    _service.setAllScientists();
-    vector<scientist> scientists = _service.getAllScientists();
-        cout << scientists.size() << endl;
 
         for(unsigned int i = 0; i < scientists.size(); i++)
         {
