@@ -119,7 +119,21 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             else if(list == "2")    //A-Z
             {
+                _service.setAllScientists();
+                vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
 
+
+
+                for(unsigned int i = 0; i < scientists.size(); i++)
+                {
+                    cout << "Name: " << scientists[i].getName() << endl;
+                    cout << "Gender: " << scientists[i].getGender() << endl;
+                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << endl;
+                }
+
+                break;
 
             }
 
