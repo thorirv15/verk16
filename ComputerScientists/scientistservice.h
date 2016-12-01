@@ -13,21 +13,12 @@ using namespace std;
 class ScientistService
 {
 public:
-
-
     ScientistService();
     void setAllScientists();
     vector<Scientist> getAllScientists();
-    string getName();
-    string getGender();
-    string getDoB();
-    string getDeath();
+
 private:
 
-    string _name;
-    string _gender;
-    string _dateOfBirth;
-    string _deceased;
     vector<Scientist> _scientists;
 };
 
