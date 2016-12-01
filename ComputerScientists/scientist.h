@@ -11,30 +11,16 @@ class scientist
 public:
     scientist();
 
-    void setName(string name)
-    {
-        _Name = name;
-    }
-    void setGender(string gender)
-    {
-        _gender = gender;
-    }
-    void setBirthYear(string yearOfBirth)
-    {
-        _yearOfBirth = yearOfBirth;
-
-    }
-    void setYearOfDeath(string yearOfDeath)
-    {
-        _yearOfDeath = yearOfDeath;
-    }
-
-    string getName() const;
-    string getGender() const;
-    string getBirthYear() const;
-    string getYearOfDeath() const;
+    void setName(string name);
+    void setGender(string gender);
+    void setYearOfBirth(string yearOfBirth);
+    void setYearOfDeath(string yearOfDeath);
+    string getName();
+    string getGender();
+    string getYearOfBirth();
+    string getYearOfDeath();
 private:
-    string _Name;
+    string _name;
     string _gender;
     string _yearOfBirth;
     string _yearOfDeath;

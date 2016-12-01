@@ -17,8 +17,7 @@ Engelbart:male:1925:2013
 Maragret
 Hamilton:female:1936:N/A
 Max
-Newman:male:1897:1984
-
+Newman:male:1897:1984:
 Sophie
 Wilson:female:1957:N/A
 Emil

@@ -14,6 +14,9 @@ DataAccess::DataAccess()
 vector<scientist> DataAccess::dataFromFile()
 {
     ifstream theFile;
+    theFile.open("scientists.txt");
+
+    string delimeter = ":";
 
     vector<scientist> info;
 
@@ -23,25 +26,28 @@ vector<scientist> DataAccess::dataFromFile()
     string inputDeceased;
     string input;
 
-    theFile.open("scientists.txt");
-
-    int counter = 0;
-    while(theFile >> input)
+    if(theFile)
     {
+        while(getline(theFile, input))
+        {
+            scientist s;
 
-        scientist s;
+            s.setName(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
 
-        s.setName(input);
-        info.push_back(s);
-        s.setGender(input);
-        info.push_back(s);
-        s.setBirthYear(input);
-        info.push_back(s);
-        s.setYearOfDeath(input);
-        info.push_back(s);
+            s.setGender(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
 
+            s.setYearOfBirth(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
+
+            s.setYearOfDeath(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
+
+            info.push_back(s);
+        }
+
+        theFile.close();
+        return info;
     }
-
-    theFile.close();
-    return info;
 }

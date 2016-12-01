@@ -1,25 +1,49 @@
 #include "scientist.h"
 using namespace std;
 
+
 scientist::scientist()
 {
 
 }
 
-string scientist::getName() const
+string scientist::getName()
 {
-    return _Name;
+    return _name;
 }
 
-string scientist::getGender() const
+string scientist::getGender()
 {
     return _gender;
 }
-string scientist::getBirthYear() const
+
+string scientist::getYearOfBirth()
 {
     return _yearOfBirth;
 }
-string scientist::getYearOfDeath() const
+
+string scientist::getYearOfDeath()
 {
     return _yearOfDeath;
 }
+
+void scientist::setName(string name)
+{
+    _name = name;
+}
+
+void scientist::setGender(string gender)
+{
+    _gender = gender;
+}
+void scientist::setYearOfBirth(string yearOfBirth)
+{
+    _yearOfBirth = yearOfBirth;
+}
+
+void scientist::setYearOfDeath(string deceased)
+{
+    _yearOfDeath = deceased;
+}
+
+
