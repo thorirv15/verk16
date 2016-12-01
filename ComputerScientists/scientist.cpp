@@ -1,46 +1,58 @@
 #include "scientist.h"
-
 using namespace std;
 
-Scientist::Scientist()
+
+scientist::scientist()
 {
 
 }
-void Scientist::setName(string name)
+
+string scientist::getName()
+{
+    return _name;
+}
+
+string scientist::getGender()
+{
+    return _gender;
+}
+
+string scientist::getYearOfBirth()
+{
+    return _yearOfBirth;
+}
+<<<<<<< HEAD
+string Scientist::getName() const
+{
+    return _name;
+=======
+
+string scientist::getYearOfDeath()
+{
+    return _yearOfDeath;
+}
+
+void scientist::setName(string name)
 {
     _name = name;
+>>>>>>> aba6ad248c33b54aeb56f1a726838280b88701a7
 }
 
-void Scientist::setGender(string gender)
+void scientist::setGender(string gender)
 {
     _gender = gender;
 }
-void Scientist::setYearOfBirth(string yearOfBirth)
+void scientist::setYearOfBirth(string yearOfBirth)
 {
     _yearOfBirth = yearOfBirth;
 }
 
-void Scientist::setYearOfDeath(string deceased)
+void scientist::setYearOfDeath(string deceased)
 {
-    _deceased = deceased;
-}
-string Scientist::getName() const
-{
-    return _name;
-}
-string Scientist::getGender() const
-{
-    return _gender;
-}
-string Scientist::getYearOfBirth() const
-{
-    return _yearOfBirth;
-}
-string Scientist::getYearOfDeath() const
-{
-    return _deceased;
+    _yearOfDeath = deceased;
 }
 
+<<<<<<< HEAD
 bool SortingFunctions::sortNameAsc ( const Scientist& lhs, const Scientist& rhs )
 {
     return lhs.getName() < rhs.getName();
@@ -80,3 +92,6 @@ void SortingFunctions::DateOfBirthDesc ( vector<Scientist> allScientists )
 {
     sort ( allScientists.begin() , allScientists.end() , sortDoBDesc ( const Scientist& lhs, const Scientist& rhs ) )
 }
+=======
+
+>>>>>>> aba6ad248c33b54aeb56f1a726838280b88701a7

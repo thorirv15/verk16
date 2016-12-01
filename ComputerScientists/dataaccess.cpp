@@ -1,60 +1,53 @@
 #include "dataaccess.h"
-
-#include "scientistservice.h"
+#include "scientist.h"
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <vector>
 using namespace std;
 
+DataAccess::DataAccess()
+{
 
+}
 
-    DataAccess::DataAccess()
-    {
-
-    }
-
-    void DataAccess::fromFileToClass ( string inputFirstName , string inputSecondName , string inputGender , string inputBirthyear , string inputDeceased )
-    {
-        _firstName   = inputFirstName;       // Nálgumst private breyturnar hérna
-        _lastName    = inputSecondName;
-        _gender      = inputGender;
-        _dateOfBirth = inputBirthyear;
-        _deceased    = inputDeceased;
-    }
-
-
-
-
-
-
-vector<DataAccess> listOfScientists;  // Vektorinn sem inniheldur klasana með upplýsingunum
-
-void dataFromFile( vector<DataAccess> listOfScientists )
+vector<scientist> DataAccess::dataFromFile()
 {
     ifstream theFile;
+    theFile.open("scientists.txt");
 
-    DataAccess tempClass; // Temp klasi til að setja í vektorinn í enda for lykkjunnar
+    string delimeter = ":";
 
-    string inputFirstName;
-    string inputSecondName;
+    vector<scientist> info;
+
+    string inputName;
     string inputGender;
     string inputBirthyear;
     string inputDeceased;
-    char stop;
+    string input;
 
-    theFile.open( "scientists.txt" );
-
-    while ( theFile >> inputFirstName >> inputSecondName >> inputGender >> inputBirthyear >> inputDeceased >> stop )
+    if(theFile)
     {
-        tempClass.fromFileToClass ( inputFirstName , inputSecondName , inputGender , inputBirthyear , inputDeceased );
-
-        if ( stop == '#' )
+        while(getline(theFile, input))
         {
-            listOfScientists.push_back( tempClass );
+            scientist s;
+
+            s.setName(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
+
+            s.setGender(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
+
+            s.setYearOfBirth(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
+
+            s.setYearOfDeath(input.substr(0, input.find(delimeter)));
+            input.erase(0,input.find(delimeter) + 1);
+
+            info.push_back(s);
         }
+
+        theFile.close();
+        return info;
     }
-
-    theFile.close();
-
 }

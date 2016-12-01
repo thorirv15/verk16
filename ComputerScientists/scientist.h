@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 class Scientist
 {
 public:
@@ -22,6 +23,8 @@ private:
     string _name;
     string _gender;
     string _yearOfBirth;
+    string _yearOfDeath;
+
     string _deceased;
 };
 

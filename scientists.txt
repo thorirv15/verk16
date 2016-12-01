@@ -40,6 +40,3 @@ George Boole:male:1815:1864
 Margaret Hamilton:female:1936:N/A
 John McCarthy:male:1927:2011
 Sergei Lebedev:male:1902:1974
-
-
-

@@ -48,6 +48,7 @@ void consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 void consoleHelp()                  //skipunnar listi
 {
 
+
     cout << "  Enter one of the following commands" << endl;
     cout << "     list - This will let you search for a Computer scientist/s" << endl;
     cout << "     add  - This will allow you to add performers to the list" << endl;
@@ -83,48 +84,59 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     {
         //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
         cout << "In what order do you wannt to get the list ? \n" << endl;
-        cout << "  1. A - Z" << endl;
-        cout << "  2. Z - A" << endl;
-        cout << "  3. Year of Birth" << endl;
-        cout << "  4. Year of Death" << endl;
-        cout << "  5. Gender" << endl;
-        cout << "  6. Back to Main menu." << endl;
+        cout << "  1. As is.";
+        cout << "  2. A - Z" << endl;
+        cout << "  3. Z - A" << endl;
+        cout << "  4. Year of Birth" << endl;
+        cout << "  5. Year of Death" << endl;
+        cout << "  6. Gender" << endl;
+        cout << "  7. Back to Main menu." << endl;
         cout << "  Please enter the number: ";
         cin >> list;
 
-        while(list != "6")
+        while(list != "7")
         {
-            if(list == "1")
+            if(list == "1")         //AS IS.
             {
-                //A-Z
+                _service.setAllScientists();
+                vector<scientist> scientists = _service.getAllScientists();
+                for (int i; i < scientists.size(); i++)
+                {
+                    cout << scientists[i] << endl;
+                }
             }
 
-            else if(list == "2")
+            else if(list == "2")    //A-Z
             {
-                //Z-A
+
             }
 
-            else if(list == "3")
+            else if(list == "3")    //Z-A
             {
-                //YoB
+
             }
 
-            else if(list == "4")
+            else if(list == "4")    //YoB
             {
-                //YoD
+
             }
 
-            else if(list == "5")
+            else if(list == "5")    //YoD
             {
-                //Gender
+
             }
 
-            else if(list == "6")
+            else if(list == "6")    //Gender
+            {
+
+            }
+
+            else if(list == "7")    //Go to main menu.
             {
                 break;
             }
 
-            else if(list == "quit")
+            else if(list == "quit") //Exit program.
             {
                 exit(1);
             }
@@ -135,48 +147,59 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     else if(list == "2")      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
     {
         cout << "In what order do you wannt to get the list ? \n" << endl;
-        cout << "  1. A - Z" << endl;
-        cout << "  2. Z - A" << endl;
-        cout << "  3. Year of Birth" << endl;
-        cout << "  4. Year of Death" << endl;
-        cout << "  5. Gender" << endl;
-        cout << "  6. Back to Main menu." << endl;
+        cout << "  1. No sortation.";
+        cout << "  2. A - Z" << endl;
+        cout << "  3. Z - A" << endl;
+        cout << "  4. Year of Birth" << endl;
+        cout << "  5. Year of Death" << endl;
+        cout << "  6. Gender" << endl;
+        cout << "  7. Back to Main menu." << endl;
         cout << "  Please enter the number: ";
         cin >> list;
 
-        while(list != "6")
+        while(list != "7")
         {
-            if(list == "1")
+            if(list == "1")         //AS IS.
             {
-                //A-Z
+                _service.setAllScientists();
+                vector<scientist> scientists = _service.getAllScientists(); //ATH!!! breyta úr getAllScientists í NÖFN !!!
+                for (int i; i < scientists.size(); i++)
+                {
+                    cout << scientists[i] << endl;
+                }
             }
 
-            else if(list == "2")
+            else if(list == "2")    //A-Z.
             {
-                //Z-A
+
             }
 
-            else if(list == "3")
+            else if(list == "3")    //Z-A.
             {
-                //YoB
+
             }
 
-            else if(list == "4")
+            else if(list == "4")    //YoB.
             {
-                //YoD
+
             }
 
-            else if(list == "5")
+            else if(list == "5")    //YoD.
             {
-                //Gender
+
             }
 
-            else if(list == "6")
+            else if(list == "6")    //Gender.
+            {
+
+            }
+
+            else if(list == "7")    //to main menu.
             {
                 break;
             }
 
-            else if(list == "quit")
+            else if(list == "quit") //exit program.
             {
                 exit(1);
             }
@@ -231,6 +254,16 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
 void ConsoleUI::run()               //----MAINFALL----
 {
     string command = "help";
+
+
+        for(unsigned int i = 0; i < scientists.size(); i++)
+        {
+            cout << "Name: " << scientists[i].getName() << endl;
+            cout << "Gender: " << scientists[i].getGender() << endl;
+            cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+            cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+        }
+
 
     consoleStartPrint();
     consoleHelp();
