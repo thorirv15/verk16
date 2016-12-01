@@ -16,6 +16,7 @@ public:
     ScientistService();
     void setAllScientists();
     vector<Scientist> getAllScientists();
+    vector<string> getAllScientistsNames();
 
 private:
 

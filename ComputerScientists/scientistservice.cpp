@@ -31,6 +31,35 @@ vector<Scientist> ScientistService::getAllScientists()
     return _scientists;
 }
 
+vector<string> ScientistService::getAllScientistsNames()
+{
+    string name;
+    vector<string> s;
+
+    for(unsigned int i = 0; i < _scientists.size(); i++)
+    {
+        name = _scientists[i].getName();
+        s.push_back(name);
+
+    }
+
+    return s;
+
+}
+/*
+vector<Scientist> ScientistService::sortAllScientistsAtoZ()
+{
+    DataAccess _dataAccess;
+    vector<QString> s = _dataAccess.dataFromFile();
+
+    for (unsigned int i = 0; i < s.size(); i++)
+    {
+        QString line = s.at(i);
+        QStringList list = line.split(QRegularExpression(":"));
+    }
+
+}
+/*
 /*
 
 bool SortingFunctions::sortNameAsc ( const Scientist& lhs, const Scientist& rhs )
