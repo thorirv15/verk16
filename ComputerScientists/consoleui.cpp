@@ -4,6 +4,8 @@
 #include "scientist.h"
 #include "scientistservice.h"
 #include <cstdlib>
+#include <QString>
+#include <QStringList>
 
 using namespace std;
 
@@ -238,10 +240,22 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     else if(list == "3")      //senda upplýsingar í Domain um að fá áhveðið nafn.
     {
                             //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
-        cout << "Please enter the name of the person you are looking for: ";
-        cin >> upplysingar;
+        string searchString;
+        _service.setAllScientists();
+        vector<Scientist> scientists = _service.getAllScientists();
 
-        //cout << vector[x]....
+        cout << "Please enter a name: ";
+        cin >> searchString;
+        cout << endl;
+
+        int i = _service.searchForScientist( vector<Scientist> prump , string searchString );
+
+        cout << "Name: " << scientists[i].getName() << endl;
+        cout << "Gender: " << scientists[i].getGender() << endl;
+        cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+        cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+        cout << endl;
+
     }
 
     else if(list == "4")      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.

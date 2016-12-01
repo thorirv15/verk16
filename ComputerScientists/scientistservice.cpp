@@ -2,6 +2,7 @@
 #include "scientist.h"
 #include <QString>
 #include <QStringList>
+#include <QSortFilterProxyModel>
 #include <QRegularExpression>
 
 ScientistService::ScientistService()
@@ -47,35 +48,26 @@ vector<string> ScientistService::getAllScientistsNames()
 
 }
 
+int ScientistService::searchForScientist ( vector<Scientist> _scientists , string searchString)
+{
+    for ( int i = 0 ; i < _scientists.size() < i++ )
+    {
+        if ( _scientists[i].getName().contains(searchstring, QT::CaseSensitive ) )
+        {
+            return i;
+        }
 
-bool caseInsensitiveLessThan(const QString &s1, const QString &s2)
+    }
+
+}
+
+
+
+bool caseInsensitiveLessThan( const QString &s1 , const QString &s2 )
 {
     return s1.toLower() < s2.toLower();
 }
 
-
-vector<Scientist> ScientistService::sortAllScientistsAtoZ()
-{
-    DataAccess _dataAccess;
-    vector<QString> s = _dataAccess.dataFromFile();
-    vector<Scientist> sAtoZ;
-
-    for (unsigned int i = 0; i < s.size(); i++)
-    {
-        QString line = s.at(i);
-        QStringList list = line.split(QRegularExpression(":"));
-        qSort(list.at(0).begin(), list.end(), caseInsensitiveLessThan);
-        Scientist newScientist(
-            list.at(0).toStdString(),
-            list.at(1).toStdString(),
-            list.at(2).toStdString(),
-            list.at(3).toStdString()
-        );
-        sAtoZ.push_back(newScientist);
-    }
-
-    return sAtoZ;
-}
 
 /*
 

@@ -6,6 +6,8 @@
 #include "scientist.h"
 #include "dataaccess.h"
 #include <algorithm>
+#include <QString>
+#include <QStringList>
 
 using namespace std;
 
@@ -18,6 +20,7 @@ public:
     vector<Scientist> getAllScientists();
     vector<string> getAllScientistsNames();
     vector<Scientist> sortAllScientistsAtoZ();
+    int searchForScientist ( vector<Scientist> _scientists , QString searchString);
 
 private:
 
