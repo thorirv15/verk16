@@ -30,6 +30,8 @@ public:
     friend ostream& operator <<(ostream& outs, scientist& s);
     ConsoleUI();
     void run();
+    void consoleList();
+    void consoleAdd();
 
 
 private:

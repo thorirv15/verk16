@@ -13,7 +13,7 @@ ConsoleUI::ConsoleUI()
 
 }
 
-void consoleStartPrint()
+void consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 {
     cout << endl << endl;
     cout << "   _________________________________________ " << endl;
@@ -45,7 +45,7 @@ void consoleStartPrint()
 
 }
 
-void consoleHelp() //skipunnar listi
+void consoleHelp()                  //skipunnar listi
 {
 
 
@@ -65,7 +65,7 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
     return command;
 }
 
-void consoleList()                  //fall sem biður um að prenta út frá listanum.
+void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
     string list;
     string upplysingar;
@@ -224,7 +224,7 @@ void consoleList()                  //fall sem biður um að prenta út frá lis
 
 }
 
-void consoleAdd()                   //fall sem biður um að bæta við listann.
+void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
     //TODO búa til skipunn til að adda inn tölvunnarfræðingi
 }
