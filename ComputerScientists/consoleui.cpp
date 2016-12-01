@@ -37,9 +37,9 @@ void consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
     cout << "                  |          |               " << endl;
     cout << "     _____________|__________|____________   " << endl;
     cout << "    |                                     |  " << endl;
-    cout << "    |   =======                       O   |  " << endl;
-    cout << "    |         o                       0   |  " << endl;
-    cout << "    |                                 0   |  " << endl;
+    cout << "    |   =======                     7 8 9 |  " << endl;
+    cout << "    |         o                     4 5 6 |  " << endl;
+    cout << "    |                               1 2 3 |  " << endl;
     cout << "    |_____________________________________|\n" << endl;
 
 
@@ -97,12 +97,12 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
         while(list != "7")
         {
-            if(list == "1")         //AS IS.
+            if(list == "1")         //AS IS. KOMIÐ
             {
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.getAllScientists();
 
-                cout << scientists.size() << endl;
+
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
                 {
@@ -119,6 +119,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             else if(list == "2")    //A-Z
             {
+
 
             }
 
@@ -170,20 +171,17 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
         while(list != "7")
         {
-            if(list == "1")
-               //AS IS.
+            if(list == "1")         //Prenta nafn allra. KOMIÐ.
             {
-                /*
-                ScientistService ss;
+                _service.setAllScientists();
+                vector<string> scientistss = _service.getAllScientistsNames();
 
-                ss.setAllScientists();
-                vector<Scientist> scientists = ss.getAllScientists();
-
-                for (unsigned int i; i < scientists.size(); i++)
+                for(unsigned int i = 0; i < scientistss.size(); i++)
                 {
-                    cout << scientists[i].name << endl;
+                    cout << "Name: " << scientistss[i] << endl;
+                    cout << endl;
                 }
-                */
+                break;
             }
             else if(list == "2")    //A-Z.
             {
@@ -270,8 +268,6 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
 void ConsoleUI::run()               //----MAINFALL----
 {
     string command = "help";
-
-
 
     consoleStartPrint();
     consoleHelp();
