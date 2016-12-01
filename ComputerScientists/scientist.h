@@ -24,7 +24,6 @@ private:
     string _gender;
     string _yearOfBirth;
     string _yearOfDeath;
-
 };
 
 #endif // SCIENTIST_H

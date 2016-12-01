@@ -67,6 +67,15 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
 
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
+   /* _service.setAllScientists();
+    vector<Scientist> scientists = _service.getAllScientists();
+
+    for (unsigned int i; i < scientists.size(); i++)
+    {
+        cout << scientists[i].getName() << endl;
+    }
+    */
+
     string list;
     string upplysingar;
 
@@ -84,48 +93,65 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     {
         //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
         cout << "In what order do you wannt to get the list ? \n" << endl;
-        cout << "  1. A - Z" << endl;
-        cout << "  2. Z - A" << endl;
-        cout << "  3. Year of Birth" << endl;
-        cout << "  4. Year of Death" << endl;
-        cout << "  5. Gender" << endl;
-        cout << "  6. Back to Main menu." << endl;
+        cout << "  1. As is.";
+        cout << "  2. A - Z" << endl;
+        cout << "  3. Z - A" << endl;
+        cout << "  4. Year of Birth" << endl;
+        cout << "  5. Year of Death" << endl;
+        cout << "  6. Gender" << endl;
+        cout << "  7. Back to Main menu." << endl;
         cout << "  Please enter the number: ";
         cin >> list;
 
-        while(list != "6")
+        while(list != "7")
         {
-            if(list == "1")
+            if(list == "1")         //AS IS.
             {
-                //A-Z
+                /*
+                ScientistService ss;
+                Scientist s;
+
+                ss.setAllScientists();
+                vector<Scientist> scientists = ss.getAllScientists();
+
+                for (unsigned int i; i < scientists.size(); i++)
+                {
+                    cout << s[i].name << endl;
+                }
+                */
             }
 
-            else if(list == "2")
+            else if(list == "2")    //A-Z
             {
-                //Z-A
+
             }
 
-            else if(list == "3")
+            else if(list == "3")    //Z-A
             {
-                //YoB
+
             }
 
-            else if(list == "4")
+            else if(list == "4")    //YoB
             {
-                //YoD
+
             }
 
-            else if(list == "5")
+            else if(list == "5")    //YoD
             {
-                //Gender
+
             }
 
-            else if(list == "6")
+            else if(list == "6")    //Gender
+            {
+
+            }
+
+            else if(list == "7")    //Go to main menu.
             {
                 break;
             }
 
-            else if(list == "quit")
+            else if(list == "quit") //Exit program.
             {
                 exit(1);
             }
@@ -136,48 +162,64 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     else if(list == "2")      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
     {
         cout << "In what order do you wannt to get the list ? \n" << endl;
-        cout << "  1. A - Z" << endl;
-        cout << "  2. Z - A" << endl;
-        cout << "  3. Year of Birth" << endl;
-        cout << "  4. Year of Death" << endl;
-        cout << "  5. Gender" << endl;
-        cout << "  6. Back to Main menu." << endl;
+        cout << "  1. No sortation.";
+        cout << "  2. A - Z" << endl;
+        cout << "  3. Z - A" << endl;
+        cout << "  4. Year of Birth" << endl;
+        cout << "  5. Year of Death" << endl;
+        cout << "  6. Gender" << endl;
+        cout << "  7. Back to Main menu." << endl;
         cout << "  Please enter the number: ";
         cin >> list;
 
-        while(list != "6")
+        while(list != "7")
         {
             if(list == "1")
+               //AS IS.
             {
-                //A-Z
+                /*
+                ScientistService ss;
+
+                ss.setAllScientists();
+                vector<Scientist> scientists = ss.getAllScientists();
+
+                for (unsigned int i; i < scientists.size(); i++)
+                {
+                    cout << scientists[i].name << endl;
+                }
+                */
+            }
+            else if(list == "2")    //A-Z.
+            {
+
             }
 
-            else if(list == "2")
+            else if(list == "3")    //Z-A.
             {
-                //Z-A
+
             }
 
-            else if(list == "3")
+            else if(list == "4")    //YoB.
             {
-                //YoB
+
             }
 
-            else if(list == "4")
+            else if(list == "5")    //YoD.
             {
-                //YoD
+
             }
 
-            else if(list == "5")
+            else if(list == "6")    //Gender.
             {
-                //Gender
+
             }
 
-            else if(list == "6")
+            else if(list == "7")    //to main menu.
             {
                 break;
             }
 
-            else if(list == "quit")
+            else if(list == "quit") //exit program.
             {
                 exit(1);
             }
@@ -233,9 +275,8 @@ void ConsoleUI::run()               //----MAINFALL----
 {
     string command = "help";
 
-    _service.setAllScientists();
-    vector<Scientist> scientists = _service.getAllScientists();
-        cout << scientists.size() << endl;
+        _service.setAllScientists();
+        vector<Scientist> scientists = _service.getAllScientists();
 
         for(unsigned int i = 0; i < scientists.size(); i++)
         {
@@ -244,7 +285,6 @@ void ConsoleUI::run()               //----MAINFALL----
             cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
             cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
         }
-
 
     consoleStartPrint();
     consoleHelp();
