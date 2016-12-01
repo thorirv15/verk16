@@ -13,7 +13,7 @@ ConsoleUI::ConsoleUI()
 
 }
 
-void consoleStartPrint()
+void consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 {
     cout << endl << endl;
     cout << "   _________________________________________ " << endl;
@@ -45,7 +45,7 @@ void consoleStartPrint()
 
 }
 
-void consoleHelp() //skipunnar listi
+void consoleHelp()                  //skipunnar listi
 {
 
     cout << "  Enter one of the following commands" << endl;
