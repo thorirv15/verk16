@@ -12,6 +12,11 @@ public:
     void run();
     void consoleList();
     void consoleAdd();
+    void consoleNameColumn();
+    void consoleStartPrint();
+    void consoleHelp();
+    char userInput(char command);
+    void whereToGo();
 
 
 private:

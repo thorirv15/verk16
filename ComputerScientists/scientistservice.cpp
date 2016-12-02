@@ -262,3 +262,16 @@ bool ScientistService::isInputValid(string name, string gender, string yearOfBir
     return (checkName && checkGender && checkYearOfBirth && checkYearOfDeath1 && checkYearOfDeath2);
 
 }
+
+bool ScientistService::inputNameValid(string input)
+{
+    if(atoi(input.c_str()))
+    {
+      return false;
+    }
+
+   return true;
+}
+
+
+

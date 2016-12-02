@@ -30,6 +30,7 @@ public:
     vector<Scientist> getScientistsDeadorAlive(string input);
     void addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath);
     bool isInputValid(string name, string gender, string yearOfBirth, string yearOfDeath);
+    bool inputNameValid(string input);
 
 private:
 
