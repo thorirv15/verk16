@@ -178,3 +178,19 @@ vector<Scientist> ScientistService::getScientistsGender(string gender)
     return genderScientists;
 }
 
+ostream& operator << ( ostream& os , Scientist& TempClass )
+{
+   /* os << "Name: " <<          TempClass.getName()        << "|\t";
+    os << "Gender: " <<        TempClass.getGender()      << "|\t";
+    os << "Year of birth: " << TempClass.getYearOfBirth() << "|\t";
+    os << "Deceased: " << TempClass.getYearOfDeath()      << "|\t";
+    os << endl;*/
+
+    os << "  " ;os.width(26); cout << left << TempClass.getName();
+    os << "  " ;os.width(13); cout << left << TempClass.getGender();
+    os << "  " ;os.width(15); cout << left << TempClass.getYearOfBirth();
+    os << "  " ;os.width(13); cout << left << TempClass.getYearOfDeath();
+    os << endl;
+
+    return os;
+}
