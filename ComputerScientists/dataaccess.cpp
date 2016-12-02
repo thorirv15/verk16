@@ -27,3 +27,13 @@ vector<QString> DataAccess::dataFromFile()
 
     return v;
 }
+
+/*
+void DataAccess::writeToFile( string a, string b, string c, string d )
+{
+    QFile file("scientists.txt");
+    QTextStream outStream(&file);
+    outStream << a <<":"<< b <<":"<< c <<":"<< a;
+    file.close();
+}
+*/

@@ -26,6 +26,7 @@ public:
     vector<Scientist> sortAllScientistsByYearOfBirthDesc();
     vector<Scientist> getScientistsGender(string gender);
 
+
 private:
 
     vector<Scientist> _scientists;

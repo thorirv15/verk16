@@ -30,9 +30,6 @@ string Scientist::getYearOfDeath() const
     return _yearOfDeath;
 }
 
-
-
-
 void Scientist::setName(string name)
 {
     _name = name;
@@ -51,5 +48,3 @@ void Scientist::setYearOfDeath(string deceased)
 {
     _yearOfDeath = deceased;
 }
-
-

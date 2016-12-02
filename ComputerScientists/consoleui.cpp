@@ -168,7 +168,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             }
 
-            else if(list == "4")    //YoB
+            else if(list == "4")    //YoB Asc
             {
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
@@ -185,7 +185,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 break;
             }
 
-            else if(list == "5")    //YoD
+            else if(list == "5")    //YoB desc
             {
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();

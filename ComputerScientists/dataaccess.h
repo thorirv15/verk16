@@ -18,7 +18,7 @@ public:
 
     DataAccess();
     vector<QString> dataFromFile();
-
+    //void writeToFile(string a , string b, string c, string d);
 
 private:
 

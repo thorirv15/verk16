@@ -49,13 +49,16 @@ vector<string> ScientistService::getAllScientistsNames()
 
 }
 
+
+
 vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
 {
     vector<Scientist> result;
 
     for(int i = 0; i < _scientists.size();i++)
     {
-        if(searchString == _scientists[i].getName())
+        size_t found = _scientists[i].getName().find(searchString);
+        if(found >= 0 && found < _scientists[i].getName().length())
         {
             result.push_back(_scientists[i]);
         }
@@ -63,17 +66,8 @@ vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
     }
 
     return result;
+}
 
-}
-/*
-int nameSpace ( vector<Scientist> anyGivenScientist , int n )
-{
-    for ( int i = 0  ; i < anyGivenScientist.size() ; i++ )
-    {
-        if anyGivenScientist.getName.size > n;
-    }
-}
-*/
 
 bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
 {
@@ -94,7 +88,6 @@ bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
 {
     return rhs.getYearOfBirth() < lhs.getYearOfBirth();
 }
-
 
 vector<Scientist> ScientistService::sortAllScientistsAtoZ()
 {
