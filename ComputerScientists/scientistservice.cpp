@@ -2,6 +2,7 @@
 #include "scientist.h"
 #include <QString>
 #include <QStringList>
+#include <QSortFilterProxyModel>
 #include <QRegularExpression>
 
 ScientistService::ScientistService()
@@ -47,75 +48,119 @@ vector<string> ScientistService::getAllScientistsNames()
 
 }
 
+<<<<<<< HEAD
+vector<Scientist> searchOfSciencetists ( string searchString )
+{
+    vector<Scientist> prump;
 
-bool caseInsensitiveLessThan(const QString &s1, const QString &s2)
+    for ( int i = 0 ; i < _scientists.size() < i++ );
+
+    {
+        if ( _scientists[i].getName().contains(searchstring, QT::CaseSensitive ) )
+        {
+            prump.push_back(_scientists[i]);
+        }
+
+    }
+
+    return prump;
+
+}
+
+int nameSpace ( vector<Scientist> anyGivenScientist , int n )
+{
+    for ( int i = 0  ; i < anyGivenScientist.size() ; i++ )
+    {
+        if anyGivenScientist.getName.size > n;
+    }
+}
+
+bool caseInsensitiveLessThan( const QString &s1 , const QString &s2 )
 {
     return s1.toLower() < s2.toLower();
 }
 
 
-vector<Scientist> ScientistService::sortAllScientistsAtoZ()
-{
-    DataAccess _dataAccess;
-    vector<QString> s = _dataAccess.dataFromFile();
-    vector<Scientist> sAtoZ;
-
-    for (unsigned int i = 0; i < s.size(); i++)
-    {
-        QString line = s.at(i);
-        QStringList list = line.split(QRegularExpression(":"));
-        qSort(list.at(0).begin(), list.end(), caseInsensitiveLessThan);
-        Scientist newScientist(
-            list.at(0).toStdString(),
-            list.at(1).toStdString(),
-            list.at(2).toStdString(),
-            list.at(3).toStdString()
-        );
-        sAtoZ.push_back(newScientist);
-    }
-
-    return sAtoZ;
-}
-
 /*
 
 bool SortingFunctions::sortNameAsc ( const Scientist& lhs, const Scientist& rhs )
+=======
+
+bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
 {
     return lhs.getName() < rhs.getName();
 }
 
-bool SortingFunctions::sortNameDesc ( const Scientist& lhs, const Scientist& rhs )
+bool sortNameDesc(const Scientist& lhs, const Scientist& rhs)
 {
     return rhs.getName() < lhs.getName();
 }
 
-void SortingFunctions::alphabetAsc (vector<Scientist> allScientists )
-{
-    sort(allScientists.begin() , allScientists.end(), sortNameAsc(const Scientist& lhs, const Scientist& rhs));
-}
-
-void SortingFunctions::alphabetDesc ( vector<Scientist> allScientists )
-{
-    sort ( allScientists.begin() , allScientists.end() , sortNameDesc ( const Scientist& lhs , const Scientist& rhs ) );
-}
-
-bool SortingFunctions::sortDoBAsc ( const Scientist& lhs, const Scientist& rhs )
+bool sortYearOfBirthAsc(const Scientist& lhs, const Scientist& rhs)
+>>>>>>> f419a651436f1d5bdcc9f8509bdc185f74d8f2ee
 {
     return lhs.getYearOfBirth() < rhs.getYearOfBirth();
 }
 
-bool SortingFunctions::sortDoBDesc ( const Scientist& lhs, const Scientist& rhs )
+bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
 {
     return rhs.getYearOfBirth() < lhs.getYearOfBirth();
 }
 
-void SortingFunctions::DateOfBirthAsc ( vector<Scientist> allScientists )
+
+vector<Scientist> ScientistService::sortAllScientistsAtoZ()
 {
-    sort (allScientists.begin() ,allScientists.end() ,sortDoBAsc(const Scientist& lhs, const Scientist& rhs));
+    sort(_scientists.begin(), _scientists.end(), sortNameAsc);
+    return _scientists;
 }
 
-void SortingFunctions::DateOfBirthDesc (vector<Scientist> allScientists)
+vector<Scientist> ScientistService::sortAllScientistsZtoA()
 {
-    sort(allScientists.begin() ,allScientists.end() ,sortDoBDesc(const Scientist& lhs, const Scientist& rhs));
+    sort(_scientists.begin(), _scientists.end(), sortNameDesc);
+    return _scientists;
 }
-*/
+
+vector<Scientist> ScientistService::sortAllScientistsByYearOfBirthAsc()
+{
+    sort(_scientists.begin(), _scientists.end(), sortYearOfBirthAsc);
+    return _scientists;
+}
+
+vector<Scientist> ScientistService::sortAllScientistsByYearOfBirthDesc()
+{
+    sort(_scientists.begin(), _scientists.end(), sortYearOfBirthDesc);
+    return _scientists;
+}
+
+vector<Scientist> ScientistService::getScientistsGender(string gender)
+{
+    vector<Scientist> genderScientists;
+
+
+    if(gender == "male")
+    {
+        for(unsigned int i = 0; i < _scientists.size(); i++)
+        {
+
+            if(_scientists[i].getGender() == "male")
+            {
+                genderScientists.push_back(_scientists[i]);
+            }
+        }
+    }
+    else
+    {
+        for(unsigned int i = 0; i < _scientists.size(); i++)
+        {
+            if(_scientists[i].getGender() == "female")
+            {
+                genderScientists.push_back(_scientists[i]);
+            }
+        }
+    }
+
+    sort(genderScientists.begin(), genderScientists.end(), sortNameAsc);
+
+    return genderScientists;
+}
+

@@ -4,9 +4,23 @@
 #include "scientist.h"
 #include "scientistservice.h"
 #include <cstdlib>
+#include <QString>
+#include <QStringList>
 
 using namespace std;
 
+int sizeOfLongestName;
+
+ostream& operator << ( ostream& os , Scientist& TempClass )
+{
+    os << "Name: " <<          TempClass.getName()        << sizeOfLongestName*(' ') << "|\t";
+    os << "Gender: " <<        TempClass.getGender()      << "|\t";
+    os << "Year of birth: " << TempClass.getYearOfBirth() << "|\t";
+    os << "Deceased: " << TempClass.getYearOfDeath()      << "|\t";
+    os << endl;
+
+    return os;
+}
 
 ConsoleUI::ConsoleUI()
 {
@@ -100,16 +114,16 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             if(list == "1")         //AS IS. KOMIÐ
             {
                 _service.setAllScientists();
-                vector<Scientist> scientists = _service.getAllScientists();
+                vector<Scientist> allscientists = _service.getAllScientists();
 
 
 
-                for(unsigned int i = 0; i < scientists.size(); i++)
+                for(unsigned int i = 0; i < allscientists.size(); i++)
                 {
-                    cout << "Name: " << scientists[i].getName() << endl;
-                    cout << "Gender: " << scientists[i].getGender() << endl;
-                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << "Name: " << allscientists[i].getName() << endl;
+                    cout << "Gender: " << allscientists[i].getGender() << endl;
+                    cout << "Year of birth: " << allscientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << allscientists[i].getYearOfDeath() << endl;
                     cout << endl;
                 }
 
@@ -139,22 +153,86 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             else if(list == "3")    //Z-A
             {
+                _service.setAllScientists();
+                vector<Scientist> scientists = _service.sortAllScientistsZtoA();
+
+                for(unsigned int i = 0; i < scientists.size(); i++)
+                {
+                    cout << "Name: " << scientists[i].getName() << endl;
+                    cout << "Gender: " << scientists[i].getGender() << endl;
+                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << endl;
+                }
+
+                break;
 
             }
 
             else if(list == "4")    //YoB
             {
+                _service.setAllScientists();
+                vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
 
+                for(unsigned int i = 0; i < scientists.size(); i++)
+                {
+                    cout << "Name: " << scientists[i].getName() << endl;
+                    cout << "Gender: " << scientists[i].getGender() << endl;
+                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << endl;
+                }
+
+                break;
             }
 
             else if(list == "5")    //YoD
             {
+                _service.setAllScientists();
+                vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
 
+                for(unsigned int i = 0; i < scientists.size(); i++)
+                {
+                    cout << "Name: " << scientists[i].getName() << endl;
+                    cout << "Gender: " << scientists[i].getGender() << endl;
+                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << endl;
+                }
+
+                break;
             }
 
             else if(list == "6")    //Gender
             {
+                string gender;
 
+                _service.setAllScientists();
+
+                cout << "male - list all males" << endl;
+                cout << "female - list all females" << endl;
+
+                cout << "input command: ";
+                cin >> gender;
+
+
+
+                vector<Scientist> scientists = _service.getScientistsGender(gender);
+
+
+
+                for(unsigned int i = 0; i < scientists.size(); i++)
+                {
+                    cout << "Name: " << scientists[i].getName() << endl;
+                    cout << "Gender: " << scientists[i].getGender() << endl;
+                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << endl;
+                }
+
+
+
+                break;
             }
 
             else if(list == "7")    //Go to main menu.
@@ -237,11 +315,36 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
     else if(list == "3")      //senda upplýsingar í Domain um að fá áhveðið nafn.
     {
+<<<<<<< HEAD
                             //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
+        string searchString;
+        _service.setAllScientists();
+        vector<Scientist> scientists = _service.getAllScientists();
+        int sizeOfLongestName = 0;
+
+        cout << "Please enter a name: ";
+        cin >> searchString;
+        cout << endl;
+=======
+        //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
         cout << "Please enter the name of the person you are looking for: ";
         cin >> upplysingar;
+>>>>>>> f419a651436f1d5bdcc9f8509bdc185f74d8f2ee
 
-        //cout << vector[x]....
+
+        vector<Scientist> geit = _service.searchOfSciencetists( string searchString );
+
+        int nameSpace ( vector<Scientist> geit , int sizeOfLongestName );
+
+        cout << geit;
+
+    /*
+        cout << "Name: " << scientists[i].getName() << endl;
+        cout << "Gender: " << scientists[i].getGender() << endl;
+        cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+        cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+        cout << endl;
+    */
     }
 
     else if(list == "4")      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.
@@ -258,8 +361,10 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
     else if(list == "6")      //senda upplýsingar í Domain um að fá lista yfir áhveðið kyn.Ath ef fleirri en einn, stafróf...röð.
     {
-        cout << "Please enter the gender (f - female / m - male): ";
-        cin >> upplysingar;
+        cout << "Please enter a gender: " << endl;
+        cout << "( Enter 'm' for male, 'f' for female or 'o' for other" << endl;
+        char inputGender;
+        cin >> inputGender;
     }
 
     else if(list == "quit")
@@ -276,7 +381,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
-    //TODO búa til skipunn til að adda inn tölvunnarfræðingi
+
 }
 
 void ConsoleUI::run()               //----MAINFALL----
