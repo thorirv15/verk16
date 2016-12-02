@@ -9,7 +9,18 @@ Scientist::Scientist(string name, string gender, string yob, string yod)
     _yearOfBirth = yob;
     _yearOfDeath = yod;
 }
+/*
+ostream& operator << ( ostream& os , Scientist& TempClass )
+{
+    os << "  " ;os.width(26); os << left << TempClass.getName();
+    os << "  " ;os.width(13); os << left << TempClass.getGender();
+    os << "  " ;os.width(15); os << left << TempClass.getYearOfBirth();
+    os << "  " ;os.width(13); os << left << TempClass.getYearOfDeath();
+    os << endl;
 
+    return os;
+}
+*/
 string Scientist::getName() const
 {
     return _name;

@@ -9,19 +9,8 @@
 
 using namespace std;
 
-/*
-int sizeOfLongestName;
-ostream& operator << ( ostream& os , Scientist& TempClass )
-{
-    os << "Name: " <<          TempClass.getName()        << sizeOfLongestName*(' ') << "|\t";
-    os << "Gender: " <<        TempClass.getGender()      << "|\t";
-    os << "Year of birth: " << TempClass.getYearOfBirth() << "|\t";
-    os << "Deceased: " << TempClass.getYearOfDeath()      << "|\t";
-    os << endl;
 
-    return os;
-}
-*/
+
 
 ConsoleUI::ConsoleUI()
 {
@@ -77,11 +66,6 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
     cout << endl;
 
     return command;
-}
-
-void consoleUtprentNafna()
-{
-
 }
 
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
@@ -165,15 +149,12 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
                     cout << scientists[i];
                 }
-
-                break;
-
             }
 
             else if(list == "3")    //YoB Asc
             {
                 _service.setAllScientists();
-                vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
+                vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
                 {
@@ -186,7 +167,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                     cout << scientists[i];
                 }
 
-                break;
             }
 
             else if(list == "4")    //YoB desc
