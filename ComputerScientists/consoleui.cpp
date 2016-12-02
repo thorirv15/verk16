@@ -97,58 +97,46 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     if(list == "1")           //senda upplýsingar í Domain um að fá allann listann.ATH breyta í framtíðinni spurja notenda ef hann vill fá röðina í stafr. röð.
     {
         //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
-        cout << "In what order do you wannt to get the list ? \n" << endl;
-        cout << "  1. As is.";
-        cout << "  2. A - Z" << endl;
-        cout << "  3. Z - A" << endl;
-        cout << "  4. Year of Birth" << endl;
-        cout << "  5. Year of Death" << endl;
-        cout << "  6. Gender" << endl;
-        cout << "  7. Back to Main menu." << endl;
+        cout << "In what order do you want to get the list ? \n" << endl;
+        cout << "  1. A - Z" << endl;
+        cout << "  2. Z - A" << endl;
+        cout << "  3. Year of Birth" << endl;
+        cout << "  4. Year of Death" << endl;
+        cout << "  5. Gender" << endl;
+        cout << "  6. Back to Main menu.\n" << endl;
         cout << "  Please enter the number: ";
         cin >> list;
+        cout << endl;
 
         while(list != "7")
         {
+
             if(list == "1")         //AS IS. KOMIÐ
-            {
-                _service.setAllScientists();
-                vector<Scientist> allscientists = _service.getAllScientists();
-
-
-
-                for(unsigned int i = 0; i < allscientists.size(); i++)
-                {
-                    cout << "Name: " << allscientists[i].getName() << endl;
-                    cout << "Gender: " << allscientists[i].getGender() << endl;
-                    cout << "Year of birth: " << allscientists[i].getYearOfBirth() << endl;
-                    cout << "Year of death: " << allscientists[i].getYearOfDeath() << endl;
-                    cout << endl;
-                }
-
-                break;
-            }
-
-
-            else if(list == "2")    //A-Z
             {
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
 
+                    cout.width(30);
+                    cout << left << "  Name:";
+                    cout.width(15);
+                    cout << left << "Gender:";
+                    cout.width(17);
+                    cout << left << "Birth year:";
+                    cout.width(11);
+                    cout << left << "Year of Death:" << endl;
+                    cout << "  ---------------------------------------------------------------------------\n";
 
-
-                for(unsigned int i = 0; i < scientists.size(); i++)
-                {
-                    cout << "Name: " << scientists[i].getName() << endl;
-                    cout << "Gender: " << scientists[i].getGender() << endl;
-                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    for(unsigned int i = 0; i < scientists.size(); i++)
+                    {
+                        cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
+                        cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
+                        cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
+                        cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
+                        cout << endl;
+                    }
                     cout << endl;
+                    break;
                 }
-
-                break;
-
-            }
 
             else if(list == "3")    //Z-A
             {
