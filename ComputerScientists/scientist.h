@@ -19,6 +19,9 @@ public:
     string getYearOfBirth() const;
     string getYearOfDeath() const;
 
+    //friend ostream& operator << ( ostream& os , Scientist& TempClass );
+
+
 private:
     string _name;
     string _gender;

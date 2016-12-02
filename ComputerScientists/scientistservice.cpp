@@ -52,7 +52,7 @@ vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
 {
     vector<Scientist> result;
 
-    for(int i = 0; i < _scientists.size();i++)
+    for( unsigned int i = 0; i < _scientists.size();i++)
     {
         size_t found = _scientists[i].getName().find(searchString);
         if(found >= 0 && found < _scientists[i].getName().length())
@@ -199,7 +199,14 @@ vector<Scientist> ScientistService::getScientistsDeadorAlive(string input)
     sort(deadOrAliveScientists.begin(), deadOrAliveScientists.end(), sortNameAsc);
 
     return deadOrAliveScientists;
-
-
 }
+ostream& operator << ( ostream& os , Scientist& TempClass )
+{
+    os << "  " ;os.width(26); cout << left << TempClass.getName();
+    os << "  " ;os.width(13); cout << left << TempClass.getGender();
+    os << "  " ;os.width(15); cout << left << TempClass.getYearOfBirth();
+    os << "  " ;os.width(13); cout << left << TempClass.getYearOfDeath();
+    os << endl;
 
+    return os;
+}

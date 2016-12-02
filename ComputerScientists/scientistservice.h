@@ -26,8 +26,10 @@ public:
     vector<Scientist> sortAllScientistsByYearOfBirthDesc();
     vector<Scientist> getScientistsGender(string gender);
     vector<Scientist> searchOfSciencetistsByYearOfBirth(string year);
+    vector<Scientist> searchOfSciencetistsByYearOfDeath(string year);
     vector<Scientist> getScientistsDeadorAlive(string input);
     void addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath);
+
 
 
 private:
