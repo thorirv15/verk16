@@ -159,7 +159,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             else if(list == "3")    //YoB Asc
             {
                 _service.setAllScientists();
-                vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
+                vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
 
                     cout.width(30);
                     cout << left << "  Name:";
@@ -188,15 +188,25 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
 
+                cout.width(30);
+                cout << left << "  Name:";
+                cout.width(15);
+                cout << left << "Gender:";
+                cout.width(17);
+                cout << left << "Birth year:";
+                cout.width(11);
+                cout << left << "Year of Death:" << endl;
+                cout << "  ---------------------------------------------------------------------------\n";
+
                 for(unsigned int i = 0; i < scientists.size(); i++)
                 {
-                    cout << "Name: " << scientists[i].getName() << endl;
-                    cout << "Gender: " << scientists[i].getGender() << endl;
-                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
+                    cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
+                    cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
+                    cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
                     cout << endl;
                 }
-
+                cout << endl;
                 break;
             }
 
