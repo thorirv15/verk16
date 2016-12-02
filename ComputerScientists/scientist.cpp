@@ -53,5 +53,3 @@ void Scientist::setYearOfDeath(string deceased)
 }
 
 
-
-

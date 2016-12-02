@@ -9,6 +9,18 @@
 
 using namespace std;
 
+int sizeOfLongestName;
+
+ostream& operator << ( ostream& os , Scientist& TempClass )
+{
+    os << "Name: " <<          TempClass.getName()        << sizeOfLongestName*(' ') << "|\t";
+    os << "Gender: " <<        TempClass.getGender()      << "|\t";
+    os << "Year of birth: " << TempClass.getYearOfBirth() << "|\t";
+    os << "Deceased: " << TempClass.getYearOfDeath()      << "|\t";
+    os << endl;
+
+    return os;
+}
 
 ConsoleUI::ConsoleUI()
 {
@@ -243,19 +255,26 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         string searchString;
         _service.setAllScientists();
         vector<Scientist> scientists = _service.getAllScientists();
+        int sizeOfLongestName = 0;
 
         cout << "Please enter a name: ";
         cin >> searchString;
         cout << endl;
 
-        int i = _service.searchForScientist( vector<Scientist> prump , string searchString );
 
+        vector<Scientist> geit = _service.searchOfSciencetists( string searchString );
+
+        int nameSpace ( vector<Scientist> geit , int sizeOfLongestName );
+
+        cout << geit;
+
+    /*
         cout << "Name: " << scientists[i].getName() << endl;
         cout << "Gender: " << scientists[i].getGender() << endl;
         cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
         cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
         cout << endl;
-
+    */
     }
 
     else if(list == "4")      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.
@@ -272,8 +291,10 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
     else if(list == "6")      //senda upplýsingar í Domain um að fá lista yfir áhveðið kyn.Ath ef fleirri en einn, stafróf...röð.
     {
-        cout << "Please enter the gender (f - female / m - male): ";
-        cin >> upplysingar;
+        cout << "Please enter a gender: " << endl;
+        cout << "( Enter 'm' for male, 'f' for female or 'o' for other" << endl;
+        char inputGender;
+        cin >> inputGender;
     }
 
     else if(list == "quit")
@@ -290,7 +311,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
-    //TODO búa til skipunn til að adda inn tölvunnarfræðingi
+
 }
 
 void ConsoleUI::run()               //----MAINFALL----

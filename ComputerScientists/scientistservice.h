@@ -20,7 +20,7 @@ public:
     vector<Scientist> getAllScientists();
     vector<string> getAllScientistsNames();
     vector<Scientist> sortAllScientistsAtoZ();
-    int searchForScientist ( vector<Scientist> _scientists , QString searchString);
+    vector<Scientist> searchOfSciencetists ( string searchString );
 
 private:
 

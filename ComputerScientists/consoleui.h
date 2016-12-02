@@ -22,7 +22,7 @@ birtist á notendavænan hátt.
 (10%) Notandi ætti að geta ráðið því hvernig listinn er raðaður.
 */
 
-
+ostream& operator << ( ostream& os , Scientist& TempClass );
 
 class ConsoleUI
 {

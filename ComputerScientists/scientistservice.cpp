@@ -48,20 +48,31 @@ vector<string> ScientistService::getAllScientistsNames()
 
 }
 
-int ScientistService::searchForScientist ( vector<Scientist> _scientists , string searchString)
+vector<Scientist> searchOfSciencetists ( string searchString )
 {
-    for ( int i = 0 ; i < _scientists.size() < i++ )
+    vector<Scientist> prump;
+
+    for ( int i = 0 ; i < _scientists.size() < i++ );
+
     {
         if ( _scientists[i].getName().contains(searchstring, QT::CaseSensitive ) )
         {
-            return i;
+            prump.push_back(_scientists[i]);
         }
 
     }
 
+    return prump;
+
 }
 
-
+int nameSpace ( vector<Scientist> anyGivenScientist , int n )
+{
+    for ( int i = 0  ; i < anyGivenScientist.size() ; i++ )
+    {
+        if anyGivenScientist.getName.size > n;
+    }
+}
 
 bool caseInsensitiveLessThan( const QString &s1 , const QString &s2 )
 {
