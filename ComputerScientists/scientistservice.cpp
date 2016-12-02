@@ -48,9 +48,44 @@ vector<string> ScientistService::getAllScientistsNames()
     return s;
 
 }
+/*
+vector<Scientist> ScientistService::deadOrAlive(string applicable)
+{
+    vector<Scientist> dOa;
+                                 // Allir lifandi
+    if ( applicable == "dead" ); // Hér pushar for-lykkjan öllum með "N/A" inn
+    {
+        for ( int i = 0; i < _scientists.size();i++)
+        {
+            string found = _scientists[i].getYearOfDeath();
 
+            if ( found == "N/A" )
+            {
+                dOa.push_back(_scientists[i]);
+            }
 
+        }
 
+    }
+                                            // Allir dánir
+    else if ( applicable == "alive" );      // Hér pushar for-lykkjan öllum þar sem "N/A" er ekki.
+    {
+        for ( int i = 0; i < _scientists.size() ; i++ )
+        {
+            string found = _scientists[i].getYearOfDeath();
+
+            if ( found != "N/A" )
+            {
+                dOa.push_back(_scientists[i]);
+            }
+
+        }
+
+    }
+
+    return dOa;
+}
+*/
 vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
 {
     vector<Scientist> result;
