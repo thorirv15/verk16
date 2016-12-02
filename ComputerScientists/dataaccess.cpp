@@ -15,7 +15,7 @@ vector<QString> DataAccess::dataFromFile()
     QFile file("scientists.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-       return v;
+        return v;
     }
     QTextStream in(&file);
     while (!in.atEnd()) {
@@ -28,12 +28,20 @@ vector<QString> DataAccess::dataFromFile()
     return v;
 }
 
-/*
-void DataAccess::writeToFile( string a, string b, string c, string d )
+void DataAccess::DataToFile(vector<Scientist> v)
 {
     QFile file("scientists.txt");
-    QTextStream outStream(&file);
-    outStream << a <<":"<< b <<":"<< c <<":"<< a;
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QTextStream out(&file);
+    for (unsigned int i = 0; i < v.size(); i++) {
+        out << QString::fromStdString(v.at(i).getName()) << ":"
+            << QString::fromStdString(v.at(i).getGender()) << ":"
+            << QString::fromStdString(v.at(i).getYearOfBirth()) << ":"
+            << QString::fromStdString(v.at(i).getYearOfDeath()) << "\n";
+    }
+
     file.close();
 }
-*/
+

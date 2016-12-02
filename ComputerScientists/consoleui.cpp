@@ -9,20 +9,6 @@
 
 using namespace std;
 
-/*
-int sizeOfLongestName;
-ostream& operator << ( ostream& os , Scientist& TempClass )
-{
-    os << "Name: " <<          TempClass.getName()        << sizeOfLongestName*(' ') << "|\t";
-    os << "Gender: " <<        TempClass.getGender()      << "|\t";
-    os << "Year of birth: " << TempClass.getYearOfBirth() << "|\t";
-    os << "Deceased: " << TempClass.getYearOfDeath()      << "|\t";
-    os << endl;
-
-    return os;
-}
-*/
-
 ConsoleUI::ConsoleUI()
 {
 
@@ -98,24 +84,21 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     {
         //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
         cout << "In what order do you wannt to get the list ? \n" << endl;
-        cout << "  1. As is.";
+        cout << "  1. As is." << endl;
         cout << "  2. A - Z" << endl;
         cout << "  3. Z - A" << endl;
-        cout << "  4. Year of Birth" << endl;
-        cout << "  5. Year of Death" << endl;
+        cout << "  4. Year of birth ascending" << endl;
+        cout << "  5. Year of birth descending" << endl;
         cout << "  6. Gender" << endl;
-        cout << "  7. Back to Main menu." << endl;
+        cout << "  7. Alive or decesed." << endl;
         cout << "  Please enter the number: ";
         cin >> list;
 
-        while(list != "7")
+        while(list != "8")
         {
             if(list == "1")         //AS IS. KOMIÐ
             {
-                _service.setAllScientists();
                 vector<Scientist> allscientists = _service.getAllScientists();
-
-
 
                 for(unsigned int i = 0; i < allscientists.size(); i++)
                 {
@@ -132,10 +115,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             else if(list == "2")    //A-Z
             {
-                _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
-
-
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
                 {
@@ -152,7 +132,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             else if(list == "3")    //Z-A
             {
-                _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsZtoA();
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
@@ -165,12 +144,10 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 }
 
                 break;
-
             }
 
             else if(list == "4")    //YoB Asc
             {
-                _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
@@ -187,7 +164,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             else if(list == "5")    //YoB desc
             {
-                _service.setAllScientists();
+
                 vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
@@ -206,19 +183,13 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             {
                 string gender;
 
-                _service.setAllScientists();
-
                 cout << "male - list all males" << endl;
                 cout << "female - list all females" << endl;
 
                 cout << "input command: ";
                 cin >> gender;
 
-
-
                 vector<Scientist> scientists = _service.getScientistsGender(gender);
-
-
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
                 {
@@ -229,13 +200,29 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                     cout << endl;
                 }
 
-
-
                 break;
             }
 
             else if(list == "7")    //Go to main menu.
             {
+                string command;
+
+                cout << "1 - list all scientists alive" << endl;
+                cout << "2 - list all scientists deseaced " << endl;
+
+                cin >> command;
+
+                vector<Scientist> scientists = _service.getScientistsDeadorAlive(command);
+
+                for(unsigned int i = 0; i < scientists.size(); i++)
+                {
+                    cout << "Name: " << scientists[i].getName() << endl;
+                    cout << "Gender: " << scientists[i].getGender() << endl;
+                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout << endl;
+                }
+
                 break;
             }
 
@@ -272,6 +259,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                     cout << "Name: " << scientistss[i] << endl;
                     cout << endl;
                 }
+
                 break;
             }
             else if(list == "2")    //A-Z.
@@ -318,9 +306,8 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                             //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
         string searchString;
         _service.setAllScientists();
-        vector<Scientist> scientists = _service.getAllScientists();
 
-        //int sizeOfLongestName = 0;
+        vector<Scientist> result;
 
         cout << "Please enter a name: ";
         cin >> searchString;
@@ -328,9 +315,8 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 
 
-        vector<Scientist> result = _service.searchOfSciencetists(searchString);
+        result = _service.searchOfSciencetists(searchString);
 
-        //int nameSpace(vector<Scientist> result , int sizeOfLongestName);
 
 
         if(result.size() == 0)
@@ -349,21 +335,33 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             }
 
         }
-//       cout << result;
 
-/*
-        cout << "Name: " << scientists[i].getName() << endl;
-        cout << "Gender: " << scientists[i].getGender() << endl;
-        cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-        cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
-        cout << endl;
-*/
     }
 
     else if(list == "4")      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.
     {
-        cout << "Please enter the year in question: ";
-        cin >> upplysingar;
+        string year;
+        cout << "Please enter year to look for: ";
+        cin >> year;
+        vector<Scientist> result;
+
+        result = _service.searchOfSciencetistsByYearOfBirth(year);
+
+        if(result.size() == 0)
+        {
+            cout << "Year not found!" << endl;
+        }
+        else
+        {
+            for(unsigned int i = 0; i < result.size(); i++)
+            {
+                cout << "Name: " << result[i].getName() << endl;
+                cout << "Gender: " << result[i].getGender() << endl;
+                cout << "Year of birth: " << result[i].getYearOfBirth() << endl;
+                cout << "Year of death: " << result[i].getYearOfDeath() << endl;
+                cout << endl;
+            }
+        }
     }
 
     else if(list == "5")      //senda upplýsingar í Domain um að fá áhveðið dánar ár.Ath ef fleirri en einn, stafróf...röð.
@@ -394,7 +392,22 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
+    string name, gender, yearOfBirth, yearOfDeath;
 
+    cout << "Input name:";
+    cin >> name;
+
+    cout << "Input gender(male/female): ";
+    cin >> gender;
+
+    cout << "Input year of birth: ";
+    cin >> yearOfBirth;
+
+    cout << "Input year of death: ";
+    cin >> yearOfDeath;
+
+
+    _service.addScientistToData(name, gender, yearOfBirth, yearOfDeath);
 }
 
 void ConsoleUI::run()               //----MAINFALL----
@@ -403,6 +416,7 @@ void ConsoleUI::run()               //----MAINFALL----
 
     consoleStartPrint();
     consoleHelp();
+     _service.setAllScientists();
 
     while(command != "quit")
     {

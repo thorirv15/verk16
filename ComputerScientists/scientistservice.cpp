@@ -42,14 +42,11 @@ vector<string> ScientistService::getAllScientistsNames()
     {
         name = _scientists[i].getName();
         s.push_back(name);
-
     }
 
     return s;
 
 }
-
-
 
 vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
 {
@@ -60,14 +57,32 @@ vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
         size_t found = _scientists[i].getName().find(searchString);
         if(found >= 0 && found < _scientists[i].getName().length())
         {
+            result.clear();
             result.push_back(_scientists[i]);
         }
+    }
 
+
+
+    return result;
+
+}
+
+vector<Scientist> ScientistService::searchOfSciencetistsByYearOfBirth(string year)
+{
+    vector<Scientist> result;
+
+    for(unsigned int i = 0; i < _scientists.size();i++)
+    {
+        if(year ==  _scientists[i].getYearOfBirth())
+        {
+            result.push_back(_scientists[i]);
+        }
     }
 
     return result;
-}
 
+}
 
 bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
 {
@@ -143,5 +158,48 @@ vector<Scientist> ScientistService::getScientistsGender(string gender)
     sort(genderScientists.begin(), genderScientists.end(), sortNameAsc);
 
     return genderScientists;
+}
+
+void ScientistService::addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath)
+{
+    Scientist addScientist(inputName, inputGender, inputYearOfBirth, inputYearOfDeath);
+    DataAccess add;
+
+    _scientists.push_back(addScientist);
+
+    add.DataToFile(_scientists);
+}
+
+vector<Scientist> ScientistService::getScientistsDeadorAlive(string input)
+{
+    vector<Scientist> deadOrAliveScientists;
+
+    if(input == "1")
+    {
+        for(unsigned int i = 0; i < _scientists.size(); i++)
+        {
+
+            if(_scientists[i].getYearOfDeath() == "N/A")
+            {
+                deadOrAliveScientists.push_back(_scientists[i]);
+            }
+        }
+    }
+    else if(input == "2")
+    {
+        for(unsigned int i = 0; i < _scientists.size(); i++)
+        {
+            if(_scientists[i].getYearOfDeath() != "N/A")
+            {
+                deadOrAliveScientists.push_back(_scientists[i]);
+            }
+        }
+    }
+
+    sort(deadOrAliveScientists.begin(), deadOrAliveScientists.end(), sortNameAsc);
+
+    return deadOrAliveScientists;
+
+
 }
 

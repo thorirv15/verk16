@@ -8,7 +8,7 @@
 #include <QFile>
 #include <QString>
 #include <QTextStream>
-
+#include <QCoreApplication>
 
 using namespace std;
 
@@ -18,7 +18,7 @@ public:
 
     DataAccess();
     vector<QString> dataFromFile();
-    //void writeToFile(string a , string b, string c, string d);
+    void DataToFile(vector<Scientist> v);
 
 private:
 
