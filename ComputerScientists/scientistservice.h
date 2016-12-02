@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <QString>
 #include <QStringList>
-
+#include <QRegularExpression>
 using namespace std;
 
 

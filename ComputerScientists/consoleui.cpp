@@ -1,11 +1,8 @@
-#include <iostream>
-#include <string>
+
 #include "consoleui.h"
 #include "scientist.h"
 #include "scientistservice.h"
-#include <cstdlib>
-#include <QString>
-#include <QStringList>
+
 
 using namespace std;
 
@@ -13,7 +10,6 @@ ConsoleUI::ConsoleUI()
 {
 
 }
-
 
 void ConsoleUI::consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 {
@@ -76,9 +72,6 @@ void ConsoleUI::whereToGo()
 
    whereToGo();
 }
-
-
-
 
 void ConsoleUI::consoleHelp()                  //skipunar listi
 {
@@ -336,28 +329,25 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 }
 
-
-
-
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
     string name, gender, yearOfBirth, yearOfDeath;
 
 
     cout << "Input name:";
-    cin.ignore(' ', '\n');
+    getline(cin, name);
 
-    cout << " Input name to add:";
-    cin >> name;
+    cout << "Input gender(male/female) to add: ";
+    getline(cin, gender);
 
-    cout << " Input gender(male/female) to add: ";
-    cin >> gender;
 
-    cout << " Input year of birth to add: ";
-    cin >> yearOfBirth;
+    cout << "Input year of birth to add: ";
+    getline(cin, yearOfBirth);
+
 
     cout << "Input year of death(If deseaced, enter N/A): ";
-    cin >> yearOfDeath;
+    getline(cin, yearOfDeath);
+
 
     if(_service.isInputValid(name, gender, yearOfBirth, yearOfDeath))
     {

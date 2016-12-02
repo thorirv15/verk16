@@ -1,8 +1,11 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
-
 #include "scientistservice.h"
-
+#include <cstdlib>
+#include <QString>
+#include <QStringList>
+#include <iostream>
+#include <string>
 
 
 class ConsoleUI

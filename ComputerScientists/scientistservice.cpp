@@ -1,10 +1,6 @@
 #include "scientistservice.h"
 #include "scientist.h"
-#include <QString>
-#include <QStringList>
-#include <QSortFilterProxyModel>
-#include <QRegularExpression>
-#include <algorithm>
+
 
 ScientistService::ScientistService()
 {
