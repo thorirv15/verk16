@@ -4,6 +4,7 @@
 #include <QStringList>
 #include <QSortFilterProxyModel>
 #include <QRegularExpression>
+#include <algorithm>
 
 ScientistService::ScientistService()
 {
@@ -48,25 +49,23 @@ vector<string> ScientistService::getAllScientistsNames()
 
 }
 
-<<<<<<< HEAD
-vector<Scientist> searchOfSciencetists ( string searchString )
+vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
 {
-    vector<Scientist> prump;
+    vector<Scientist> result;
 
-    for ( int i = 0 ; i < _scientists.size() < i++ );
-
+    for(int i = 0; i < _scientists.size();i++)
     {
-        if ( _scientists[i].getName().contains(searchstring, QT::CaseSensitive ) )
+        if(searchString == _scientists[i].getName())
         {
-            prump.push_back(_scientists[i]);
+            result.push_back(_scientists[i]);
         }
 
     }
 
-    return prump;
+    return result;
 
 }
-
+/*
 int nameSpace ( vector<Scientist> anyGivenScientist , int n )
 {
     for ( int i = 0  ; i < anyGivenScientist.size() ; i++ )
@@ -74,17 +73,7 @@ int nameSpace ( vector<Scientist> anyGivenScientist , int n )
         if anyGivenScientist.getName.size > n;
     }
 }
-
-bool caseInsensitiveLessThan( const QString &s1 , const QString &s2 )
-{
-    return s1.toLower() < s2.toLower();
-}
-
-
-/*
-
-bool SortingFunctions::sortNameAsc ( const Scientist& lhs, const Scientist& rhs )
-=======
+*/
 
 bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
 {
@@ -97,7 +86,6 @@ bool sortNameDesc(const Scientist& lhs, const Scientist& rhs)
 }
 
 bool sortYearOfBirthAsc(const Scientist& lhs, const Scientist& rhs)
->>>>>>> f419a651436f1d5bdcc9f8509bdc185f74d8f2ee
 {
     return lhs.getYearOfBirth() < rhs.getYearOfBirth();
 }

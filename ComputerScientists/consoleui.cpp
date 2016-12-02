@@ -9,8 +9,8 @@
 
 using namespace std;
 
+/*
 int sizeOfLongestName;
-
 ostream& operator << ( ostream& os , Scientist& TempClass )
 {
     os << "Name: " <<          TempClass.getName()        << sizeOfLongestName*(' ') << "|\t";
@@ -21,6 +21,7 @@ ostream& operator << ( ostream& os , Scientist& TempClass )
 
     return os;
 }
+*/
 
 ConsoleUI::ConsoleUI()
 {
@@ -61,8 +62,6 @@ void consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 
 void consoleHelp()                  //skipunnar listi
 {
-
-
     cout << "  Enter one of the following commands" << endl;
     cout << "     list - This will let you search for a Computer scientist/s" << endl;
     cout << "     add  - This will allow you to add performers to the list" << endl;
@@ -315,36 +314,50 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
     else if(list == "3")      //senda upplýsingar í Domain um að fá áhveðið nafn.
     {
-<<<<<<< HEAD
+
                             //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
         string searchString;
         _service.setAllScientists();
         vector<Scientist> scientists = _service.getAllScientists();
-        int sizeOfLongestName = 0;
+
+        //int sizeOfLongestName = 0;
 
         cout << "Please enter a name: ";
         cin >> searchString;
         cout << endl;
-=======
-        //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
-        cout << "Please enter the name of the person you are looking for: ";
-        cin >> upplysingar;
->>>>>>> f419a651436f1d5bdcc9f8509bdc185f74d8f2ee
 
 
-        vector<Scientist> geit = _service.searchOfSciencetists( string searchString );
 
-        int nameSpace ( vector<Scientist> geit , int sizeOfLongestName );
+        vector<Scientist> result = _service.searchOfSciencetists(searchString);
 
-        cout << geit;
+        //int nameSpace(vector<Scientist> result , int sizeOfLongestName);
 
-    /*
+
+        if(result.size() == 0)
+        {
+            cout << "String not found!" << endl;
+        }
+        else
+        {
+            for(unsigned int i = 0; i < result.size(); i++)
+            {
+                cout << "Name: " << result[i].getName() << endl;
+                cout << "Gender: " << result[i].getGender() << endl;
+                cout << "Year of birth: " << result[i].getYearOfBirth() << endl;
+                cout << "Year of death: " << result[i].getYearOfDeath() << endl;
+                cout << endl;
+            }
+
+        }
+//       cout << result;
+
+/*
         cout << "Name: " << scientists[i].getName() << endl;
         cout << "Gender: " << scientists[i].getGender() << endl;
         cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
         cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
         cout << endl;
-    */
+*/
     }
 
     else if(list == "4")      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.
