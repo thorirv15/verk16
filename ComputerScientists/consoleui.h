@@ -3,10 +3,11 @@
 
 #include "scientistservice.h"
 
+
+
 class ConsoleUI
 {
 public:
-    friend ostream& operator <<(ostream& outs, Scientist& s);
     ConsoleUI();
     void run();
     void consoleList();
@@ -15,12 +16,15 @@ public:
     void consoleStartPrint();
     void consoleHelp();
     char userInput(char command);
+    void whereToGo();
 
 
 private:
     ScientistService _service;
 
 };
+ostream& operator <<(ostream& outs, Scientist& s);
+
 ostream& operator <<(ostream& outs, Scientist& s);
 
 #endif // CONSOLEUI_H
