@@ -53,7 +53,7 @@ void ConsoleUI::whereToGo()
     char choice;
 
     cout << "  _______________________________________________________________________________________  " << endl;
-    cout << " |  1. Back to main menu.              2. Back.                                          | " << endl;
+    cout << " |  1. Back.                q - quit                                                     | " << endl;
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' any time to quit the program.                                               | " << endl;
     cout << " |_______________________________________________________________________________________| " << endl;
@@ -62,10 +62,6 @@ void ConsoleUI::whereToGo()
     cin >> choice;
 
     if(choice == '1')
-    {
-        consoleHelp();
-    }
-    else if(choice == '2')
     {
         consoleList();
     }
@@ -115,13 +111,12 @@ void ConsoleUI::consoleNameColumn()
 
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
-
     char list;
     string information;
 
     cout << "  _______________________________________________________________________________________  " << endl;
-    cout << " |  1. All list.               2. Scientist name.          3. Scientist year of birth    | " << endl;
-    cout << " |  4. Sicentist year of birth 3. Scientist year of death  5. Go back.                   | " << endl;
+    cout << " |  1. All list.               2. Specific name.          3. Specific year of birth      | " << endl;
+    cout << " |  4. Specific year of death  5. Go back.                                               | " << endl;
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' to quit the program.                                                        | " << endl;
     cout << " |_______________________________________________________________________________________| " << endl;
@@ -176,6 +171,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << scientists[i];
             }
             cout << endl;
+            whereToGo();
 
         }
 
@@ -190,6 +186,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << scientists[i];
             }
             cout << endl;
+            whereToGo();
 
         }
 
@@ -204,6 +201,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << scientists[i];
             }
             cout << endl;
+            whereToGo();
 
         }
 
@@ -212,7 +210,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             string gender;
 
             cout << "  _______________________________________________________________________________________  " << endl;
-            cout << " |  1. Female.                           2. Male                   3.Back                | " << endl;
+            cout << " |  1. Female.                           2. Male                                         | " << endl;
             cout << " |                                                                                       | " << endl;
             cout << " | Press 'q' to quit the program.                                                        | " << endl;
             cout << " |_______________________________________________________________________________________| " << endl;
@@ -223,6 +221,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             if (gender != "1" && gender != "2")
             {
                 cout << "Wrong input!" << endl;
+                consoleList();
             }
 
             else
@@ -236,6 +235,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                     cout << scientists[i];
                 }
                 cout << endl;
+                whereToGo();
 
             }
         }
@@ -259,19 +259,22 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             for(unsigned int i = 0; i < scientists.size(); i++)
             {
                 cout << scientists[i];
+                cout << endl;
             }
+            whereToGo();
 
 
         }
 
-        else if(input == '7')    //Go to main menu.
+        else if(input == '7')    //Go back
         {
-            consoleHelp();
+            whereToGo();
 
         }
         else if (input != '1' || input != '2' || input != '3' || input != '4' || input != '5' || input != '6') //Exit program.
         {
             cout << "Wrong input!";
+            consoleList();
 
         }
     }
@@ -325,6 +328,31 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             {
                 cout << result[i];
             }
+            whereToGo();
+        }
+
+    }
+    else if(list == '4')      //specific year of Death.
+    {
+        string year;
+        cout << " Please enter year to look for: ";
+        cin >> year;
+        vector<Scientist> result;
+
+        result = _service.searchOfSciencetistsByYearOfDeath(year);
+
+        if(result.size() == 0)
+        {
+            cout << " Year not found!" << endl;
+        }
+        else
+        {
+            consoleNameColumn();
+            for(unsigned int i = 0; i < result.size(); i++)
+            {
+                cout << result[i];
+            }
+            whereToGo();
         }
 
     }
@@ -378,9 +406,12 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
 
 void ConsoleUI::run()               //----MAINFALL----
 {
-    char command = ' ';
-    _service.setAllScientists();
+    int counter = 0;
+
+   _service.setAllScientists();
+
     consoleStartPrint();
+    char command = ' ';
     consoleHelp();
 
     while(command != 'q')
@@ -404,5 +435,4 @@ void ConsoleUI::run()               //----MAINFALL----
         }
 
     }
-
 }

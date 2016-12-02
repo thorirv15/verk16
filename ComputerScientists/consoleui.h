@@ -17,6 +17,7 @@ public:
     void consoleHelp();
     char userInput(char command);
     void whereToGo();
+    void initializerVector();
 
 
 private:
