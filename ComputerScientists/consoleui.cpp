@@ -68,6 +68,19 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
     return command;
 }
 
+void consoleNameColumn()
+{
+    cout.width(30);
+    cout << left << "  Name:";
+    cout.width(15);
+    cout << left << "Gender:";
+    cout.width(17);
+    cout << left << "Birth year:";
+    cout.width(11);
+    cout << left << "Year of Death:" << endl;
+    cout << "  ---------------------------------------------------------------------------\n";
+}
+
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
 
@@ -75,334 +88,214 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     string upplysingar;
 
     cout << "  1. All." << endl;
-    cout << "  2. Names of all in the list." << endl;
-    cout << "  3. Spesific Name." << endl;
-    cout << "  4. Spesific Year of Birth." << endl;
-    cout << "  5. Spesific Year of Death." << endl;
-    cout << "  6. Gender." << endl;
+    cout << "  2. Spesific Name." << endl;
+    cout << "  3. Spesific Year of Birth." << endl;
+    cout << "  4. Spesific Year of Death." << endl;
+    cout << "  5. Gender." << endl;
+    cout << "  6. Back to main menu." << endl;
     cout << "  Please enter the number: ";
     cin >> list;
     cout << endl;
 
-    if(list == "1")           //senda upplýsingar í Domain um að fá allann listann.ATH breyta í framtíðinni spurja notenda ef hann vill fá röðina í stafr. röð.
+    while(list != "6")
     {
-        //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
-        cout << "In what order do you want to get the list ? \n" << endl;
-        cout << "  1. A - Z" << endl;
-        cout << "  2. Z - A" << endl;
-        cout << "  3. Year of Birth" << endl;
-        cout << "  4. Year of Death" << endl;
-        cout << "  5. Gender" << endl;
-        cout << "  6. Deceased or Alive" << endl;
-        cout << "  7. Back to Main menu.\n" << endl;
-        cout << "  Please enter the number: ";
-        cin >> list;
-        cout << endl;
+        if(list == "1")           //All
+        {
+            cout << "In what order do you want to get the list ? \n" << endl;
+            cout << "  1. A - Z" << endl;
+            cout << "  2. Z - A" << endl;
+            cout << "  3. Year of Birth" << endl;
+            cout << "  4. Year of Death" << endl;
+            cout << "  5. Gender" << endl;
+            cout << "  6. Deceased or Alive" << endl;
+            cout << "  7. Back to Main menu.\n" << endl;
+            cout << "  Please enter the number: ";
+            cin >> list;
+            cout << endl;
 
-        while(list != "7")
+            while(list != "7")
+            {
+
+                if(list == "1")         //A-Z
+                {
+                    _service.setAllScientists();
+                    vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
+
+                    consoleNameColumn();
+
+                    for(unsigned int i = 0; i < scientists.size(); i++)
+                    {
+                        cout << scientists[i];
+                    }
+                    cout << endl;
+                    break;
+                }
+
+                else if(list == "2")    //Z-A
+                {
+                    _service.setAllScientists();
+                    vector<Scientist> scientists = _service.sortAllScientistsZtoA();
+
+                    consoleNameColumn();
+
+                    for(unsigned int i = 0; i < scientists.size(); i++)
+                    {
+                        cout << scientists[i];
+                    }
+                    cout << endl;
+                    break;
+                }
+
+                else if(list == "3")    //YoB Asc
+                {
+                    _service.setAllScientists();
+                    vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
+
+                    consoleNameColumn();
+
+                    for(unsigned int i = 0; i < scientists.size(); i++)
+                    {
+                        cout << scientists[i];
+                    }
+                    cout << endl;
+                    break;
+
+                }
+
+                else if(list == "4")    //YoB desc
+                {
+                    _service.setAllScientists();
+                    vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
+
+                    consoleNameColumn();
+
+                    for(unsigned int i = 0; i < scientists.size(); i++)
+                    {
+                        cout << scientists[i];
+                    }
+                    cout << endl;
+                    break;
+                }
+
+                else if(list == "5")    //Gender
+                {
+                    string gender;
+
+                    _service.setAllScientists();
+
+                    cout << "1. list all Males" << endl;
+                    cout << "2. list all Females" << endl;
+
+                    cout << "input command: ";
+                    cin >> gender;
+
+                    vector<Scientist> scientists = _service.getScientistsGender(gender);
+
+                    consoleNameColumn();
+
+                    for(unsigned int i = 0; i < scientists.size() ; i++)
+                    {
+                        cout << scientists[i];
+                    }
+                    cout << endl;
+                    break;
+                }
+
+                else if(list == "6")    //Dead or Alive.
+                {
+
+                }
+
+                else if(list == "7")    //Go to main menu.
+                {
+                    break;
+                }
+
+                else if(list == "quit") //Exit program.
+                {
+                    exit(1);
+                }
+
+            }
+        }
+
+        else if(list == "2")      //spec. Name
         {
 
-            if(list == "1")         //AS IS. KOMIÐ
-            {
-                _service.setAllScientists();
-                vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
+                                //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
+            string searchString;
+            _service.setAllScientists();
+            vector<Scientist> scientists = _service.getAllScientists();
 
-                    cout.width(30);
-                    cout << left << "  Name:";
-                    cout.width(15);
-                    cout << left << "Gender:";
-                    cout.width(17);
-                    cout << left << "Birth year:";
-                    cout.width(11);
-                    cout << left << "Year of Death:" << endl;
-                    cout << "  ---------------------------------------------------------------------------\n";
+            //int sizeOfLongestName = 0;
 
-                    for(unsigned int i = 0; i < scientists.size(); i++)
-                    {
-                        cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
-                        cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
-                        cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
-                        cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
-                        cout << endl;
-                    }
-                    cout << endl;
-                    break;
-                }
+            cout << "Please enter a name: ";
+            cin >> searchString;
+            cout << endl;
 
-            else if(list == "2")    //Z-A
-            {
-                _service.setAllScientists();
-                vector<Scientist> scientists = _service.sortAllScientistsZtoA();
+            vector<Scientist> result = _service.searchOfSciencetists(searchString);
 
-                    cout.width(30);
-                    cout << left << "  Name:";
-                    cout.width(15);
-                    cout << left << "Gender:";
-                    cout.width(17);
-                    cout << left << "Birth year:";
-                    cout.width(11);
-                    cout << left << "Year of Death:" << endl;
-                    cout << "  ---------------------------------------------------------------------------\n";
+            //int nameSpace(vector<Scientist> result , int sizeOfLongestName);
 
-                    for(unsigned int i = 0; i < scientists.size(); i++)
-                    {
-                        cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
-                        cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
-                        cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
-                        cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
-                        cout << endl;
-                    }
-                    cout << endl;
-                    break;
-                }
-
-            else if(list == "3")    //YoB Asc
-            {
-                _service.setAllScientists();
-                vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
-
-                    cout.width(30);
-                    cout << left << "  Name:";
-                    cout.width(15);
-                    cout << left << "Gender:";
-                    cout.width(17);
-                    cout << left << "Birth year:";
-                    cout.width(11);
-                    cout << left << "Year of Death:" << endl;
-                    cout << "  ---------------------------------------------------------------------------\n";
-
-                    for(unsigned int i = 0; i < scientists.size(); i++)
-                    {
-                        cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
-                        cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
-                        cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
-                        cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
-                        cout << endl;
-                    }
-                    cout << endl;
-                    break;
-                }
-
-            else if(list == "4")    //YoB desc
-            {
-                _service.setAllScientists();
-                vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
-
-                cout.width(30);
-                cout << left << "  Name:";
-                cout.width(15);
-                cout << left << "Gender:";
-                cout.width(17);
-                cout << left << "Birth year:";
-                cout.width(11);
-                cout << left << "Year of Death:" << endl;
-                cout << "  ---------------------------------------------------------------------------\n";
-
-                for(unsigned int i = 0; i < scientists.size(); i++)
-                {
-                    cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
-                    cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
-                    cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
-                    cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
-                    cout << endl;
-                }
-                cout << endl;
-                break;
-            }
-
-            else if(list == "5")    //Gender
-            {
-                string gender;
-
-                _service.setAllScientists();
-
-                cout << "male - list all males" << endl;
-                cout << "female - list all females" << endl;
-
-                cout << "input command: ";
-                cin >> gender;
-
-
-
-                vector<Scientist> scientists = _service.getScientistsGender(gender);
-
-
-
-                for(unsigned int i = 0; i < scientists.size(); i++)
-                {
-                    cout << "Name: " << scientists[i].getName() << endl;
-                    cout << "Gender: " << scientists[i].getGender() << endl;
-                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
-                    cout << endl;
-                }
-
-
-
-                break;
-            }
-
-            else if(list == "6")    //Dead or Alive.
-            {
-
-            }
-
-            else if(list == "7")    //Go to main menu.
-            {
-                break;
-            }
-
-            else if(list == "quit") //Exit program.
+            if(searchString == "quit")
             {
                 exit(1);
             }
 
-        }
-    }
-
-    else if(list == "2")      //senda upplýsingar um nöfn allra á listannum.Ath breyta í fram... stafr.röð.
-    {
-        cout << "In what order do you wannt to get the list ? \n" << endl;
-        cout << "  1. No sortation.";
-        cout << "  2. A - Z" << endl;
-        cout << "  3. Z - A" << endl;
-        cout << "  4. Year of Birth" << endl;
-        cout << "  5. Year of Death" << endl;
-        cout << "  6. Gender" << endl;
-        cout << "  7. Back to Main menu." << endl;
-        cout << "  Please enter the number: ";
-        cin >> list;
-
-        while(list != "7")
-        {
-            if(list == "1")         //Prenta nafn allra. KOMIÐ.
+            else if(result.size() == 0)
             {
-                _service.setAllScientists();
-                vector<string> scientistss = _service.getAllScientistsNames();
+                cout << "String not found!" << endl;
+            }
 
-                for(unsigned int i = 0; i < scientistss.size(); i++)
+            else
+            {
+                for(unsigned int i = 0; i < result.size(); i++)
                 {
-                    cout << "Name: " << scientistss[i] << endl;
+                    cout << "Name: " << result[i].getName() << endl;
+                    cout << "Gender: " << result[i].getGender() << endl;
+                    cout << "Year of birth: " << result[i].getYearOfBirth() << endl;
+                    cout << "Year of death: " << result[i].getYearOfDeath() << endl;
                     cout << endl;
                 }
-                break;
-            }
-            else if(list == "2")    //A-Z.
-            {
 
             }
-
-            else if(list == "3")    //Z-A.
-            {
-
-            }
-
-            else if(list == "4")    //YoB.
-            {
-
-            }
-
-            else if(list == "5")    //YoD.
-            {
-
-            }
-
-            else if(list == "6")    //Gender.
-            {
-
-            }
-
-            else if(list == "7")    //to main menu.
-            {
-                break;
-            }
-
-            else if(list == "quit") //exit program.
-            {
-                exit(1);
-            }
-
         }
-    }
 
-    else if(list == "3")      //senda upplýsingar í Domain um að fá áhveðið nafn.
-    {
-
-                            //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
-        string searchString;
-        _service.setAllScientists();
-        vector<Scientist> scientists = _service.getAllScientists();
-
-        //int sizeOfLongestName = 0;
-
-        cout << "Please enter a name: ";
-        cin >> searchString;
-        cout << endl;
-
-
-
-        vector<Scientist> result = _service.searchOfSciencetists(searchString);
-
-        //int nameSpace(vector<Scientist> result , int sizeOfLongestName);
-
-
-        if(result.size() == 0)
+        else if(list == "3")      //YoB
         {
-            cout << "String not found!" << endl;
+            cout << "Please enter the year in question: ";
+            cin >> upplysingar;
         }
+
+        else if(list == "4")      //YoD
+        {
+            cout << "Please enter the year in question: ";
+            cin >> upplysingar;
+        }
+
+        else if(list == "5")      //Gender
+        {
+            cout << "Please enter a gender: " << endl;
+            cout << "( Enter 'm' for male, 'f' for female or 'o' for other" << endl;
+            char inputGender;
+            cin >> inputGender;
+        }
+
+        else if(list == "6")      //Back to main menu.
+        {
+            break;
+        }
+
+        else if(list == "quit")
+        {
+            exit(1);
+        }
+
         else
         {
-            for(unsigned int i = 0; i < result.size(); i++)
-            {
-                cout << "Name: " << result[i].getName() << endl;
-                cout << "Gender: " << result[i].getGender() << endl;
-                cout << "Year of birth: " << result[i].getYearOfBirth() << endl;
-                cout << "Year of death: " << result[i].getYearOfDeath() << endl;
-                cout << endl;
-            }
-
+            cout << "invalid going back to main menu" << endl;
         }
-//       cout << result;
-
-/*
-        cout << "Name: " << scientists[i].getName() << endl;
-        cout << "Gender: " << scientists[i].getGender() << endl;
-        cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-        cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
-        cout << endl;
-*/
     }
-
-    else if(list == "4")      //senda upplýsingar í Domain um að fá áhveðið fæðingar ár.Ath ef fleirri en einn, stafróf...röð.
-    {
-        cout << "Please enter the year in question: ";
-        cin >> upplysingar;
-    }
-
-    else if(list == "5")      //senda upplýsingar í Domain um að fá áhveðið dánar ár.Ath ef fleirri en einn, stafróf...röð.
-    {
-        cout << "Please enter the year in question: ";
-        cin >> upplysingar;
-    }
-
-    else if(list == "6")      //senda upplýsingar í Domain um að fá lista yfir áhveðið kyn.Ath ef fleirri en einn, stafróf...röð.
-    {
-        cout << "Please enter a gender: " << endl;
-        cout << "( Enter 'm' for male, 'f' for female or 'o' for other" << endl;
-        char inputGender;
-        cin >> inputGender;
-    }
-
-    else if(list == "quit")
-    {
-        exit(1);
-    }
-
-    else
-    {
-        cout << "invalid going back to main menu" << endl;
-    }
-
 }
 
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
