@@ -55,12 +55,13 @@ void consoleHelp()                  //skipunnar listi
     cout << "  Enter one of the following commands" << endl;
     cout << "     list - This will let you search for a Computer scientist/s" << endl;
     cout << "     add  - This will allow you to add performers to the list" << endl;
-    cout << "     help - This will give you a list of command" << endl;
+    cout << "     help - This will give you a list of main menu commands" << endl;
     cout << "     quit - This command will exit the program from anywhere.\n" << endl;
 }
 
 string userInput(string command)    //spyr notandan um að slá inn skipunn.
 {
+    consoleHelp();
     cout << "  Main Menu Command: ";
     cin >> command;
     cout << endl;
@@ -216,12 +217,17 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                     exit(1);
                 }
 
+                else
+                {
+                    cout << "Invalid input!" << endl;
+                    cout << "Going back to main menu" << endl;
+                }
+
             }
         }
 
         else if(list == "2")      //spec. Name
         {
-
                                 //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
             string searchString;
             _service.setAllScientists();
@@ -286,6 +292,11 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             break;
         }
 
+        else if(list == "help")
+        {
+            break;
+        }
+
         else if(list == "quit")
         {
             exit(1);
@@ -294,6 +305,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         else
         {
             cout << "invalid going back to main menu" << endl;
+            break;
         }
     }
 }
@@ -308,7 +320,6 @@ void ConsoleUI::run()               //----MAINFALL----
     string command = "help";
 
     consoleStartPrint();
-    consoleHelp();
 
     while(command != "quit")
     {
