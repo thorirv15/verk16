@@ -315,7 +315,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
     else if(list == "3")      //senda upplýsingar í Domain um að fá áhveðið nafn.
     {
-<<<<<<< HEAD
                             //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
         string searchString;
         _service.setAllScientists();
@@ -325,14 +324,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         cout << "Please enter a name: ";
         cin >> searchString;
         cout << endl;
-=======
-        //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
-        cout << "Please enter the name of the person you are looking for: ";
-        cin >> upplysingar;
->>>>>>> f419a651436f1d5bdcc9f8509bdc185f74d8f2ee
 
 
-        vector<Scientist> geit = _service.searchOfSciencetists( string searchString );
+        vector<Scientist> geit = _service.searchOfSciencetists;
 
         int nameSpace ( vector<Scientist> geit , int sizeOfLongestName );
 
@@ -362,7 +356,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     else if(list == "6")      //senda upplýsingar í Domain um að fá lista yfir áhveðið kyn.Ath ef fleirri en einn, stafróf...röð.
     {
         cout << "Please enter a gender: " << endl;
-        cout << "( Enter 'm' for male, 'f' for female or 'o' for other" << endl;
+        cout << "( Enter 'm' for male, 'f' for female:" << endl;
         char inputGender;
         cin >> inputGender;
     }
@@ -381,7 +375,41 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
+    string name, gender, yob, death;
+    char letter , check;
 
+    cout << "Please enter the name of the scientist you would like to add: ";
+    cin >> name;
+    cout << "( Enter 'm' for male, 'f' for female: " << endl;
+    cin >> letter;
+
+    if ( letter = 'm' )
+    {
+        gender = "male";
+    }
+
+    if ( letter = 'f' )
+    {
+        gender = "female";
+    }
+
+    cout << "Please enter the year of birth: ";
+    cin >> yob;
+    cout << "Is a year of death applicable? Y/N: ";
+    cin >> check;
+    if ( check == 'Y' || check == 'y' )
+    {
+         cout << "Please enter the year of passing: ";
+         cin >> death;
+    }
+    else
+    {
+        death = "N/A";
+    }
+
+    cout << "Scientist added!";
+
+    _service.prump(name, gender, yob, death);
 }
 
 void ConsoleUI::run()               //----MAINFALL----

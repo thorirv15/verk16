@@ -48,7 +48,13 @@ vector<string> ScientistService::getAllScientistsNames()
 
 }
 
-<<<<<<< HEAD
+int ScientistService::prump ( string a , string b , string c , string d )
+{
+    DataAccess _dataaccess;
+
+    return _dataaccess.writeToFile();
+}
+
 vector<Scientist> searchOfSciencetists ( string searchString )
 {
     vector<Scientist> prump;
@@ -80,11 +86,7 @@ bool caseInsensitiveLessThan( const QString &s1 , const QString &s2 )
     return s1.toLower() < s2.toLower();
 }
 
-
-/*
-
 bool SortingFunctions::sortNameAsc ( const Scientist& lhs, const Scientist& rhs )
-=======
 
 bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
 {
@@ -97,7 +99,6 @@ bool sortNameDesc(const Scientist& lhs, const Scientist& rhs)
 }
 
 bool sortYearOfBirthAsc(const Scientist& lhs, const Scientist& rhs)
->>>>>>> f419a651436f1d5bdcc9f8509bdc185f74d8f2ee
 {
     return lhs.getYearOfBirth() < rhs.getYearOfBirth();
 }
@@ -106,7 +107,6 @@ bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
 {
     return rhs.getYearOfBirth() < lhs.getYearOfBirth();
 }
-
 
 vector<Scientist> ScientistService::sortAllScientistsAtoZ()
 {
