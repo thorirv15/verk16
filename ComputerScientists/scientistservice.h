@@ -25,6 +25,7 @@ public:
     vector<Scientist> sortAllScientistsByYearOfBirthAsc();
     vector<Scientist> sortAllScientistsByYearOfBirthDesc();
     vector<Scientist> getScientistsGender(string gender);
+    vector<Scientist> deadOrAlive(string applicable);
 
 
 private:

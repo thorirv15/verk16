@@ -28,6 +28,7 @@ ConsoleUI::ConsoleUI()
 
 }
 
+
 void consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 {
     cout << endl << endl;
@@ -78,6 +79,11 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
     return command;
 }
 
+void consoleUtprentNafna()
+{
+
+}
+
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
 
@@ -89,7 +95,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     cout << "  3. Spesific Name." << endl;
     cout << "  4. Spesific Year of Birth." << endl;
     cout << "  5. Spesific Year of Death." << endl;
-    cout << "  6. Gender." << endl << endl;
+    cout << "  6. Gender." << endl;
     cout << "  Please enter the number: ";
     cin >> list;
     cout << endl;
@@ -103,7 +109,8 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         cout << "  3. Year of Birth" << endl;
         cout << "  4. Year of Death" << endl;
         cout << "  5. Gender" << endl;
-        cout << "  6. Back to Main menu.\n" << endl;
+        cout << "  6. Deceased or Alive" << endl;
+        cout << "  7. Back to Main menu.\n" << endl;
         cout << "  Please enter the number: ";
         cin >> list;
         cout << endl;
@@ -138,7 +145,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                     break;
                 }
 
-            else if(list == "3")    //Z-A
+            else if(list == "2")    //Z-A
             {
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsZtoA();
@@ -156,7 +163,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
             }
 
-            else if(list == "4")    //YoB Asc
+            else if(list == "3")    //YoB Asc
             {
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
@@ -173,7 +180,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 break;
             }
 
-            else if(list == "5")    //YoB desc
+            else if(list == "4")    //YoB desc
             {
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
@@ -190,7 +197,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 break;
             }
 
-            else if(list == "6")    //Gender
+            else if(list == "5")    //Gender
             {
                 string gender;
 
@@ -220,6 +227,11 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 
                 break;
+            }
+
+            else if(list == "6")    //Dead or Alive.
+            {
+
             }
 
             else if(list == "7")    //Go to main menu.

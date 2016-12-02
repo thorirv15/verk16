@@ -48,14 +48,14 @@ vector<string> ScientistService::getAllScientistsNames()
     return s;
 
 }
-/*
+
 vector<Scientist> ScientistService::deadOrAlive(string applicable)
 {
     vector<Scientist> dOa;
-                                 // Allir lifandi
-    if ( applicable == "dead" ); // Hér pushar for-lykkjan öllum með "N/A" inn
+                                  // Allir lifandi
+    if ( applicable == "alive" ) // Hér pushar for-lykkjan öllum með "N/A" inn
     {
-        for ( int i = 0; i < _scientists.size();i++)
+        for ( unsigned int i = 0; i < _scientists.size();i++)
         {
             string found = _scientists[i].getYearOfDeath();
 
@@ -63,14 +63,12 @@ vector<Scientist> ScientistService::deadOrAlive(string applicable)
             {
                 dOa.push_back(_scientists[i]);
             }
-
         }
-
     }
-                                            // Allir dánir
-    else if ( applicable == "alive" );      // Hér pushar for-lykkjan öllum þar sem "N/A" er ekki.
+                                           // Allir dánir
+    else if ( applicable == "dead" )      // Hér pushar for-lykkjan öllum þar sem "N/A" er ekki.
     {
-        for ( int i = 0; i < _scientists.size() ; i++ )
+        for ( unsigned int i = 0; i < _scientists.size() ; i++ )
         {
             string found = _scientists[i].getYearOfDeath();
 
@@ -85,12 +83,12 @@ vector<Scientist> ScientistService::deadOrAlive(string applicable)
 
     return dOa;
 }
-*/
+
 vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
 {
     vector<Scientist> result;
 
-    for(int i = 0; i < _scientists.size();i++)
+    for( unsigned int i = 0; i < _scientists.size();i++)
     {
         size_t found = _scientists[i].getName().find(searchString);
         if(found >= 0 && found < _scientists[i].getName().length())
