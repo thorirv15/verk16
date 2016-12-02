@@ -21,5 +21,6 @@ private:
     ScientistService _service;
 
 };
+ostream& operator <<(ostream& outs, Scientist& s);
 
 #endif // CONSOLEUI_H
