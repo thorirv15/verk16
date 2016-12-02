@@ -28,6 +28,26 @@ void ScientistService::setAllScientists()
         }
 }
 
+bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
+{
+    return lhs.getName() < rhs.getName();
+}
+
+bool sortNameDesc(const Scientist& lhs, const Scientist& rhs)
+{
+    return rhs.getName() < lhs.getName();
+}
+
+bool sortYearOfBirthAsc(const Scientist& lhs, const Scientist& rhs)
+{
+    return lhs.getYearOfBirth() < rhs.getYearOfBirth();
+}
+
+bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
+{
+    return rhs.getYearOfBirth() < lhs.getYearOfBirth();
+}
+
 vector<Scientist> ScientistService::getAllScientists()
 {
     return _scientists;
@@ -81,27 +101,22 @@ vector<Scientist> ScientistService::searchOfSciencetistsByYearOfBirth(string yea
     }
 
     return result;
-
 }
 
-bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
+vector<Scientist> ScientistService::searchOfSciencetistsByYearOfDeath(string year)
 {
-    return lhs.getName() < rhs.getName();
-}
+    vector<Scientist> result;
 
-bool sortNameDesc(const Scientist& lhs, const Scientist& rhs)
-{
-    return rhs.getName() < lhs.getName();
-}
+    for(unsigned int i = 0; i < _scientists.size();i++)
+    {
+        if(year ==  _scientists[i].getYearOfDeath())
+        {
+            result.push_back(_scientists[i]);
+        }
+    }
 
-bool sortYearOfBirthAsc(const Scientist& lhs, const Scientist& rhs)
-{
-    return lhs.getYearOfBirth() < rhs.getYearOfBirth();
-}
-
-bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
-{
-    return rhs.getYearOfBirth() < lhs.getYearOfBirth();
+    sort(result.begin(), result.end(), sortYearOfBirthAsc);
+    return result;
 }
 
 vector<Scientist> ScientistService::sortAllScientistsAtoZ()
@@ -200,6 +215,7 @@ vector<Scientist> ScientistService::getScientistsDeadorAlive(string input)
 
     return deadOrAliveScientists;
 }
+
 ostream& operator << ( ostream& os , Scientist& TempClass )
 {
     os << "  " ;os.width(26); cout << left << TempClass.getName();
@@ -209,4 +225,40 @@ ostream& operator << ( ostream& os , Scientist& TempClass )
     os << endl;
 
     return os;
+}
+
+bool ScientistService::isInputValid(string name, string gender, string yearOfBirth, string yearOfDeath)
+{
+    bool checkName = true;
+    bool checkGender = true;
+    bool checkYearOfBirth = true;
+    bool checkYearOfDeath1 = true;
+    bool checkYearOfDeath2 = true;
+
+    if(name == " ")
+    {
+        checkName = false;
+    }
+
+    if(gender != "male" || gender != "female")
+    {
+        checkGender = false;
+    }
+
+    if(atoi(yearOfBirth.c_str()) <= 2016 && atoi(yearOfBirth.c_str()) > 0)
+    {
+        checkYearOfBirth = false;
+    }
+
+    if(yearOfDeath != "N/A")
+    {
+        checkYearOfDeath1 = false;
+    }
+    else(atoi(yearOfDeath.c_str()) <= 2016 && atoi(yearOfDeath.c_str()) > 0);
+    {
+         checkYearOfDeath2 = false;
+    }
+
+    return (checkName && checkGender && checkYearOfBirth && checkYearOfDeath1 && checkYearOfDeath2);
+
 }

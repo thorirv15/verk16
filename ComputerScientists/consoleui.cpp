@@ -14,7 +14,6 @@ ConsoleUI::ConsoleUI()
 
 }
 
-
 void consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 {
     cout << endl << endl;
@@ -95,7 +94,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     cin >> list;
     cout << endl;
 
-    while(list != "6")
+    if(list == "1")
     {
         //send int list eins og hann er. Fá tilbaka ALLANN vectorinn!
         cout << "In what order do you wannt to get the list ? \n" << endl;
@@ -124,8 +123,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << endl;
                 break;
             }
-
-
 
             else if(list == "2")    //Z-A
             {
@@ -156,7 +153,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << endl;
                 break;
             }
-
 
             else if(list == "4")    //Year of birth descending
             {
@@ -203,8 +199,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 break;
             }
 
-
-
             else if(list == "6")    //Dead or Alive.
             {
                 string command;
@@ -231,8 +225,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 break;
             }
 
-
-
             else if(list == "quit") //Exit program.
             {
                 exit(1);
@@ -246,10 +238,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
 
         }
+    }
 
-
-
-        if(list == "2")    //Specific name.
+     else if(list == "2")    //Specific name.
         {
 
             //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
@@ -281,9 +272,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             }
         }
 
-
-
-        else if(list == "3")      //specific year of birth.
+     else if(list == "3")      //specific year of birth.
         {
 
             string year;
@@ -305,10 +294,8 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                     cout << result[i];
                 }
             }
-
         }
 
-        /*
      else if(list == "4")      //YoD
      {
         string year;
@@ -332,23 +319,23 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         }
      }
 
-     */
-
-
-
-        else if(list == "quit")
+     else if(list == "quit")
         {
             exit(1);
         }
 
-    }
+
 }
+
+
+
 
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
     string name, gender, yearOfBirth, yearOfDeath;
 
     cout << "Input name:";
+    cin.ignore(' ', '\n');
     cin >> name;
 
     cout << "Input gender(male/female): ";
@@ -357,11 +344,19 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
     cout << "Input year of birth: ";
     cin >> yearOfBirth;
 
-    cout << "Input year of death: ";
+    cout << "Input year of death(If deseaced, enter N/A): ";
     cin >> yearOfDeath;
 
+    if(_service.isInputValid(name, gender, yearOfBirth, yearOfDeath))
+    {
+       _service.addScientistToData(name, gender, yearOfBirth, yearOfDeath);
+    }
+    else
+    {
+        cout << "Invalid input!" << endl;
 
-    _service.addScientistToData(name, gender, yearOfBirth, yearOfDeath);
+        consoleList();
+    }
 }
 
 void ConsoleUI::run()               //----MAINFALL----

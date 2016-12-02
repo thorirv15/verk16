@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 class Scientist
 {
 public:
@@ -18,9 +17,6 @@ public:
     string getGender() const;
     string getYearOfBirth() const;
     string getYearOfDeath() const;
-
-    //friend ostream& operator << ( ostream& os , Scientist& TempClass );
-
 
 private:
     string _name;
