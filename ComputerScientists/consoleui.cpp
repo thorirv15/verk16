@@ -9,19 +9,8 @@
 
 using namespace std;
 
-/*
-int sizeOfLongestName;
-ostream& operator << ( ostream& os , Scientist& TempClass )
-{
-    os << "Name: " <<          TempClass.getName()        << sizeOfLongestName*(' ') << "|\t";
-    os << "Gender: " <<        TempClass.getGender()      << "|\t";
-    os << "Year of birth: " << TempClass.getYearOfBirth() << "|\t";
-    os << "Deceased: " << TempClass.getYearOfDeath()      << "|\t";
-    os << endl;
 
-    return os;
-}
-*/
+
 
 ConsoleUI::ConsoleUI()
 {
@@ -77,11 +66,6 @@ string userInput(string command)    //spyr notandan um að slá inn skipunn.
     cout << endl;
 
     return command;
-}
-
-void consoleUtprentNafna()
-{
-
 }
 
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
@@ -150,35 +134,54 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 _service.setAllScientists();
                 vector<Scientist> scientists = _service.sortAllScientistsZtoA();
 
-                for(unsigned int i = 0; i < scientists.size(); i++)
-                {
-                    cout << "Name: " << scientists[i].getName() << endl;
-                    cout << "Gender: " << scientists[i].getGender() << endl;
-                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout.width(30);
+                    cout << left << "  Name:";
+                    cout.width(15);
+                    cout << left << "Gender:";
+                    cout.width(17);
+                    cout << left << "Birth year:";
+                    cout.width(11);
+                    cout << left << "Year of Death:" << endl;
+                    cout << "  ---------------------------------------------------------------------------\n";
+
+                    for(unsigned int i = 0; i < scientists.size(); i++)
+                    {
+                        cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
+                        cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
+                        cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
+                        cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
+                        cout << endl;
+                    }
                     cout << endl;
+                    break;
                 }
-
-                break;
-
-            }
 
             else if(list == "3")    //YoB Asc
             {
                 _service.setAllScientists();
-                vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
+                vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
 
-                for(unsigned int i = 0; i < scientists.size(); i++)
-                {
-                    cout << "Name: " << scientists[i].getName() << endl;
-                    cout << "Gender: " << scientists[i].getGender() << endl;
-                    cout << "Year of birth: " << scientists[i].getYearOfBirth() << endl;
-                    cout << "Year of death: " << scientists[i].getYearOfDeath() << endl;
+                    cout.width(30);
+                    cout << left << "  Name:";
+                    cout.width(15);
+                    cout << left << "Gender:";
+                    cout.width(17);
+                    cout << left << "Birth year:";
+                    cout.width(11);
+                    cout << left << "Year of Death:" << endl;
+                    cout << "  ---------------------------------------------------------------------------\n";
+
+                    for(unsigned int i = 0; i < scientists.size(); i++)
+                    {
+                        cout << "  " ;cout.width(26); cout << left << scientists[i].getName();
+                        cout << "  " ;cout.width(13); cout << left << scientists[i].getGender();
+                        cout << "  " ;cout.width(15); cout << left << scientists[i].getYearOfBirth();
+                        cout << "  " ;cout.width(13); cout << left << scientists[i].getYearOfDeath();
+                        cout << endl;
+                    }
                     cout << endl;
+                    break;
                 }
-
-                break;
-            }
 
             else if(list == "4")    //YoB desc
             {
