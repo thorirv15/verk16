@@ -1,6 +1,6 @@
 #include "consoleui.h"
 #include "scientist.h"
-#include "scientistservice.h"
+#include "service.h"
 
 using namespace std;
 
@@ -8,7 +8,6 @@ ConsoleUI::ConsoleUI()
 {
 
 }
-
 void ConsoleUI::consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
 {
 
@@ -41,7 +40,6 @@ void ConsoleUI::consoleStartPrint()            //fall sem prentar út byrjunar "
 
 
 }
-
 void ConsoleUI::whereToGo()
 {
     char choice;
@@ -67,17 +65,15 @@ void ConsoleUI::whereToGo()
 
    whereToGo();
 }
-
 void ConsoleUI::consoleHelp()                   //skipunar listi
 {
 
     cout << "  ======================================================================================= " << endl;
     cout << " |  1. List - List of scientists.              2. Add - Add scientist to list.           | " << endl;
     cout << " |                                                                                       | " << endl;
-    cout << " |  Press 'q' any time to quit the program.                                              | " << endl;
+    cout << " |  Press 'q' to quit the program.                                                       | " << endl;
     cout << "  ======================================================================================= " << endl;
 }
-
 string ConsoleUI::userInput(string command)         //spyr notandan um að slá inn skipun.
 {
     cout << "  Please enter a number > ";
@@ -86,7 +82,6 @@ string ConsoleUI::userInput(string command)         //spyr notandan um að slá 
 
     return command;
 }
-
 void ConsoleUI::consoleNameColumn()             //Header fyrir útprentun.
 {
     cout << endl;
@@ -100,7 +95,6 @@ void ConsoleUI::consoleNameColumn()             //Header fyrir útprentun.
     cout << left << "Year of Death:" << endl;
     cout << "  ---------------------------------------------------------------------------" << endl;
 }
-
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
     char list = ' ';
@@ -110,7 +104,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     cout << " |  1. All list.               2. Specific name.          3. Specific year of birth      | " << endl;
     cout << " |  4. Specific year of death  5. Back.                                                  | " << endl;
     cout << " |                                                                                       | " << endl;
-    cout << " | Press 'q' to quit the program.                                                        | " << endl;
+    cout << " |  Press 'q' to quit the program.                                                       | " << endl;
     cout << "  ======================================================================================= " << endl;
     cout << "  Please enter a number > ";
     cin >> list;
@@ -126,7 +120,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         cout << " |  4. Year of birth (Z-A) 5. Gender                    6. Alive/deseaced                | " << endl;
         cout << " |  7. Back to main menu.                                                                | " << endl;
         cout << " |                                                                                       | " << endl;
-        cout << " | Press 'q' to quit the program.                                                        | " << endl;
+        cout << " |  Press 'q' to quit the program.                                                       | " << endl;
         cout << "  ======================================================================================= " << endl;
         cout << "  Please enter a number > ";
         cin >> input;
@@ -361,7 +355,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         consoleList();
     }
 }
-
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
 {
     string name, gender, yearOfBirth, yearOfDeath;
@@ -378,22 +371,26 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
     getline(cin, yearOfBirth);
 
 
-    cout << "  Input year of death(If deseaced, enter N/A): ";
+    cout << "  Input year of death(If not deseaced, enter N/A): ";
     getline(cin, yearOfDeath);
 
-
+/*
     if(_service.isAddScientistValid(name, gender, yearOfBirth, yearOfDeath))
     {
         _service.addScientistToData(name, gender, yearOfBirth, yearOfDeath);
+
+        mainMenu();
     }
-    else
+    */
+
     {
         cout << "  Invalid input!" << endl;
 
-        consoleList();
+        mainMenu();
     }
-}
 
+
+}
 void ConsoleUI::mainMenu()
 {
     string command = " ";
@@ -426,14 +423,15 @@ void ConsoleUI::mainMenu()
         }
     }
 }
-
 void ConsoleUI::run()               //----MAINFALL----
 {
-   _service.setAllScientists();
+   //_service.setAllScientists();
     consoleStartPrint();
 
     mainMenu();
 
 }
-
-
+void ConsoleUI::openDataBase()
+{
+    _service.openDataBase();
+}

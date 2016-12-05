@@ -1,5 +1,6 @@
 QT += core
 QT -= gui
+QT += sql
 
 CONFIG += c++11
 
@@ -13,10 +14,10 @@ SOURCES += main.cpp \
     consoleui.cpp \
     dataaccess.cpp \
     scientist.cpp \
-    scientistservice.cpp
+    service.cpp
 
 HEADERS += \
     consoleui.h \
     dataaccess.h \
     scientist.h \
-    scientistservice.h
+    service.h

@@ -1,5 +1,5 @@
-#ifndef SCIENTISTSERVICE_H
-#define SCIENTISTSERVICE_H
+#ifndef Service_H
+#define Service_H
 
 #include <string>
 #include <vector>
@@ -12,10 +12,10 @@
 using namespace std;
 
 
-class ScientistService
+class Service
 {
 public:
-    ScientistService();
+    Service();
     void setAllScientists();
     vector<Scientist> getAllScientists();
     vector<string> getAllScientistsNames();
@@ -31,12 +31,14 @@ public:
     void addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath);
     bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
     bool inputNameValid(string input);
+    void openDataBase();
 
 private:
     vector<Scientist> _scientists;
+    DataAccess _dAccess;
 };
 
 
 
 
-#endif // SCIENTISTSERVICE_H
+#endif // Service_H

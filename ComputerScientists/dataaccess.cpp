@@ -1,8 +1,5 @@
 #include "dataaccess.h"
 #include "scientist.h"
-#include <QTSql/QSql>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
 
 
 
@@ -10,44 +7,41 @@ using namespace std;
 
 DataAccess::DataAccess()
 {
-
+    _dataBaseMain = QSqlDatabase::addDatabase("QSQLITE");
 }
-vector<QString> DataAccess::dataFromFile()
-{    
-    vector<QString> v;
-
-    QFile file("scientists.txt");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        return v;
-    }
-    QTextStream in(&file);
-    while (!in.atEnd())
-    {
-        QString line = in.readLine();
-        v.push_back(line);
-    }
-
-    file.close();
-
-    return v;
-}
-void DataAccess::DataToFile(vector<Scientist> v)
+/*
+vector<Scientist> DataAccess::getAllScientists()
 {
-    QFile file("scientists.txt");
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
-        return;
-    }
+    QSqlQuery query(_dataBaseMain);
 
-    QTextStream out(&file);
-    for (unsigned int i = 0; i < v.size(); i++)
-    {
-        out << QString::fromStdString(v.at(i).getName()) << ":"
-            << QString::fromStdString(v.at(i).getGender()) << ":"
-            << QString::fromStdString(v.at(i).getYearOfBirth()) << ":"
-            << QString::fromStdString(v.at(i).getYearOfDeath()) << "\n";
-    }
+    Scientist ss;
+    query.prepare("SELECT * FROM Scientists(ID, Name, Gender, YearOfBirth, YearOfDeath");
+    int idName = query.record().indexOf("Name");
 
-    file.close();
+    while (query.next())
+    {
+
+        ss.setName(name);
+
+
+    }
+}
+*/
+
+void DataAccess::openDataBase()
+{
+    _dataBaseMain.setDatabaseName("Verk1.sqlite");
+    if(!_dataBaseMain.open())
+    {
+       qDebug() << "Error: connection with database failed!";
+    }
+    else
+    {
+       qDebug() << "Database: connection succeded! ";
+    }
+}
+
+QSqlDatabase DataAccess::readDataBase()
+{
+    return _dataBaseMain;
 }

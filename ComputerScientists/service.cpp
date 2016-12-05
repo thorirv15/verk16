@@ -1,12 +1,14 @@
-#include "scientistservice.h"
+#include "service.h"
+#include <cctype>
 #include "scientist.h"
 const int YEARTODAY = 2016;
 
-ScientistService::ScientistService()
+Service::Service()
 {
 
 }
-void ScientistService::setAllScientists()
+/*
+void Service::setAllScientists()
 {
         DataAccess _dataAccess;
         vector<QString> v = _dataAccess.dataFromFile();
@@ -22,6 +24,7 @@ void ScientistService::setAllScientists()
             _scientists.push_back(newScientist);
         }
 }
+*/
 bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
 {
     return lhs.getName() < rhs.getName();
@@ -38,11 +41,11 @@ bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
 {
     return rhs.getYearOfBirth() < lhs.getYearOfBirth();
 }
-vector<Scientist> ScientistService::getAllScientists()
+vector<Scientist> Service::getAllScientists()
 {
     return _scientists;
 }
-vector<string> ScientistService::getAllScientistsNames()
+vector<string> Service::getAllScientistsNames()
 {
     string name;
     vector<string> s;
@@ -56,7 +59,7 @@ vector<string> ScientistService::getAllScientistsNames()
     return s;
 
 }
-vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
+vector<Scientist> Service::searchOfSciencetists(string searchString)
 {
     vector<Scientist> result;
 
@@ -75,7 +78,7 @@ vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
     return result;
 
 }
-vector<Scientist> ScientistService::searchOfSciencetistsByYearOfBirth(string year)
+vector<Scientist> Service::searchOfSciencetistsByYearOfBirth(string year)
 {
     vector<Scientist> result;
 
@@ -89,7 +92,7 @@ vector<Scientist> ScientistService::searchOfSciencetistsByYearOfBirth(string yea
 
     return result;
 }
-vector<Scientist> ScientistService::searchOfSciencetistsByYearOfDeath(string year)
+vector<Scientist> Service::searchOfSciencetistsByYearOfDeath(string year)
 {
     vector<Scientist> result;
 
@@ -104,27 +107,27 @@ vector<Scientist> ScientistService::searchOfSciencetistsByYearOfDeath(string yea
     sort(result.begin(), result.end(), sortYearOfBirthAsc);
     return result;
 }
-vector<Scientist> ScientistService::sortAllScientistsAtoZ()
+vector<Scientist> Service::sortAllScientistsAtoZ()
 {
     sort(_scientists.begin(), _scientists.end(), sortNameAsc);
     return _scientists;
 }
-vector<Scientist> ScientistService::sortAllScientistsZtoA()
+vector<Scientist> Service::sortAllScientistsZtoA()
 {
     sort(_scientists.begin(), _scientists.end(), sortNameDesc);
     return _scientists;
 }
-vector<Scientist> ScientistService::sortAllScientistsByYearOfBirthAsc()
+vector<Scientist> Service::sortAllScientistsByYearOfBirthAsc()
 {
     sort(_scientists.begin(), _scientists.end(), sortYearOfBirthAsc);
     return _scientists;
 }
-vector<Scientist> ScientistService::sortAllScientistsByYearOfBirthDesc()
+vector<Scientist> Service::sortAllScientistsByYearOfBirthDesc()
 {
     sort(_scientists.begin(), _scientists.end(), sortYearOfBirthDesc);
     return _scientists;
 }
-vector<Scientist> ScientistService::getScientistsGender(string gender)
+vector<Scientist> Service::getScientistsGender(string gender)
 {
     vector<Scientist> genderScientists;
 
@@ -155,7 +158,8 @@ vector<Scientist> ScientistService::getScientistsGender(string gender)
 
     return genderScientists;
 }
-void ScientistService::addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath)
+/*
+void Service::addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath)
 {
     Scientist addScientist(inputName, inputGender, inputYearOfBirth, inputYearOfDeath);
     DataAccess add;
@@ -164,7 +168,8 @@ void ScientistService::addScientistToData(string inputName, string inputGender, 
 
     add.DataToFile(_scientists);
 }
-vector<Scientist> ScientistService::getScientistsDeadorAlive(string input)
+*/
+vector<Scientist> Service::getScientistsDeadorAlive(string input)
 {
     vector<Scientist> deadOrAliveScientists;
 
@@ -204,7 +209,7 @@ ostream& operator << (ostream& os , Scientist& TempClass)
 
     return os;
 }
-bool ScientistService::inputNameValid(string input)
+bool Service::inputNameValid(string input)
 {
     if(atoi(input.c_str()))
     {
@@ -213,14 +218,14 @@ bool ScientistService::inputNameValid(string input)
 
    return true;
 }
-bool ScientistService::isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath)
+bool Service::isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath)
 {
     bool checkName = false;
     bool checkGender = false;
     bool checkYearOfBirth = false;
     bool checkYearOfDeath = false;
 
-
+    transform(gender.begin(), gender.end(), gender.begin(), ::tolower);
 
     if(name.length() > 0)
     {
@@ -245,4 +250,9 @@ bool ScientistService::isAddScientistValid(string name, string gender, string ye
 
     return (checkName && checkGender && checkYearOfBirth && checkYearOfDeath);
 
+}
+
+void Service::openDataBase()
+{
+    _dAccess.openDataBase();
 }

@@ -1,6 +1,6 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
-#include "scientistservice.h"
+#include "service.h"
 #include <cstdlib>
 #include <QString>
 #include <QStringList>
@@ -21,9 +21,10 @@ public:
     string userInput(string command);
     void whereToGo();
     void mainMenu();
+    void openDataBase();
 
 private:
-    ScientistService _service;
+    Service _service;
 
 };
 

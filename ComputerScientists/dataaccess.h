@@ -2,26 +2,29 @@
 #define DATAACCESS_H
 #include "scientist.h"
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <QFile>
 #include <QString>
 #include <QTextStream>
 #include <QCoreApplication>
+#include <QtSql/QSqlDatabase>
+#include <QDebug>
+#include <QSqlQuery>
 
 using namespace std;
 
-class DataAccess // Höfum allar private breytur sem string í bili
+class DataAccess
 {
-public:
 
+public:
     DataAccess();
-    vector<QString> dataFromFile();
-    void DataToFile(vector<Scientist> v);
+    QSqlDatabase readDataBase();
+    void openDataBase();
+    vector<Scientist> getAllScientists();
 
 private:
-
+    QSqlDatabase _dataBaseMain;
 };
 
 
