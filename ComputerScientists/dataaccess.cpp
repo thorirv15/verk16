@@ -1,5 +1,10 @@
 #include "dataaccess.h"
 #include "scientist.h"
+#include <QTSql/QSql>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+
+
 
 using namespace std;
 
@@ -7,7 +12,6 @@ DataAccess::DataAccess()
 {
 
 }
-
 vector<QString> DataAccess::dataFromFile()
 {    
     vector<QString> v;
@@ -28,7 +32,6 @@ vector<QString> DataAccess::dataFromFile()
 
     return v;
 }
-
 void DataAccess::DataToFile(vector<Scientist> v)
 {
     QFile file("scientists.txt");
@@ -48,4 +51,3 @@ void DataAccess::DataToFile(vector<Scientist> v)
 
     file.close();
 }
-

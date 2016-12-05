@@ -1,8 +1,6 @@
-
 #include "consoleui.h"
 #include "scientist.h"
 #include "scientistservice.h"
-
 
 using namespace std;
 
@@ -373,9 +371,9 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
 {
     string name, gender, yearOfBirth, yearOfDeath;
 
-
-    cout << "Input name:";
-    getline(cin, name);
+    cin.ignore();                                                                                    //NAME
+    cout << "Name: ";
+    getline(cin,name);
 
     cout << "Input gender(male/female) to add: ";
     getline(cin, gender);
@@ -389,7 +387,7 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
     getline(cin, yearOfDeath);
 
 
-    if(_service.isInputValid(name, gender, yearOfBirth, yearOfDeath))
+    if(_service.isAddScientistValid(name, gender, yearOfBirth, yearOfDeath))
     {
         _service.addScientistToData(name, gender, yearOfBirth, yearOfDeath);
     }
@@ -399,11 +397,6 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
 
         consoleList();
     }
-
-    cout << " Input year of death to add: ";
-    cin >> yearOfDeath;
-
-    _service.addScientistToData(name, gender, yearOfBirth, yearOfDeath);
 }
 
 void ConsoleUI::run()               //----MAINFALL----
