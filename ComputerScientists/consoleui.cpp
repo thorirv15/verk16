@@ -23,10 +23,10 @@ void ConsoleUI::consoleStartPrint()            //fall sem prentar út byrjunar "
     cout << "  |   ## |__|| \\ |__| |__| |     _|   | ##  |" << endl;
     cout << "  |   ##                                ##  |" << endl;
     cout << "  |   ####################################  |" << endl;
+    cout << "  |   #### --- Computer Scientists--- ####  |" << endl;
     cout << "  |   ####################################  |" << endl;
-    cout << "  |   ### --- Computer scientists ---  ###  |" << endl;
     cout << "  |   ####################################  |" << endl;
-    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ###########  Vika 2.0  #############  |" << endl;
     cout << "  |   ####################################  |" << endl;
     cout << "  |                                     o   |" << endl;
     cout << "  |_________________________________________|" << endl;
@@ -74,7 +74,7 @@ void ConsoleUI::consoleHelp()                   //skipunar listi
     cout << "  ======================================================================================= " << endl;
     cout << " |  1. List - List of scientists.              2. Add - Add scientist to list.           | " << endl;
     cout << " |                                                                                       | " << endl;
-    cout << " | Press 'q' any time to quit the program.                                               | " << endl;
+    cout << " |  Press 'q' any time to quit the program.                                              | " << endl;
     cout << "  ======================================================================================= " << endl;
 }
 
@@ -258,14 +258,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         else if(input == "7")    //Go back
         {
             whereToGo();
-
-        }
-
-        else if (input != "1" || input != "2" || input != "3" || input != "4" || input != "5" || input != "6") //Exit program.
-        {
-            cout << "Invalid input!" << endl;
-            cout << endl;
-            consoleList();
 
         }
 
