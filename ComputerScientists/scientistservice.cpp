@@ -204,6 +204,15 @@ ostream& operator << (ostream& os , Scientist& TempClass)
 
     return os;
 }
+bool ScientistService::inputNameValid(string input)
+{
+    if(atoi(input.c_str()))
+    {
+      return false;
+    }
+
+   return true;
+}
 bool ScientistService::isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath)
 {
     bool checkName = false;
@@ -236,13 +245,4 @@ bool ScientistService::isAddScientistValid(string name, string gender, string ye
 
     return (checkName && checkGender && checkYearOfBirth && checkYearOfDeath);
 
-}
-bool ScientistService::inputNameValid(string input)
-{
-    if(atoi(input.c_str()))
-    {
-      return false;
-    }
-
-   return true;
 }
