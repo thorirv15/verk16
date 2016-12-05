@@ -47,6 +47,7 @@ void ConsoleUI::whereToGo()
     char choice;
 
     cout << "  _______________________________________________________________________________________  " << endl;
+    cout << " |                                                                                       | " << endl;
     cout << " |  1. Back.                q - quit                                                     | " << endl;
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' any time to quit the program.                                               | " << endl;
@@ -54,6 +55,7 @@ void ConsoleUI::whereToGo()
 
     cout << "Command: ";
     cin >> choice;
+    cout << endl;
 
     if(choice == '1')
     {
@@ -67,26 +69,27 @@ void ConsoleUI::whereToGo()
    whereToGo();
 }
 
-void ConsoleUI::consoleHelp()                  //skipunar listi
+void ConsoleUI::consoleHelp()                   //skipunar listi
 {
     cout << " Enter one of the following commands:" << endl;
     cout << "  _______________________________________________________________________________________  " << endl;
+    cout << " |                                                                                       | " << endl;
     cout << " |  1. List - List of scientists.              2. Add - Add scientist to list.           | " << endl;
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' any time to quit the program.                                               | " << endl;
     cout << " |_______________________________________________________________________________________| " << endl;
 }
 
-char ConsoleUI::userInput(char command)    //spyr notandan um að slá inn skipun.
+char ConsoleUI::userInput(char command)         //spyr notandan um að slá inn skipun.
 {
-    cout << " Command: ";
+    cout << " Please enter a number: ";
     cin >> command;
     cout << endl;
 
     return command;
 }
 
-void ConsoleUI::consoleNameColumn()
+void ConsoleUI::consoleNameColumn()             //Header fyrir útprentun.
 {
     cout << endl;
     cout.width(30);
@@ -97,7 +100,7 @@ void ConsoleUI::consoleNameColumn()
     cout << left << "Birth year:";
     cout.width(11);
     cout << left << "Year of Death:" << endl;
-    cout << "  ---------------------------------------------------------------------------\n";
+    cout << "  ---------------------------------------------------------------------------" << endl;
 }
 
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
@@ -106,6 +109,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     string information;
 
     cout << "  _______________________________________________________________________________________  " << endl;
+    cout << " |                                                                                       | " << endl;
     cout << " |  1. All list.               2. Specific name.          3. Specific year of birth      | " << endl;
     cout << " |  4. Specific year of death  5. Go back.                                               | " << endl;
     cout << " |                                                                                       | " << endl;
@@ -122,6 +126,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
     {
         cout << " In what order do you want to get the list? " << endl;
         cout << "  _______________________________________________________________________________________  " << endl;
+        cout << " |                                                                                       | " << endl;
         cout << " |  1. A-Z.                2. Z-A                       3. Year of birth (A-Z)           | " << endl;
         cout << " |  4. Year of birth (Z-A) 5. Gender                    6. Alive/deseaced                | " << endl;
         cout << " |  7. Go back                                                                           | " << endl;
@@ -201,6 +206,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             string gender;
 
             cout << "  _______________________________________________________________________________________  " << endl;
+            cout << " |                                                                                       | " << endl;
             cout << " |  1. Female.                           2. Male                                         | " << endl;
             cout << " |                                                                                       | " << endl;
             cout << " | Press 'q' to quit the program.                                                        | " << endl;
@@ -236,6 +242,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             string aliveOrDeseaced;
 
             cout << "  _______________________________________________________________________________________  " << endl;
+            cout << " |                                                                                       | " << endl;
             cout << " |  1. Alive.                           2. Deseaced                                      | " << endl;
             cout << " |                                                                                       | " << endl;
             cout << " | Press 'q' to quit the program.                                                        | " << endl;
@@ -264,7 +271,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         }
         else if (input != '1' || input != '2' || input != '3' || input != '4' || input != '5' || input != '6') //Exit program.
         {
-            cout << "Wrong input!";
+            cout << "Wrong input!" << endl;
             consoleList();
 
         }
