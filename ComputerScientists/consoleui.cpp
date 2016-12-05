@@ -204,7 +204,6 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             cout << " |                                                                                       | " << endl;
             cout << " | Press 'q' to quit the program.                                                        | " << endl;
             cout << "  ======================================================================================= " << endl;
-
             cout << "  Please enter a number > ";
             cin >> gender;
 
