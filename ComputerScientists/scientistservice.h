@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <QString>
 #include <QStringList>
-
+#include <QRegularExpression>
 using namespace std;
 
 
@@ -29,11 +29,10 @@ public:
     vector<Scientist> searchOfSciencetistsByYearOfDeath(string year);
     vector<Scientist> getScientistsDeadorAlive(string input);
     void addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath);
-    bool isInputValid(string name, string gender, string yearOfBirth, string yearOfDeath);
+    bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
     bool inputNameValid(string input);
 
 private:
-
     vector<Scientist> _scientists;
 };
 
