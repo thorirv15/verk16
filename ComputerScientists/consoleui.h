@@ -20,14 +20,11 @@ public:
     void consoleHelp();
     char userInput(char command);
     void whereToGo();
-    void initializerVector();
-
 
 private:
     ScientistService _service;
 
 };
-ostream& operator <<(ostream& outs, Scientist& s);
 
 ostream& operator <<(ostream& outs, Scientist& s);
 
