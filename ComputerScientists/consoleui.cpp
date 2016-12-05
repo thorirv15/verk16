@@ -271,6 +271,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         else if (input != "1" || input != "2" || input != "3" || input != "4" || input != "5" || input != "6") //Exit program.
         {
             cout << "Invalid input!" << endl;
+            cout << endl;
             consoleList();
 
         }
@@ -365,6 +366,12 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         exit(1);
     }
 
+    else
+    {
+        cout << "Invalid input !" << endl;
+        cout << endl;
+        consoleList();
+    }
 }
 
 void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
