@@ -22,7 +22,7 @@ void ConsoleUI::consoleStartPrint()            //fall sem prentar út byrjunar "
     cout << "  |   ####################################  |" << endl;
     cout << "  |   ##  __  __  __        __   _      ##  |" << endl;
     cout << "  |   ## | _ |__||  | |  | |__|  _| |_| ##  |" << endl;
-    cout << "  |   ## |__|| \  |__| |__| |     _|   | ##  |" << endl;
+    cout << "  |   ## |__|| \\ |__| |__| |     _|   | ##  |" << endl;
     cout << "  |   ##                                ##  |" << endl;
     cout << "  |   ####################################  |" << endl;
     cout << "  |   ####################################  |" << endl;
@@ -82,7 +82,7 @@ void ConsoleUI::consoleHelp()                   //skipunar listi
     cout << " |_______________________________________________________________________________________| " << endl;
 }
 
-char ConsoleUI::userInput(char command)         //spyr notandan um að slá inn skipun.
+string ConsoleUI::userInput(string command)         //spyr notandan um að slá inn skipun.
 {
     cout << " Please enter a number: ";
     cin >> command;
@@ -107,7 +107,7 @@ void ConsoleUI::consoleNameColumn()             //Header fyrir útprentun.
 
 void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
 {
-    char list;
+    char list = ' ';
     string information;
 
     cout << "  _______________________________________________________________________________________  " << endl;
@@ -132,16 +132,18 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         cout << " |  1. A-Z.                2. Z-A                       3. Year of birth (A-Z)           | " << endl;
         cout << " |  4. Year of birth (Z-A) 5. Gender                    6. Alive/deseaced                | " << endl;
         cout << " |  7. Go back                                                                           | " << endl;
+        cout << " |                                                                                       | " << endl;
         cout << " | Press 'q' any time to quit the program.                                               | " << endl;
         cout << " |_______________________________________________________________________________________| " << endl;
 
-        char input = ' ';
+        string input = " " ;
         cout << " Please enter a number: ";
         cin >> input;
+        cout << endl;
 
 
 
-        if(input == '1')           //A-Z
+        if(input == "1")           //A-Z
         {
             vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
 
@@ -154,10 +156,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             cout << endl;
 
             whereToGo();
-
         }
 
-        else if(input == '2')    //Z-A
+        else if(input == "2")    //Z-A
         {
 
             vector<Scientist> scientists = _service.sortAllScientistsZtoA();
@@ -170,10 +171,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             }
             cout << endl;
             whereToGo();
-
         }
 
-        else if(input == '3')    //Year of birth ascending
+        else if(input == "3")    //Year of birth ascending
         {
             vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
 
@@ -185,10 +185,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             }
             cout << endl;
             whereToGo();
-
         }
 
-        else if(input == '4')    //Year of birth descending
+        else if(input == "4")    //Year of birth descending
         {
             vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
 
@@ -203,7 +202,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
         }
 
-        else if(input == '5') //Gender
+        else if(input == "5")    //Gender
         {
             string gender;
 
@@ -235,11 +234,10 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 }
                 cout << endl;
                 whereToGo();
-
             }
         }
 
-        else if(input == '6')    //Dead or Alive.
+        else if(input == "6")    //Dead or Alive.
         {
             string aliveOrDeseaced;
 
@@ -247,7 +245,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             cout << " |                                                                                       | " << endl;
             cout << " |  1. Alive.                           2. Deseaced                                      | " << endl;
             cout << " |                                                                                       | " << endl;
-            cout << " | Press 'q' to quit the program.                                                        | " << endl;
+            cout << " |  Press 'q' to quit the program.                                                       | " << endl;
             cout << " |_______________________________________________________________________________________| " << endl;
 
             cin >> aliveOrDeseaced;
@@ -266,21 +264,29 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
 
         }
 
-        else if(input == '7')    //Go back
+        else if(input == "7")    //Go back
         {
             whereToGo();
 
         }
-        else if (input != '1' || input != '2' || input != '3' || input != '4' || input != '5' || input != '6') //Exit program.
+
+        else if (input != "1" || input != "2" || input != "3" || input != "4" || input != "5" || input != "6") //Exit program.
         {
-            cout << "Wrong input!" << endl;
+            cout << "Invalid input!" << endl;
             consoleList();
 
+        }
+
+        else
+        {
+            cout << "Invalid input!" << endl;
+            cout << endl;
+            consoleList();
         }
     }
 
 
-    else if(list == '2')    //Specific name.
+    else if(list == '2')        //Specific name.
     {
 
         //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
@@ -304,9 +310,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         {
             exit(1);
         }
-
     }
-
 
     else if(list == '3')      //specific year of birth.
     {
@@ -332,6 +336,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         }
 
     }
+
     else if(list == '4')      //specific year of Death.
     {
         string year;
@@ -403,32 +408,36 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
 
 void ConsoleUI::run()               //----MAINFALL----
 {
-    int counter = 0;
-
    _service.setAllScientists();
 
     consoleStartPrint();
-    char command = ' ';
+    string command = " ";
     consoleHelp();
 
-    while(command != 'q')
+    while(command != "q")
     {
         command = userInput(command);
 
-        if(command == '1')
+        if(command == "1")
         {
             consoleList();
         }
 
-        else if(command == '2')
+        else if(command == "2")
         {
             consoleAdd();
 
         }
 
-        else if(command == 'q')
+        else if(command == "q")
         {
             exit(1);
+        }
+
+        else
+        {
+            cout << " Invalid command !" << endl;
+            cout << endl;
         }
 
     }

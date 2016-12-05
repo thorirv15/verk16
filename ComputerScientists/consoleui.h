@@ -18,7 +18,7 @@ public:
     void consoleNameColumn();
     void consoleStartPrint();
     void consoleHelp();
-    char userInput(char command);
+    string userInput(string command);
     void whereToGo();
     void initializerVector();
 
