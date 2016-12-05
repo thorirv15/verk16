@@ -20,6 +20,7 @@ public:
     void consoleHelp();
     string userInput(string command);
     void whereToGo();
+    void mainMenu();
 
 private:
     ScientistService _service;

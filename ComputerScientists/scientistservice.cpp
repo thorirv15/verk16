@@ -63,7 +63,7 @@ vector<Scientist> ScientistService::searchOfSciencetists(string searchString)
     for( unsigned int i = 0; i < _scientists.size();i++)
     {
         size_t found = _scientists[i].getName().find(searchString);
-        if(found >= 0 && found < _scientists[i].getName().length())
+        if(found < _scientists[i].getName().length())
         {
             result.clear();
             result.push_back(_scientists[i]);
