@@ -17,11 +17,16 @@ public:
     void consoleAdd();
     void consoleNameColumn();
     void consoleStartPrint();
-    void consoleHelp();
+    void consoleHelpPrint();
     string userInput(string command);
     void whereToGo();
     void mainMenu();
     void openDataBase();
+    void consoleListPrint();
+    void whatGenderPrint();
+    void whereToGoPrint();
+    void allInputPrint();
+    void aliveOrDeseacedPrint();
 
 private:
     Service _service;

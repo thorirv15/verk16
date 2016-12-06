@@ -8,49 +8,11 @@ ConsoleUI::ConsoleUI()
 {
 
 }
-void ConsoleUI::consoleStartPrint()            //fall sem prentar út byrjunar "skjáinn".
-{
 
-    cout << endl << endl;
-    cout << "   _________________________________________ " << endl;
-    cout << "  |                                         |" << endl;
-    cout << "  |                                         |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ##  __  __  __        __   _      ##  |" << endl;
-    cout << "  |   ## | _ |__||  | |  | |__|  _| |_| ##  |" << endl;
-    cout << "  |   ## |__|| \\ |__| |__| |     _|   | ##  |" << endl;
-    cout << "  |   ##                                ##  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   #### --- Computer Scientists--- ####  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ###########  Vika 2.0  #############  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |                                     o   |" << endl;
-    cout << "  |_________________________________________|" << endl;
-    cout << "                  |          |               " << endl;
-    cout << "                  |          |               " << endl;
-    cout << "     _____________|__________|____________   " << endl;
-    cout << "    |                                     |  " << endl;
-    cout << "    |   =======                     7 8 9 |  " << endl;
-    cout << "    |         o                     4 5 6 |  " << endl;
-    cout << "    |                               1 2 3 |  " << endl;
-    cout << "    |_____________________________________|\n" << endl;
-
-
-}
-void ConsoleUI::whereToGo()
+void ConsoleUI::whereToGo()                     //Main menu fallið
 {
     char choice;
-
-    cout << "  ======================================================================================= " << endl;
-    cout << " |  1. Back.                q - quit                                                     | " << endl;
-    cout << " |                                                                                       | " << endl;
-    cout << " | Press 'q' to quit the program.                                                        | " << endl;
-    cout << "  ======================================================================================= " << endl;
-
-    cout << "  Please enter a number > ";
+    whereToGoPrint();
     cin >> choice;
     cout << endl;
 
@@ -65,16 +27,7 @@ void ConsoleUI::whereToGo()
 
    whereToGo();
 }
-void ConsoleUI::consoleHelp()                   //skipunar listi
-{
-
-    cout << "  ======================================================================================= " << endl;
-    cout << " |  1. List - List of scientists.              2. Add - Add scientist to list.           | " << endl;
-    cout << " |                                                                                       | " << endl;
-    cout << " |  Press 'q' to quit the program.                                                       | " << endl;
-    cout << "  ======================================================================================= " << endl;
-}
-string ConsoleUI::userInput(string command)         //spyr notandan um að slá inn skipun.
+string ConsoleUI::userInput(string command)     //Spyr notandan um að slá inn skipun.
 {
     cout << "  Please enter a number > ";
     cin >> command;
@@ -95,45 +48,24 @@ void ConsoleUI::consoleNameColumn()             //Header fyrir útprentun.
     cout << left << "Year of Death:" << endl;
     cout << "  ---------------------------------------------------------------------------" << endl;
 }
-void ConsoleUI::consoleList()                  //fall sem biður um að prenta út frá listanum.
+void ConsoleUI::consoleList()                   //Fall sem biður um að prenta út frá listanum.
 {
     char list = ' ';
     string information;
-
-    cout << "  ======================================================================================= " << endl;
-    cout << " |  1. All list.               2. Specific name.          3. Specific year of birth      | " << endl;
-    cout << " |  4. Specific year of death  5. Back.                                                  | " << endl;
-    cout << " |                                                                                       | " << endl;
-    cout << " |  Press 'q' to quit the program.                                                       | " << endl;
-    cout << "  ======================================================================================= " << endl;
-    cout << "  Please enter a number > ";
+    consoleListPrint();
     cin >> list;
     cout << endl;
 
-
-    if(list == '1')
-
+    if(list == '1')     //All
     {
         string input = " " ;
-        cout << "  ======================================================================================= " << endl;
-        cout << " |  1. A-Z.                2. Z-A                       3. Year of birth (A-Z)           | " << endl;
-        cout << " |  4. Year of birth (Z-A) 5. Gender                    6. Alive/deseaced                | " << endl;
-        cout << " |  7. Back to main menu.                                                                | " << endl;
-        cout << " |                                                                                       | " << endl;
-        cout << " |  Press 'q' to quit the program.                                                       | " << endl;
-        cout << "  ======================================================================================= " << endl;
-        cout << "  Please enter a number > ";
+        allInputPrint();
         cin >> input;
-
-
         cout << endl << endl;
-
-
 
         if(input == "1")           //A-Z
         {
             vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
-
             consoleNameColumn();
 
             for(unsigned int i = 0; i < scientists.size(); i++)
@@ -141,15 +73,11 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << scientists[i];
             }
             cout << endl;
-
             whereToGo();
         }
-
         else if(input == "2")    //Z-A
         {
-
             vector<Scientist> scientists = _service.sortAllScientistsZtoA();
-
             consoleNameColumn();
 
             for(unsigned int i = 0; i < scientists.size(); i++)
@@ -159,11 +87,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             cout << endl;
             whereToGo();
         }
-
         else if(input == "3")    //Year of birth ascending
         {
             vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
-
             consoleNameColumn();
 
             for(unsigned int i = 0; i < scientists.size(); i++)
@@ -173,11 +99,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             cout << endl;
             whereToGo();
         }
-
         else if(input == "4")    //Year of birth descending
         {
             vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
-
             consoleNameColumn();
 
             for(unsigned int i = 0; i < scientists.size(); i++)
@@ -186,19 +110,11 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             }
             cout << endl;
             whereToGo();
-
         }
-
         else if(input == "5")    //Gender
         {
             string gender;
-
-            cout << "  ======================================================================================= " << endl;
-            cout << " |  1. Female.                           2. Male                                         | " << endl;
-            cout << " |                                                                                       | " << endl;
-            cout << " | Press 'q' to quit the program.                                                        | " << endl;
-            cout << "  ======================================================================================= " << endl;
-            cout << "  Please enter a number > ";
+            whatGenderPrint();
             cin >> gender;
 
             if (gender != "1" && gender != "2")
@@ -206,11 +122,9 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << "  Wrong input!" << endl;
                 consoleList();
             }
-
             else
             {
                 vector<Scientist> scientists = _service.getScientistsGender(gender);
-
                 consoleNameColumn();
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
@@ -221,17 +135,11 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 whereToGo();
             }
         }
-
         else if(input == "6")    //Dead or Alive.
         {
             string aliveOrDeseaced;
 
-            cout << "  ======================================================================================= " << endl;
-            cout << " |  1. Alive.                           2. Deseaced                                      | " << endl;
-            cout << " |                                                                                       | " << endl;
-            cout << " | Press 'q' to quit the program.                                                        | " << endl;
-            cout << "  ======================================================================================= " << endl;
-            cout << "  Please enter a number > ";
+            aliveOrDeseacedPrint();
             cin >> aliveOrDeseaced;
 
             vector<Scientist> scientists = _service.getScientistsDeadorAlive(aliveOrDeseaced);
@@ -244,16 +152,12 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
                 cout << endl;
             }
             whereToGo();
-
-
         }
-
         else if(input == "7")    //Go back
         {
             whereToGo();
 
         }
-
         else
         {
             cout << "  Invalid input!" << endl;
@@ -261,11 +165,8 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             consoleList();
         }
     }
-
-
     else if(list == '2')        //Specific name.
     {
-
         //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
         string searchString;
 
@@ -282,13 +183,11 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         {
             cout << result[i];
         }
-
         if(searchString == "q")
         {
             exit(1);
         }
     }
-
     else if(list == '3')      //specific year of birth.
     {
         string year;
@@ -311,9 +210,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             }
             whereToGo();
         }
-
     }
-
     else if(list == '4')      //specific year of Death.
     {
         string year;
@@ -336,18 +233,15 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
             }
             whereToGo();
         }
-
     }
     else if(list == '5')      //specific year of Death.
     {
         mainMenu();
     }
-
     else if(list == 'q')
     {
         exit(1);
     }
-
     else
     {
         cout << "  Invalid input !" << endl;
@@ -355,7 +249,7 @@ void ConsoleUI::consoleList()                  //fall sem biður um að prenta �
         consoleList();
     }
 }
-void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta við listann.
+void ConsoleUI::consoleAdd()                    //Fall sem biður um að bæta við listann.
 {
     string name, gender, yearOfBirth, yearOfDeath;
 
@@ -388,13 +282,11 @@ void ConsoleUI::consoleAdd()                   //fall sem biður um að bæta vi
 
         mainMenu();
     }
-
-
 }
-void ConsoleUI::mainMenu()
+void ConsoleUI::mainMenu()                      //Fall fyrir main menu input frá notanda.
 {
     string command = " ";
-    consoleHelp();
+    consoleHelpPrint();
 
     while(command != "q")
     {
@@ -404,18 +296,15 @@ void ConsoleUI::mainMenu()
         {
             consoleList();
         }
-
         else if(command == "2")
         {
             consoleAdd();
 
         }
-
         else if(command == "q")
         {
             exit(1);
         }
-
         else
         {
             cout << "  Invalid command !" << endl;
@@ -423,7 +312,11 @@ void ConsoleUI::mainMenu()
         }
     }
 }
-void ConsoleUI::run()               //----MAINFALL----
+void ConsoleUI::openDataBase()                  //Fall til að opna SQL database
+{
+    _service.openDataBase();
+}
+void ConsoleUI::run()                           //----MAINFALL----
 {
    //_service.setAllScientists();
     consoleStartPrint();
@@ -431,7 +324,91 @@ void ConsoleUI::run()               //----MAINFALL----
     mainMenu();
 
 }
-void ConsoleUI::openDataBase()
+
+//PrintFöll
+
+void ConsoleUI::consoleStartPrint()
 {
-    _service.openDataBase();
+    cout << endl << endl;
+    cout << "   _________________________________________ " << endl;
+    cout << "  |                                         |" << endl;
+    cout << "  |                                         |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ##  __  __  __        __   _      ##  |" << endl;
+    cout << "  |   ## | _ |__||  | |  | |__|  _| |_| ##  |" << endl;
+    cout << "  |   ## |__|| \\ |__| |__| |     _|   | ##  |" << endl;
+    cout << "  |   ##                                ##  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   #### --- Computer Scientists--- ####  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |   ###########  Vika 2.0  #############  |" << endl;
+    cout << "  |   ####################################  |" << endl;
+    cout << "  |                                     o   |" << endl;
+    cout << "  |_________________________________________|" << endl;
+    cout << "                  |          |               " << endl;
+    cout << "                  |          |               " << endl;
+    cout << "     _____________|__________|____________   " << endl;
+    cout << "    |                                     |  " << endl;
+    cout << "    |   =======                     7 8 9 |  " << endl;
+    cout << "    |         o                     4 5 6 |  " << endl;
+    cout << "    |                               1 2 3 |  " << endl;
+    cout << "    |_____________________________________|\n" << endl;
+}
+void ConsoleUI::consoleListPrint()
+{
+    cout << "  ======================================================================================= " << endl;
+    cout << " |  1. All list.               2. Specific name.          3. Specific year of birth      | " << endl;
+    cout << " |  4. Specific year of death  5. Back.                                                  | " << endl;
+    cout << " |                                                                                       | " << endl;
+    cout << " |  Press 'q' to quit the program.                                                       | " << endl;
+    cout << "  ======================================================================================= " << endl;
+    cout << "  Please enter a number > ";
+}
+void ConsoleUI::consoleHelpPrint()
+{
+    cout << "  ======================================================================================= " << endl;
+    cout << " |  1. List - List of scientists.              2. Add - Add scientist to list.           | " << endl;
+    cout << " |                                                                                       | " << endl;
+    cout << " |  Press 'q' to quit the program.                                                       | " << endl;
+    cout << "  ======================================================================================= " << endl;
+}
+void ConsoleUI::whatGenderPrint()
+{
+    cout << "  ======================================================================================= " << endl;
+    cout << " |  1. Female.                           2. Male                                         | " << endl;
+    cout << " |                                                                                       | " << endl;
+    cout << " | Press 'q' to quit the program.                                                        | " << endl;
+    cout << "  ======================================================================================= " << endl;
+    cout << "  Please enter a number > ";
+}
+void ConsoleUI::whereToGoPrint()
+{
+    cout << "  ======================================================================================= " << endl;
+    cout << " |  1. Back.                q - quit                                                     | " << endl;
+    cout << " |                                                                                       | " << endl;
+    cout << " | Press 'q' to quit the program.                                                        | " << endl;
+    cout << "  ======================================================================================= " << endl;
+    cout << "  Please enter a number > ";
+}
+void ConsoleUI::aliveOrDeseacedPrint()
+{
+    cout << "  ======================================================================================= " << endl;
+    cout << " |  1. Alive.                           2. Deseaced                                      | " << endl;
+    cout << " |                                                                                       | " << endl;
+    cout << " | Press 'q' to quit the program.                                                        | " << endl;
+    cout << "  ======================================================================================= " << endl;
+    cout << "  Please enter a number > ";
+}
+void ConsoleUI::allInputPrint()
+{
+    cout << "  ======================================================================================= " << endl;
+    cout << " |  1. A-Z.                2. Z-A                       3. Year of birth (A-Z)           | " << endl;
+    cout << " |  4. Year of birth (Z-A) 5. Gender                    6. Alive/deseaced                | " << endl;
+    cout << " |  7. Back to main menu.                                                                | " << endl;
+    cout << " |                                                                                       | " << endl;
+    cout << " |  Press 'q' to quit the program.                                                       | " << endl;
+    cout << "  ======================================================================================= " << endl;
+    cout << "  Please enter a number > ";
 }
