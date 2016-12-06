@@ -112,10 +112,10 @@ vector<Scientist> Service::getScientistsByGenderAtoZ(string gender)
 
 ostream& operator << (ostream& os , Scientist& TempClass)
 {
-        os << " |  " ;os.width(26); cout << left << TempClass.getName();
-        os << "  " ;os.width(13); cout << left << TempClass.getGender();
-        os << "  " ;os.width(15); cout << left << TempClass.getYearOfBirth();
-        os << "  " ;os.width(13); cout << left << TempClass.getYearOfDeath();
+        os << " |  " ;os.width(30); os << left << TempClass.getName();
+        os << "  " ;os.width(13); os << left << TempClass.getGender();
+        os << "  " ;os.width(15); os << left << TempClass.getYearOfBirth();
+        os << "  " ;os.width(21); os << left << TempClass.getYearOfDeath() << "|";
         os << endl;
 
     return os;
