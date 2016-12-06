@@ -21,7 +21,7 @@ public:
     vector<Scientist> getAllScientistsZtoA();
     vector<Scientist> getAllScientistsByAgeAsc();
     vector<Scientist> getAllDeadOrAliveScientistsAtoZ(string input);
-
+    vector<Scientist> searchForScientistsByName(string searchString);
 
 
     //Gamalt

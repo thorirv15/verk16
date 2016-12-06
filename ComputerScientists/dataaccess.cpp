@@ -2,6 +2,7 @@
 
 #include <QSqlRecord>
 #include <QSqlField>
+#include <QString>
 
 
 
@@ -169,7 +170,7 @@ vector<Scientist> DataAccess::getAllFemaleScientistsAtoZ()
         allScientists.push_back(newScientist);
     }
 
-    cout << allScientists.size() << endl;
+
 
 
     return allScientists;
@@ -244,8 +245,50 @@ vector<Scientist> DataAccess::getAllDeceasedScientistsAtoZ()
     return allScientists;
 
 }
+vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
+{
+    QString qSearchString = QString::fromStdString(searchString);
 
-//vector<Scientist> DataAccess::searchForScientistsByName()
+    vector<Scientist> allScientists;
+
+
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM Scicentists WHERE Name LIKE \'%?%\'");
+    query.bindValue(0, qSearchString);
+    query.exec();
+/*
+    int idName = query.record().indexOf("Name");
+    int idGender = query.record().indexOf("Gender");
+    int idYearOfBirth = query.record().indexOf("YearOfBirth");
+    int idYearOfDeath = query.record().indexOf("YearOfDeath");
+*/
+    while (query.next())
+    {
+        QString name = query.value(1).toString();
+        QString gender = query.value(2).toString();
+        QString YearOfBirth = query.value(3).toString();
+        QString yearOfDeath = query.value(4).toString();
+
+        Scientist newScientist(
+                    name.toStdString(),
+                    gender.toStdString(),
+                    YearOfBirth.toStdString(),
+                    yearOfDeath.toStdString()
+                    );
+
+        allScientists.push_back(newScientist);
+    }
+
+    cout << allScientists.size() << endl;
+
+
+    return allScientists;
+
+}
+
+
+
 //vector<Scientist> DataAccess::searchForScientistsByYearOfBirth()
 
 //=================//
@@ -258,11 +301,6 @@ void DataAccess::openDataBase()
     if(!_dataBaseMain.open())
     {
         qDebug() << "Error: connection with database failed!";
-    }
-    else
-    {
-        qDebug() << "Database: connection succeded! ";
-
     }
 
 }

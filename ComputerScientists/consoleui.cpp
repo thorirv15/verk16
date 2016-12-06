@@ -121,7 +121,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
             whatGenderPrint();
             cin >> gender;
 
-            if (gender != "1" && gender != "2")
+            if (gender != "1" && gender != "2" && gender != "3")
             {
                 cout << "  Wrong input!" << endl;
                 cout << endl;
@@ -192,21 +192,28 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
         {
             cout << "  Please enter a name of a scientist: ";
             cin >> searchString;
+            if(searchString == "q")
+            {
+                exit(1);
+            }
 
         }
         while(!_service.inputNameValid(searchString));
 
-        vector<Scientist> result = _service.searchOfSciencetists(searchString);
+        vector<Scientist> scientists = _service.searchForScientistsByName(searchString);
 
-        consoleNameColumn();
-
-        void printScientists(vector<Scientist> scientists);
-
-        if(searchString == "q")
+        for(unsigned int i = 0; i < scientists.size(); i++)
         {
-            exit(1);
+            cout << scientists[i];
         }
+
+        cout << "  =======================================================================" << endl << endl;
+
+        whereToGo();
+
+
     }
+/*
     else if(list == '3')      //specific year of birth.
     {
         string year;
@@ -257,6 +264,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
     {
         exit(1);
     }
+    */
     else
     {
         cout << "  Invalid input!" << endl;
@@ -374,10 +382,10 @@ void ConsoleUI::consoleStartPrint()
 void ConsoleUI::consoleListPrint()
 {
     cout << "  ======================================================================================= " << endl;
-    cout << " |  1. All                     2. Specific name           3. Specific year of birth      | " << endl;
-    cout << " |  4. Specific year of death  5. Back                                                   | " << endl;
-    cout << " |                                                                                       | " << endl;
-    cout << " |  Press 'q' to quit the program                                                        | " << endl;
+    cout << "  # 1. All                     2. Specific name           3. Specific year of birth     # " << endl;
+    cout << "  # 4. Specific year of death  5. Back                                                  # " << endl;
+    cout << "  #                                                                                     # " << endl;
+    cout << "  # Press 'q' to quit the program                                                       # " << endl;
     cout << "  ======================================================================================= " << endl;
     cout << "  Please enter a number: ";
 }
@@ -392,7 +400,7 @@ void ConsoleUI::consoleHelpPrint()
 void ConsoleUI::whatGenderPrint()
 {
     cout << "  ======================================================================================= " << endl;
-    cout << " |  1. Female                            2. Male                                         | " << endl;
+    cout << " |  1. Only females                     2. Only males                3.All               | " << endl;
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' to quit the program                                                         | " << endl;
     cout << "  ======================================================================================= " << endl;
@@ -427,11 +435,4 @@ void ConsoleUI::allInputPrint()
     cout << "  ======================================================================================= " << endl;
     cout << "  Please enter a number: ";
 }
-void ConsoleUI::printScientists(vector<Scientist>& tempVector)
-{
-    for(unsigned int i = 0; i < tempVector.size(); i++)
-    {
-        cout << tempVector[i];
-    }
-    cout << endl;
-}
+

@@ -73,6 +73,16 @@ vector<Scientist> Service::getAllDeadOrAliveScientistsAtoZ(string input)
 
 }
 
+vector<Scientist> Service::searchForScientistsByName(string searchString)
+{
+    vector<Scientist> allScientists;
+
+    allScientists = _dAccess.searchForScientistsByName(searchString);
+
+    return allScientists;
+}
+
+
 vector<Scientist> Service::getScientistsByGenderAtoZ(string gender)
 {
     vector<Scientist> genderScientists;
@@ -83,9 +93,18 @@ vector<Scientist> Service::getScientistsByGenderAtoZ(string gender)
     {
         genderScientists = _dAccess.getAllFemaleScientistsAtoZ();
     }
-    else
+    else if(gender == "2")
     {
        genderScientists = _dAccess.getAllMaleScientistsAtoZ();
+    }
+    else if(gender == "3")
+    {
+        genderScientists = _dAccess.getAllFemaleScientistsAtoZ();
+
+        for(unsigned int i = 0; i < _dAccess.getAllMaleScientistsAtoZ().size(); i++)
+        {
+            genderScientists.push_back(_dAccess.getAllMaleScientistsAtoZ()[i]);
+        }
     }
 
     return genderScientists;
@@ -106,25 +125,7 @@ ostream& operator << (ostream& os , Scientist& TempClass)
 
 //Gamalt
 
-vector<Scientist> Service::searchOfSciencetists(string searchString)
-{
-    vector<Scientist> result;
 
-    for( unsigned int i = 0; i < _scientists.size();i++)
-    {
-        size_t found = _scientists[i].getName().find(searchString);
-        if(found < _scientists[i].getName().length())
-        {
-            result.clear();
-            result.push_back(_scientists[i]);
-        }
-    }
-
-
-
-    return result;
-
-}
 vector<Scientist> Service::searchOfSciencetistsByYearOfBirth(string year)
 {
     vector<Scientist> result;

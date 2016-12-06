@@ -28,7 +28,7 @@ public:
     void whereToGoPrint();
     void allInputPrint();
     void aliveOrDeseacedPrint();
-    void printScientists(vector<Scientist>& tempVector);
+
 
 private:
     Service _service;

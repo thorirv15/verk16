@@ -30,6 +30,7 @@ public:
     vector<Scientist> getAllFemaleScientistsAtoZ();
     vector<Scientist> getAllAliveScientistsAtoZ();
     vector<Scientist> getAllDeceasedScientistsAtoZ();
+    vector<Scientist> searchForScientistsByName(string input);
 
 private:
     QSqlDatabase _dataBaseMain;
