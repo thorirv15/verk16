@@ -29,7 +29,7 @@ void ConsoleUI::whereToGo()                     //Main menu fallið
 }
 string ConsoleUI::userInput(string command)     //Spyr notandan um að slá inn skipun.
 {
-    cout << "  Please enter a number > ";
+    cout << "  > Please enter a number: ";
     cin >> command;
     cout << endl;
 
@@ -52,7 +52,6 @@ void ConsoleUI::consoleNameColumn()             //Header fyrir útprentun.
 void ConsoleUI::consoleList()                   //Fall sem biður um að prenta út frá listanum.
 {
     char list = ' ';
-    string information;
     consoleListPrint();
     cin >> list;
     cout << endl;
@@ -72,7 +71,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
             cout << "  ======================================================================================= " << endl << endl;
 
-            whereToGo();
+            consoleList();
         }
         else if(input == "2")    //Z-A
         {
@@ -82,7 +81,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
             cout << "  ======================================================================================= " << endl << endl;
 
-            whereToGo();
+            consoleList();
         }
         else if(input == "3")    //Year of birth ascending
         {
@@ -92,7 +91,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
             cout << "  ======================================================================================= " << endl << endl;
 
-            whereToGo();
+            consoleList();
         }
         else if(input == "4")    //Year of birth descending
         {
@@ -105,8 +104,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
                 cout << scientists[i];
             }
 
-            cout << endl;
-            whereToGo();
+            consoleList();
         }
         else if(input == "5")    //Gender
         {
@@ -134,7 +132,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
                 cout << "  ======================================================================================= " << endl << endl;
 
 
-                whereToGo();
+                consoleList();
             }
         }
         else if(input == "6")    //Dead or Alive.
@@ -164,11 +162,11 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
             cout << "  ======================================================================================= " << endl << endl;
 
-            whereToGo();
+            consoleList();
         }
         else if(input == "7")    //Go back
         {
-            whereToGo();
+            mainMenu();
 
         }
         else
@@ -205,7 +203,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
         cout << "  ======================================================================================= " << endl << endl;
 
-        whereToGo();
+        consoleList();
 
 
     }
@@ -252,6 +250,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
             void printScientists(vector<Scientist> scientists);
         }
     }
+    */
     else if(list == '5')      //specific year of Death.
     {
         mainMenu();
@@ -260,7 +259,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
     {
         exit(1);
     }
-    */
+
     else
     {
         cout << "  Invalid input!" << endl;
@@ -349,31 +348,31 @@ void ConsoleUI::run()                           //----MAINFALL----
 void ConsoleUI::consoleStartPrint()
 {
     cout << endl << endl;
-    cout << "   _________________________________________ " << endl;
-    cout << "  |                                         |" << endl;
-    cout << "  |                                         |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ##  __  __  __        __   _      ##  |" << endl;
-    cout << "  |   ## | _ |__||  | |  | |__|  _| |_| ##  |" << endl;
+    cout << "   _________________________________________  " << endl;
+    cout << "  |                                         | " << endl;
+    cout << "  |                                         | " << endl;
+    cout << "  |   ####################################  | " << endl;
+    cout << "  |   ####################################  | " << endl;
+    cout << "  |   ##  __  __  __        __   _      ##  | " << endl;
+    cout << "  |   ## | _ |__||  | |  | |__|  _| |_| ##  | " << endl;
     cout << "  |   ## |__|| \\ |__| |__| |     _|   | ##  |" << endl;
-    cout << "  |   ##                                ##  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   #### --- Computer Scientists--- ####  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |   ###########  Vika 2.0  #############  |" << endl;
-    cout << "  |   ####################################  |" << endl;
-    cout << "  |                                     o   |" << endl;
-    cout << "  |_________________________________________|" << endl;
-    cout << "                  |          |               " << endl;
-    cout << "                  |          |               " << endl;
-    cout << "     _____________|__________|____________   " << endl;
-    cout << "    |                                     |  " << endl;
-    cout << "    |   =======                     7 8 9 |  " << endl;
-    cout << "    |         o                     4 5 6 |  " << endl;
-    cout << "    |                               1 2 3 |  " << endl;
-    cout << "    |_____________________________________|\n" << endl;
+    cout << "  |   ##                                ##  | " << endl;
+    cout << "  |   ####################################  | " << endl;
+    cout << "  |   #### --- Computer Scientists--- ####  | " << endl;
+    cout << "  |   ####################################  | " << endl;
+    cout << "  |   ####################################  | " << endl;
+    cout << "  |   ###########  Vika 2.0  #############  | " << endl;
+    cout << "  |   ####################################  | " << endl;
+    cout << "  |                                     o   | " << endl;
+    cout << "  |_________________________________________| " << endl;
+    cout << "                  |          |                " << endl;
+    cout << "                  |          |                " << endl;
+    cout << "    ______________|__________|_____________   " << endl;
+    cout << "   |                                       |  " << endl;
+    cout << "   |  =======                       7 8 9  |  " << endl;
+    cout << "   |        o                       4 5 6  |  " << endl;
+    cout << "   |                                1 2 3  |  " << endl;
+    cout << "   |_______________________________________|\n" << endl;
 }
 void ConsoleUI::consoleListPrint()
 {
@@ -383,7 +382,7 @@ void ConsoleUI::consoleListPrint()
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' to quit the program                                                         | " << endl;
     cout << "  ======================================================================================= " << endl;
-    cout << " > Please enter a number: ";
+    cout << "  > Please enter a number: ";
 }
 void ConsoleUI::consoleHelpPrint()
 {
