@@ -65,10 +65,13 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
         if(input == "1")           //A-Z
         {
-            vector<Scientist> scientists = _service.sortAllScientistsAtoZ();
+            vector<Scientist> scientists = _service.getAllScientists();
             consoleNameColumn();
 
-            void printScientists(vector<Scientist> scientists);
+            for(unsigned int i = 0; i < scientists.size(); i++)
+            {
+                cout << scientists[i];
+            }
 
             whereToGo();
         }
@@ -395,7 +398,7 @@ void ConsoleUI::allInputPrint()
     cout << "  ======================================================================================= " << endl;
     cout << "  Please enter a number: ";
 }
-void ConsoleUI::printScientists(vector<Scientist> tempVector)
+void ConsoleUI::printScientists(vector<Scientist>& tempVector)
 {
     for(unsigned int i = 0; i < tempVector.size(); i++)
     {

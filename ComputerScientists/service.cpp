@@ -27,7 +27,12 @@ bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
 
 vector<Scientist> Service::getAllScientists()
 {
-   return _dAccess.getAllScientists();
+    vector<Scientist> allScientists;
+
+    allScientists = _dAccess.getAllScientists();
+
+
+    return allScientists;
 }
 
 
@@ -173,11 +178,11 @@ vector<Scientist> Service::getScientistsDeadorAlive(string input)
 }
 ostream& operator << (ostream& os , Scientist& TempClass)
 {
-    os << "  " ;os.width(26); cout << left << TempClass.getName();
-    os << "  " ;os.width(13); cout << left << TempClass.getGender();
-    os << "  " ;os.width(15); cout << left << TempClass.getYearOfBirth();
-    os << "  " ;os.width(13); cout << left << TempClass.getYearOfDeath();
-    os << endl;
+        os << "  " ;os.width(26); cout << left << TempClass.getName();
+        os << "  " ;os.width(13); cout << left << TempClass.getGender();
+        os << "  " ;os.width(15); cout << left << TempClass.getYearOfBirth();
+        os << "  " ;os.width(13); cout << left << TempClass.getYearOfDeath();
+        os << endl;
 
     return os;
 }
@@ -185,10 +190,10 @@ bool Service::inputNameValid(string input)
 {
     if(atoi(input.c_str()))
     {
-      return false;
+        return false;
     }
 
-   return true;
+    return true;
 }
 bool Service::isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath)
 {

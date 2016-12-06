@@ -30,6 +30,7 @@ vector<Scientist> DataAccess::getAllScientists()
         QString YearOfBirth = query.value(idYearOfBirth).toString();
         QString yearOfDeath = query.value(idYearOfDeath).toString();
 
+
         Scientist newScientist(
                     name.toStdString(),
                     gender.toStdString(),
