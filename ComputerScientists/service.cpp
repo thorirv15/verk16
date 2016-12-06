@@ -25,17 +25,27 @@ bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
     return rhs.getYearOfBirth() < lhs.getYearOfBirth();
 }
 
-vector<Scientist> Service::getAllScientists()
+
+//Nytt
+vector<Scientist> Service::getAllScientistsAtoZ()
 {
     vector<Scientist> allScientists;
 
-    allScientists = _dAccess.getAllScientists();
-
+    allScientists = _dAccess.getAllScientistsAtoZ();
 
     return allScientists;
 }
 
+vector<Scientist> Service::getAllScientistsZtoA()
+{
+    vector<Scientist> allScientists;
 
+    allScientists = _dAccess.getAllScientistsZtoA();
+
+    return allScientists;
+}
+
+//Gamalt
 vector<Scientist> Service::searchOfSciencetists(string searchString)
 {
     vector<Scientist> result;
@@ -178,7 +188,7 @@ vector<Scientist> Service::getScientistsDeadorAlive(string input)
 }
 ostream& operator << (ostream& os , Scientist& TempClass)
 {
-        os << "  " ;os.width(26); cout << left << TempClass.getName();
+        os << " |  " ;os.width(26); cout << left << TempClass.getName();
         os << "  " ;os.width(13); cout << left << TempClass.getGender();
         os << "  " ;os.width(15); cout << left << TempClass.getYearOfBirth();
         os << "  " ;os.width(13); cout << left << TempClass.getYearOfDeath();
@@ -235,7 +245,4 @@ void Service::openDataBase()
 }
 
 
-void Service::PrintStuff()
-{
-    _dAccess.getAllScientists();
-}
+

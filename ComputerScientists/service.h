@@ -16,11 +16,17 @@ class Service
 {
 public:
     Service();
+    //Nytt
+    vector<Scientist> getAllScientistsAtoZ();
+    vector<Scientist> getAllScientistsZtoA();
 
-    vector<Scientist> getAllScientists();
-    vector<Scientist> sortAllScientistsAtoZ();
+
+
+
+    //Gamalt
     vector<Scientist> searchOfSciencetists(string searchString);
     vector<Scientist> sortAllScientistsZtoA();
+    vector<Scientist> sortAllScientistsAtoZ();
     vector<Scientist> sortAllScientistsByYearOfBirthAsc();
     vector<Scientist> sortAllScientistsByYearOfBirthDesc();
     vector<Scientist> getScientistsGender(string gender);
@@ -31,7 +37,7 @@ public:
     bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
     bool inputNameValid(string input);
     void openDataBase();
-    void PrintStuff();
+
 private:
     vector<Scientist> _scientists;
     DataAccess _dAccess;

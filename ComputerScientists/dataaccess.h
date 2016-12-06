@@ -23,7 +23,8 @@ public:
     DataAccess();
     QSqlDatabase readDataBase();
     void openDataBase();
-    vector<Scientist> getAllScientists();
+    vector<Scientist> getAllScientistsAtoZ();
+    vector<Scientist> getAllScientistsZtoA();
 
 private:
     QSqlDatabase _dataBaseMain;

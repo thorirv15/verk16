@@ -65,7 +65,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
         if(input == "1")           //A-Z
         {
-            vector<Scientist> scientists = _service.getAllScientists();
+            vector<Scientist> scientists = _service.getAllScientistsAtoZ();
             consoleNameColumn();
 
             for(unsigned int i = 0; i < scientists.size(); i++)
@@ -73,14 +73,21 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
                 cout << scientists[i];
             }
 
+            cout << "  =======================================================================" << endl << endl;
+
             whereToGo();
         }
         else if(input == "2")    //Z-A
         {
-            vector<Scientist> scientists = _service.sortAllScientistsZtoA();
+            vector<Scientist> scientists = _service.getAllScientistsZtoA();
             consoleNameColumn();
 
-            void printScientists(vector<Scientist> scientists);
+            for(unsigned int i = 0; i < scientists.size(); i++)
+            {
+                cout << scientists[i];
+            }
+
+            cout << "  =======================================================================" << endl << endl;
 
             whereToGo();
         }
@@ -304,8 +311,6 @@ void ConsoleUI::run()                           //----MAINFALL----
 {
    //_service.setAllScientists();
     consoleStartPrint();
-
-    _service.PrintStuff();
 
     mainMenu();
 
