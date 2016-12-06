@@ -16,9 +16,8 @@ class Service
 {
 public:
     Service();
-    void setAllScientists();
+
     vector<Scientist> getAllScientists();
-    vector<string> getAllScientistsNames();
     vector<Scientist> sortAllScientistsAtoZ();
     vector<Scientist> searchOfSciencetists(string searchString);
     vector<Scientist> sortAllScientistsZtoA();
@@ -32,7 +31,7 @@ public:
     bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
     bool inputNameValid(string input);
     void openDataBase();
-
+    void PrintStuff();
 private:
     vector<Scientist> _scientists;
     DataAccess _dAccess;

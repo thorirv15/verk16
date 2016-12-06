@@ -11,6 +11,8 @@
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
 #include <QSqlQuery>
+#include <QtSql>
+#include "scientist.h"
 
 using namespace std;
 

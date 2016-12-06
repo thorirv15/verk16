@@ -428,6 +428,8 @@ void ConsoleUI::run()               //----MAINFALL----
    //_service.setAllScientists();
     consoleStartPrint();
 
+    _service.PrintStuff();
+
     mainMenu();
 
 }

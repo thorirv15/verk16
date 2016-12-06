@@ -7,24 +7,7 @@ Service::Service()
 {
 
 }
-/*
-void Service::setAllScientists()
-{
-        DataAccess _dataAccess;
-        vector<QString> v = _dataAccess.dataFromFile();
-        for (unsigned int i = 0; i < v.size(); i++) {
-            QString line = v.at(i);
-            QStringList list = line.split(QRegularExpression(":"));
-            Scientist newScientist(
-                list.at(0).toStdString(),
-                list.at(1).toStdString(),
-                list.at(2).toStdString(),
-                list.at(3).toStdString()
-            );
-            _scientists.push_back(newScientist);
-        }
-}
-*/
+
 bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
 {
     return lhs.getName() < rhs.getName();
@@ -41,24 +24,13 @@ bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
 {
     return rhs.getYearOfBirth() < lhs.getYearOfBirth();
 }
+
 vector<Scientist> Service::getAllScientists()
 {
-    return _scientists;
+   return _dAccess.getAllScientists();
 }
-vector<string> Service::getAllScientistsNames()
-{
-    string name;
-    vector<string> s;
 
-    for(unsigned int i = 0; i < _scientists.size(); i++)
-    {
-        name = _scientists[i].getName();
-        s.push_back(name);
-    }
 
-    return s;
-
-}
 vector<Scientist> Service::searchOfSciencetists(string searchString)
 {
     vector<Scientist> result;
@@ -255,4 +227,10 @@ bool Service::isAddScientistValid(string name, string gender, string yearOfBirth
 void Service::openDataBase()
 {
     _dAccess.openDataBase();
+}
+
+
+void Service::PrintStuff()
+{
+    _dAccess.getAllScientists();
 }
