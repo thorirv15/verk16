@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <iostream>
 #include <string>
+#include <vector>
 
 
 class ConsoleUI
@@ -27,6 +28,7 @@ public:
     void whereToGoPrint();
     void allInputPrint();
     void aliveOrDeseacedPrint();
+    void printScientists(vector<Scientist> tempVector);
 
 private:
     Service _service;
