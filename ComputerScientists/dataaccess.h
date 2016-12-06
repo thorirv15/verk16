@@ -28,6 +28,8 @@ public:
     vector<Scientist> getAllScientistsByAgeAsc();
     vector<Scientist> getAllMaleScientistsAtoZ();
     vector<Scientist> getAllFemaleScientistsAtoZ();
+    vector<Scientist> getAllAliveScientistsAtoZ();
+    vector<Scientist> getAllDeceasedScientistsAtoZ();
 
 private:
     QSqlDatabase _dataBaseMain;

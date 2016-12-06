@@ -129,7 +129,7 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
             }
             else
             {
-                vector<Scientist> scientists = _service.getScientistsByGender(gender);
+                vector<Scientist> scientists = _service.getScientistsByGenderAtoZ(gender);
                 consoleNameColumn();
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
@@ -150,11 +150,24 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
             aliveOrDeseacedPrint();
             cin >> aliveOrDeseaced;
 
-            vector<Scientist> scientists = _service.getScientistsDeadorAlive(aliveOrDeseaced);
+            /*
+            if (aliveOrDeseaced != "1" && aliveOrDeseaced != "2")
+            {
+                cout << "  Wrong input!" << endl;
+                cout << endl;
+                consoleList();
+            }
+            */
 
+            vector<Scientist> scientists = _service.getAllDeadOrAliveScientistsAtoZ(aliveOrDeseaced);
             consoleNameColumn();
 
-            void printScientists(vector<Scientist> scientists);
+            for(unsigned int i = 0; i < scientists.size(); i++)
+            {
+                cout << scientists[i];
+            }
+
+            cout << "  =======================================================================" << endl << endl;
 
             whereToGo();
         }
