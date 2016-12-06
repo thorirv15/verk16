@@ -1,12 +1,11 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
-#include "service.h"
+#include "scientistservice.h"
 #include <cstdlib>
 #include <QString>
 #include <QStringList>
 #include <iostream>
 #include <string>
-#include <vector>
 
 
 class ConsoleUI
@@ -18,20 +17,13 @@ public:
     void consoleAdd();
     void consoleNameColumn();
     void consoleStartPrint();
-    void consoleHelpPrint();
+    void consoleHelp();
     string userInput(string command);
     void whereToGo();
     void mainMenu();
-    void openDataBase();
-    void consoleListPrint();
-    void whatGenderPrint();
-    void whereToGoPrint();
-    void allInputPrint();
-    void aliveOrDeseacedPrint();
-    void printScientists(vector<Scientist> tempVector);
 
 private:
-    Service _service;
+    ScientistService _service;
 
 };
 
