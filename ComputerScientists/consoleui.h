@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <iostream>
 #include <string>
+#include <vector>
 
 
 class ConsoleUI
@@ -17,11 +18,17 @@ public:
     void consoleAdd();
     void consoleNameColumn();
     void consoleStartPrint();
-    void consoleHelp();
+    void consoleHelpPrint();
     string userInput(string command);
     void whereToGo();
     void mainMenu();
     void openDataBase();
+    void consoleListPrint();
+    void whatGenderPrint();
+    void whereToGoPrint();
+    void allInputPrint();
+    void aliveOrDeseacedPrint();
+    void printScientists(vector<Scientist> tempVector);
 
 private:
     Service _service;
