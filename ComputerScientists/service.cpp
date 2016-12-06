@@ -122,34 +122,21 @@ vector<Scientist> Service::sortAllScientistsByYearOfBirthDesc()
     sort(_scientists.begin(), _scientists.end(), sortYearOfBirthDesc);
     return _scientists;
 }
-vector<Scientist> Service::getScientistsGender(string gender)
+vector<Scientist> Service::getScientistsByGender(string gender)
 {
     vector<Scientist> genderScientists;
 
+    cout << gender << endl;
 
-    if(gender == "male")
+    if(gender == "1")
     {
-        for(unsigned int i = 0; i < _scientists.size(); i++)
-        {
-
-            if(_scientists[i].getGender() == "male")
-            {
-                genderScientists.push_back(_scientists[i]);
-            }
-        }
+        cout << "hundur111" << endl;
+        genderScientists = _dAccess.getAllFemaleScientistsAtoZ();
     }
     else
     {
-        for(unsigned int i = 0; i < _scientists.size(); i++)
-        {
-            if(_scientists[i].getGender() == "female")
-            {
-                genderScientists.push_back(_scientists[i]);
-            }
-        }
+       genderScientists = _dAccess.getAllMaleScientistsAtoZ();
     }
-
-    sort(genderScientists.begin(), genderScientists.end(), sortNameAsc);
 
     return genderScientists;
 }

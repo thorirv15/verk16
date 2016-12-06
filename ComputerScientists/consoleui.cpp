@@ -129,10 +129,16 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
             }
             else
             {
-                vector<Scientist> scientists = _service.getScientistsGender(gender);
+                vector<Scientist> scientists = _service.getScientistsByGender(gender);
                 consoleNameColumn();
 
-                void printScientists(vector<Scientist> scientists);
+                for(unsigned int i = 0; i < scientists.size(); i++)
+                {
+                    cout << scientists[i];
+                }
+
+                cout << "  =======================================================================" << endl << endl;
+
 
                 whereToGo();
             }

@@ -30,7 +30,7 @@ public:
     vector<Scientist> sortAllScientistsAtoZ();
     vector<Scientist> sortAllScientistsByYearOfBirthAsc();
     vector<Scientist> sortAllScientistsByYearOfBirthDesc();
-    vector<Scientist> getScientistsGender(string gender);
+    vector<Scientist> getScientistsByGender(string gender);
     vector<Scientist> searchOfSciencetistsByYearOfBirth(string year);
     vector<Scientist> searchOfSciencetistsByYearOfDeath(string year);
     vector<Scientist> getScientistsDeadorAlive(string input);
