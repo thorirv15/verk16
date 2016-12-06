@@ -93,10 +93,15 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
         }
         else if(input == "3")    //Year of birth ascending
         {
-            vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthAsc();
+            vector<Scientist> scientists = _service.getAllScientistsByAgeAsc();
             consoleNameColumn();
 
-            void printScientists(vector<Scientist> scientists);
+            for(unsigned int i = 0; i < scientists.size(); i++)
+            {
+                cout << scientists[i];
+            }
+
+            cout << "  =======================================================================" << endl << endl;
 
             whereToGo();
         }

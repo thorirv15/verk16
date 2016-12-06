@@ -19,6 +19,7 @@ public:
     //Nytt
     vector<Scientist> getAllScientistsAtoZ();
     vector<Scientist> getAllScientistsZtoA();
+    vector<Scientist> getAllScientistsByAgeAsc();
 
 
 

@@ -45,6 +45,14 @@ vector<Scientist> Service::getAllScientistsZtoA()
     return allScientists;
 }
 
+vector<Scientist> Service::getAllScientistsByAgeAsc()
+{
+    vector<Scientist> allScientists;
+
+    allScientists = _dAccess.getAllScientistsByAgeAsc();
+
+    return allScientists;
+}
 //Gamalt
 vector<Scientist> Service::searchOfSciencetists(string searchString)
 {

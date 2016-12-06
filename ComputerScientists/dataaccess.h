@@ -25,6 +25,7 @@ public:
     void openDataBase();
     vector<Scientist> getAllScientistsAtoZ();
     vector<Scientist> getAllScientistsZtoA();
+    vector<Scientist> getAllScientistsByAgeAsc();
 
 private:
     QSqlDatabase _dataBaseMain;
