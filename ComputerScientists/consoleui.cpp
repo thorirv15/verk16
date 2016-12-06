@@ -37,16 +37,17 @@ string ConsoleUI::userInput(string command)     //Spyr notandan um að slá inn 
 }
 void ConsoleUI::consoleNameColumn()             //Header fyrir útprentun.
 {
-    cout << endl;
-    cout.width(30);
-    cout << left << "  Name:";
+    cout << "  ======================================================================================= " << endl;
+    cout.width(36);
+    cout << left << " |  Name:";
     cout.width(15);
     cout << left << "Gender:";
     cout.width(17);
     cout << left << "Birth year:";
-    cout.width(11);
-    cout << left << "Year of Death:" << endl;
-    cout << "  ---------------------------------------------------------------------------" << endl;
+    cout.width(21);
+    cout << left << "Year of Death:";
+    cout << "|" << endl;
+    cout << "  ======================================================================================= " << endl;
 }
 void ConsoleUI::consoleList()                   //Fall sem biður um að prenta út frá listanum.
 {
@@ -67,13 +68,9 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
         {
             vector<Scientist> scientists = _service.getAllScientistsAtoZ();
             consoleNameColumn();
+            printScientist(scientists);
 
-            for(unsigned int i = 0; i < scientists.size(); i++)
-            {
-                cout << scientists[i];
-            }
-
-            cout << "  =======================================================================" << endl << endl;
+            cout << "  ======================================================================================= " << endl << endl;
 
             whereToGo();
         }
@@ -81,13 +78,9 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
         {
             vector<Scientist> scientists = _service.getAllScientistsZtoA();
             consoleNameColumn();
+            printScientist(scientists);
 
-            for(unsigned int i = 0; i < scientists.size(); i++)
-            {
-                cout << scientists[i];
-            }
-
-            cout << "  =======================================================================" << endl << endl;
+            cout << "  ======================================================================================= " << endl << endl;
 
             whereToGo();
         }
@@ -95,13 +88,9 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
         {
             vector<Scientist> scientists = _service.getAllScientistsByAgeAsc();
             consoleNameColumn();
+            printScientist(scientists);
 
-            for(unsigned int i = 0; i < scientists.size(); i++)
-            {
-                cout << scientists[i];
-            }
-
-            cout << "  =======================================================================" << endl << endl;
+            cout << "  ======================================================================================= " << endl << endl;
 
             whereToGo();
         }
@@ -109,8 +98,12 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
         {
             vector<Scientist> scientists = _service.sortAllScientistsByYearOfBirthDesc();
             consoleNameColumn();
+            //printScientists(scientists);
 
-            void printScientists(vector<Scientist> scientists);
+            for(unsigned int i = 0; i < scientists.size(); i++)
+            {
+                cout << scientists[i];
+            }
 
             cout << endl;
             whereToGo();
@@ -131,13 +124,14 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
             {
                 vector<Scientist> scientists = _service.getScientistsByGenderAtoZ(gender);
                 consoleNameColumn();
+                //printScientists(scientists);
 
                 for(unsigned int i = 0; i < scientists.size(); i++)
                 {
                     cout << scientists[i];
                 }
 
-                cout << "  =======================================================================" << endl << endl;
+                cout << "  ======================================================================================= " << endl << endl;
 
 
                 whereToGo();
@@ -161,13 +155,14 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
 
             vector<Scientist> scientists = _service.getAllDeadOrAliveScientistsAtoZ(aliveOrDeseaced);
             consoleNameColumn();
+            //printScientists(scientists);
 
             for(unsigned int i = 0; i < scientists.size(); i++)
             {
                 cout << scientists[i];
             }
 
-            cout << "  =======================================================================" << endl << endl;
+            cout << "  ======================================================================================= " << endl << endl;
 
             whereToGo();
         }
@@ -201,13 +196,14 @@ void ConsoleUI::consoleList()                   //Fall sem biður um að prenta 
         while(!_service.inputNameValid(searchString));
 
         vector<Scientist> scientists = _service.searchForScientistsByName(searchString);
+        //printScientists(scientists);
 
         for(unsigned int i = 0; i < scientists.size(); i++)
         {
             cout << scientists[i];
         }
 
-        cout << "  =======================================================================" << endl << endl;
+        cout << "  ======================================================================================= " << endl << endl;
 
         whereToGo();
 
@@ -382,12 +378,12 @@ void ConsoleUI::consoleStartPrint()
 void ConsoleUI::consoleListPrint()
 {
     cout << "  ======================================================================================= " << endl;
-    cout << "  # 1. All                     2. Specific name           3. Specific year of birth     # " << endl;
-    cout << "  # 4. Specific year of death  5. Back                                                  # " << endl;
-    cout << "  #                                                                                     # " << endl;
-    cout << "  # Press 'q' to quit the program                                                       # " << endl;
+    cout << " | 1. All                     2. Specific name           3. Specific year of birth       | " << endl;
+    cout << " | 4. Specific year of death  5. Back                                                    | " << endl;
+    cout << " |                                                                                       | " << endl;
+    cout << " | Press 'q' to quit the program                                                         | " << endl;
     cout << "  ======================================================================================= " << endl;
-    cout << "  Please enter a number: ";
+    cout << " > Please enter a number: ";
 }
 void ConsoleUI::consoleHelpPrint()
 {
@@ -400,11 +396,11 @@ void ConsoleUI::consoleHelpPrint()
 void ConsoleUI::whatGenderPrint()
 {
     cout << "  ======================================================================================= " << endl;
-    cout << " |  1. Only females                     2. Only males                3.All               | " << endl;
-    cout << " |                                                                                       | " << endl;
-    cout << " | Press 'q' to quit the program                                                         | " << endl;
+    cout << " |  1. Only females                     2. Only males                3.All                | " << endl;
+    cout << " |                                                                                        | " << endl;
+    cout << " | Press 'q' to quit the program                                                          | " << endl;
     cout << "  ======================================================================================= " << endl;
-    cout << "  Please enter a number: ";
+    cout << " > Please enter a number: ";
 }
 void ConsoleUI::whereToGoPrint()
 {
@@ -422,7 +418,7 @@ void ConsoleUI::aliveOrDeseacedPrint()
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' to quit the program                                                         | " << endl;
     cout << "  ======================================================================================= " << endl;
-    cout << "  Please enter a number: ";
+    cout << " > Please enter a number: ";
 }
 void ConsoleUI::allInputPrint()
 {
@@ -433,6 +429,12 @@ void ConsoleUI::allInputPrint()
     cout << " |                                                                                       | " << endl;
     cout << " |  Press 'q' to quit the program                                                        | " << endl;
     cout << "  ======================================================================================= " << endl;
-    cout << "  Please enter a number: ";
+    cout << " > Please enter a number: ";
 }
-
+void ConsoleUI::printScientist(vector<Scientist> temp)
+{
+    for(unsigned int i = 0; i < temp.size(); i++)
+            {
+                cout << temp[i];
+            }
+}

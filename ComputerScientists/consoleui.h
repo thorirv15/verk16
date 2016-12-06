@@ -28,6 +28,7 @@ public:
     void whereToGoPrint();
     void allInputPrint();
     void aliveOrDeseacedPrint();
+    void printScientist(vector<Scientist> temp);
 
 
 private:
