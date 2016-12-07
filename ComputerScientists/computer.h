@@ -9,19 +9,19 @@ class Computer
 public:
     Computer();
     void setName(string name);
-    void setBuilt(bool built);
+    void setType(string type);
     void setBuiltYear(int builtYear);
-    void setWeight(int weight);
+    void setOriginalOrDeveloped(string OriginalOrDeveloped);
     string getName() const;
-    bool getBuilt() const;
+    string getType() const;
     int getBuiltYear() const;
-    int getWeight() const;
+    string getOriginalOrDeveloped() const;
 
 private:
     string _name;
-    bool   _built;
+    string _type;
     int    _builtYear;
-    int    _weight;
+    string _originalOrDeveloped;
 
 };
 

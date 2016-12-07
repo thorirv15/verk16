@@ -10,32 +10,33 @@ string Computer::getName() const
 {
     return _name;
 }
-bool Computer::getBuilt() const
+string Computer::getType() const
 {
-    return _built;
+    return _type;
 }
 int Computer::getBuiltYear() const
 {
     return _builtYear;
 }
-int Computer::getWeight() const
+string Computer::getOriginalOrDeveloped() const
 {
-    return _weight;
+    return _originalOrDeveloped;
 }
 void Computer::setName(string name)
 {
     _name = name;
 }
-void Computer::setBuilt(bool built)
+void Computer::setType(string type)
 {
-    _built = built;
+    _type = type;
 }
+
 void Computer::setBuiltYear(int builtYear)
 {
     _builtYear = builtYear;
 }
-void Computer::setWeight(int weight)
+void Computer::setOriginalOrDeveloped(string originalOrDeveloped)
 {
-    _weight = weight;
+    _originalOrDeveloped = originalOrDeveloped;
 }
 
