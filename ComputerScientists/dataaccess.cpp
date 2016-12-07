@@ -1,10 +1,7 @@
 #include "dataaccess.h"
-
 #include <QSqlRecord>
 #include <QSqlField>
 #include <QString>
-
-
 
 using namespace std;
 
@@ -252,12 +249,12 @@ vector<Scientist> DataAccess::getAllDeceasedScientistsAtoZ()
 vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
 {
     QString qSearchString = QString::fromStdString(searchString);
-                            //make all caps
+
 
     vector<Scientist> allScientists;
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM Scientists WHERE UPPER(Name) LIKE '%"+qSearchString+"%'");
+    query.prepare("SELECT * FROM Scientists WHERE (Name) LIKE '%"+qSearchString+"%'");
     query.exec();
 
 
@@ -360,6 +357,21 @@ vector<Scientist> DataAccess::searchForScientistsByYearOfDeathAtoZ(string yearTo
 
 
 }
+void DataAccess::addScientistToDataBase(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath)
+{
+
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO Scientists (Name, Gender, YearOfBirth, YearOfDeath) VALUES (:name, :gender, :yearofbirth, :yearofdeath)");
+
+     query.bindValue(":name", QString::fromStdString(inputName));
+     query.bindValue(":gender", QString::fromStdString(inputGender));
+     query.bindValue(":yearofbirth", atoi(inputYearOfBirth.c_str()));
+     query.bindValue(":yearofdeath", atoi(inputYearOfDeath.c_str()));
+     query.exec();
+
+}
+
 
 //-- Connect to database --//
 void DataAccess::openDataBase()

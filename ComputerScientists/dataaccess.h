@@ -34,7 +34,7 @@ public:
     vector<Scientist> searchForScientistsByName(string input);
     vector<Scientist> searchForScientistsByYearOfBirthAtoZ(string yearToFind);
     vector<Scientist> searchForScientistsByYearOfDeathAtoZ(string yearToFind);
-    void addScientistToDataBase();
+    void addScientistToDataBase(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath);
 
 private:
     QSqlDatabase _dataBaseMain;

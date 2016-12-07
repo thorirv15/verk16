@@ -25,10 +25,8 @@ public:
     vector<Scientist> searchForScientistsByYearOfBirthAtoZ(string yearToFind);
     vector<Scientist> searchForScientistsByYearOfDeathAtoZ(string yearToFind);
     vector<Scientist> getScientistsByGenderAtoZ(string gender);
-
-    //Gamalt
-    void addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath);
     bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
+    void addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath);
     bool inputNameValid(string input);
 
 private:

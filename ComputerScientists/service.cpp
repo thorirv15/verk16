@@ -1,6 +1,7 @@
 #include "service.h"
 #include <cctype>
 #include "scientist.h"
+
 const int YEARTODAY = 2016;
 
 Service::Service()
@@ -110,8 +111,6 @@ vector<Scientist> Service::searchForScientistsByYearOfDeathAtoZ(string yearToFin
 
     return allScientists;
 }
-
-
 ostream& operator <<(ostream& os , Scientist& TempClass)
 {
         os << " |  " ;os.width(30); os << left << TempClass.getName();
@@ -124,18 +123,10 @@ ostream& operator <<(ostream& os , Scientist& TempClass)
 }
 //Gamalt
 
-
-/*
 void Service::addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath)
 {
-    Scientist addScientist(inputName, inputGender, inputYearOfBirth, inputYearOfDeath);
-    DataAccess add;
-
-    _scientists.push_back(addScientist);
-
-    add.DataToFile(_scientists);
+    _dAccess.addScientistToDataBase(inputName, inputGender, inputYearOfBirth, inputYearOfDeath);
 }
-*/
 bool Service::inputNameValid(string input)
 {
     if(atoi(input.c_str()))
