@@ -12,8 +12,12 @@ DataAccess::DataAccess()
 {
     _dataBaseMain = QSqlDatabase::addDatabase("QSQLITE");
 }
+DataAccess::~DataAccess()
+{
+    _dataBaseMain.close();
+}
 
-//=================//
+//-- Computer scientists --//
 vector<Scientist> DataAccess::getAllScientistsAtoZ()
 {
     vector<Scientist> allScientists;
@@ -248,12 +252,12 @@ vector<Scientist> DataAccess::getAllDeceasedScientistsAtoZ()
 vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
 {
     QString qSearchString = QString::fromStdString(searchString);
+                            //make all caps
 
     vector<Scientist> allScientists;
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM Scientists WHERE Name LIKE \'%:something%\'");
-    query.bindValue(0, qSearchString);
+    query.prepare("SELECT * FROM Scientists WHERE UPPER(Name) LIKE '%"+qSearchString+"%'");
     query.exec();
 
 
@@ -261,7 +265,7 @@ vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
     int idGender = query.record().indexOf("Gender");
     int idYearOfBirth = query.record().indexOf("YearOfBirth");
     int idYearOfDeath = query.record().indexOf("YearOfDeath");
-    cout << "Hundur" << endl;
+
     while (query.next())
     {
         QString name = query.value(idName).toString();
@@ -279,27 +283,93 @@ vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
         allScientists.push_back(newScientist);
     }
 
-    cout << allScientists.size() << endl;
 
     return allScientists;
 }
+vector<Scientist> DataAccess::searchForScientistsByYearOfBirthAtoZ(string yearToFind)
+{
+    int yearOfBirth = atoi(yearToFind.c_str());
+
+    vector<Scientist> allScientists;
+
+    QSqlQuery query;
+
+    query.prepare("SELECT * FROM Scientists WHERE YearOfBirth = (:something) ORDER BY Name Asc");
+    query.bindValue(":something", yearOfBirth);
+    query.exec();
+
+    int idName = query.record().indexOf("Name");
+    int idGender = query.record().indexOf("Gender");
+    int idYearOfBirth = query.record().indexOf("YearOfBirth");
+    int idYearOfDeath = query.record().indexOf("YearOfDeath");
+
+    while (query.next())
+    {
+        QString name = query.value(idName).toString();
+        QString gender = query.value(idGender).toString();
+        QString YearOfBirth = query.value(idYearOfBirth).toString();
+        QString yearOfDeath = query.value(idYearOfDeath).toString();
+
+        Scientist newScientist(
+                    name.toStdString(),
+                    gender.toStdString(),
+                    YearOfBirth.toStdString(),
+                    yearOfDeath.toStdString()
+                    );
+
+        allScientists.push_back(newScientist);
+    }
+
+    return allScientists;
+}
+vector<Scientist> DataAccess::searchForScientistsByYearOfDeathAtoZ(string yearToFind)
+{
+    int yearOfDeath = atoi(yearToFind.c_str());
+
+    vector<Scientist> allScientists;
+
+    QSqlQuery query;
+
+    query.prepare("SELECT * FROM Scientists WHERE YearOfDeath = (:something) ORDER BY Name Asc");
+    query.bindValue(":something", yearOfDeath);
+    query.exec();
+
+    int idName = query.record().indexOf("Name");
+    int idGender = query.record().indexOf("Gender");
+    int idYearOfBirth = query.record().indexOf("YearOfBirth");
+    int idYearOfDeath = query.record().indexOf("YearOfDeath");
+
+    while (query.next())
+    {
+        QString name = query.value(idName).toString();
+        QString gender = query.value(idGender).toString();
+        QString YearOfBirth = query.value(idYearOfBirth).toString();
+        QString yearOfDeath = query.value(idYearOfDeath).toString();
+
+        Scientist newScientist(
+                    name.toStdString(),
+                    gender.toStdString(),
+                    YearOfBirth.toStdString(),
+                    yearOfDeath.toStdString()
+                    );
+
+        allScientists.push_back(newScientist);
+    }
+
+    return allScientists;
 
 
+}
 
-//vector<Scientist> DataAccess::searchForScientistsByYearOfBirth()
-
-//=================//
-//Connect to database.
+//-- Connect to database --//
 void DataAccess::openDataBase()
 {
-
     _dataBaseMain.setDatabaseName("Verk1.sqlite");
 
     if(!_dataBaseMain.open())
     {
         qDebug() << "Error: connection with database failed!";
     }
-
 }
 QSqlDatabase DataAccess::readDataBase()
 {

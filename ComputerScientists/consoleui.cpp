@@ -46,7 +46,7 @@ void ConsoleUI::mainMenuPrint()
     cout << "  =======================================================================================  " << endl;
     cout << " |                                     MAIN MENU                                         | " << endl;
     cout << "  =======================================================================================  " << endl;
-    cout << " | 1. Computers.             2. Famous computer scientists.        3. Both.              | " << endl;
+    cout << " | 1. Computers.                                    2. Famous computer scientists.       | " << endl;
     cout << " |                                                                                       | " << endl;
     cout << " | Press 'q' to quit the program.                                                        | " << endl;
     cout << "  ======================================================================================= " << endl;
@@ -68,11 +68,6 @@ void ConsoleUI::mainMenu()
     {
         scientistMenu();
     }
-    else if(command == "3")
-    {
-        cout << "Eftir ad klara" << endl;
-        mainMenu();
-    }
     else if(command == "q" || command == "Q")
     {
         cout << "  > Quitting program..." << endl << endl;
@@ -89,14 +84,6 @@ void ConsoleUI::mainMenu()
         mainMenu();
     }
 
-
-
-
-
-}
-void ConsoleUI::openDataBase()                  //Fall til að opna SQL database
-{
-    _service.openDataBase();
 }
 void ConsoleUI::run()                           //----MAINFALL----
 {
@@ -153,13 +140,15 @@ void ConsoleUI::scientistListMenu()
     }
     else if(list == '2')        //Specific name.
     {
-        //senda int list og streng með nafninu. Fá allt stakið úr vektornum ef match finnst.
+
         string searchString;
 
         do
         {
-            cout << "  Please enter a name of a scientist: ";
-            cin >> searchString;
+            cin.ignore();
+            cout << "  > Please enter a name of a scientist: ";
+            getline(cin, searchString);
+
             if(searchString == "q" || searchString == "Q")
             {
                 cout << "  > Quitting program..." << endl << endl;
@@ -170,13 +159,9 @@ void ConsoleUI::scientistListMenu()
         while(!_service.inputNameValid(searchString));
 
         vector<Scientist> scientists = _service.searchForScientistsByName(searchString);
-        //printScientists(scientists);
 
-        for(unsigned int i = 0; i < scientists.size(); i++)
-        {
-            cout << scientists[i];
-        }
-
+        scientistNameColumn();
+        printScientist(scientists);
         cout << "  ======================================================================================= " << endl << endl;
 
         scientistListMenu();
@@ -185,53 +170,50 @@ void ConsoleUI::scientistListMenu()
     }
     else if(list == '3')      //specific year of birth.
     {
-        /*
-        string year;
-        cout << "  Please enter the year in question: ";
-        cin >> year;
-        vector<Scientist> result;
 
-        result = _service.searchOfSciencetistsByYearOfBirth(year);
+        string yearToFind;
+        cout << "  > Please enter the year in question: ";
+        cin >> yearToFind;
 
-        if(result.size() == 0)
+
+        vector<Scientist> scientists = _service.searchForScientistsByYearOfBirthAtoZ(yearToFind);
+
+        if(scientists.size() == 0)
         {
-            cout << "  Year not found!" << endl;
+            cout << "  > Year not found!" << endl;
         }
         else
         {
             scientistNameColumn();
-
-            void printScientists(vector<Scientist> scientists);
-
+            printScientist(scientists);
+            cout << "  ======================================================================================= " << endl << endl;
             scientistListMenu();
         }
-        */
-        cout << "Eftir ad klara" << endl;
+
         scientistListMenu();
     }
     else if(list == '4')      //specific year of Death.
     {
-        /*
-        string year;
-        cout << "  Please enter year to look for: ";
-        cin >> year;
-        vector<Scientist> result;
 
-        result = _service.searchOfSciencetistsByYearOfDeath(year);
+        string yearToFind;
+        cout << "  > Please enter the year in question: ";
+        cin >> yearToFind;
 
-        if(result.size() == 0)
+
+        vector<Scientist> scientists = _service.searchForScientistsByYearOfDeathAtoZ(yearToFind);
+
+        if(scientists.size() == 0)
         {
-            cout << "  Year not found!" << endl;
+            cout << "  > Year not found!" << endl;
         }
         else
         {
             scientistNameColumn();
-
-            void printScientists(vector<Scientist> scientists);
+            printScientist(scientists);
+            cout << "  ======================================================================================= " << endl << endl;
+            scientistListMenu();
         }
-        */
 
-        cout << "Eftir ad klara." << endl;
         scientistListMenu();
     }
     else if(list == 'b' || list == 'B')   //Go back to main menu.
@@ -240,6 +222,7 @@ void ConsoleUI::scientistListMenu()
     }
     else if(list == 'q' || list == 'Q')
     {
+        cout << "  > Quitting program..." << endl << endl;
         exit(1);
     }
 
@@ -440,6 +423,7 @@ void ConsoleUI::scientistListAllMenuPrint()
 }
 void ConsoleUI::printScientist(vector<Scientist> temp)
 {
+
     for(unsigned int i = 0; i < temp.size(); i++)
             {
                 cout << temp[i];
@@ -454,7 +438,7 @@ void ConsoleUI::addScientist()
     cout << endl;
     cout << "  =======================================================================================" << endl;
     cout << "  > Input name of scientist: ";
-    getline(cin,name);
+    getline(cin, name);
 
     cout << "  > Input gender (male/female): ";
     getline(cin, gender);
@@ -472,10 +456,9 @@ void ConsoleUI::addScientist()
 
         scientistMenu();
     }
-    */
-
+  */
     {
-        cout << "  Invalid input!" << endl;
+        cout << "  > Invalid input!" << endl;
 
         scientistMenu();
     }
@@ -494,3 +477,4 @@ void ConsoleUI::scientistNameColumn()
     cout << "|" << endl;
     cout << "  ======================================================================================= " << endl;
 }
+

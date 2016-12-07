@@ -4,7 +4,9 @@
 int main()
 {
     ConsoleUI ui;
-    ui.openDataBase();
+    DataAccess da;
+
+    da.openDataBase();
     ui.run();
 
     return 0;

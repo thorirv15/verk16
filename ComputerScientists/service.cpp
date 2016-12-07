@@ -8,25 +8,7 @@ Service::Service()
 
 }
 
-bool sortNameAsc(const Scientist& lhs, const Scientist& rhs)
-{
-    return lhs.getName() < rhs.getName();
-}
-bool sortNameDesc(const Scientist& lhs, const Scientist& rhs)
-{
-    return rhs.getName() < lhs.getName();
-}
-bool sortYearOfBirthAsc(const Scientist& lhs, const Scientist& rhs)
-{
-    return lhs.getYearOfBirth() < rhs.getYearOfBirth();
-}
-bool sortYearOfBirthDesc(const Scientist& lhs, const Scientist& rhs)
-{
-    return rhs.getYearOfBirth() < lhs.getYearOfBirth();
-}
-
-
-//Nytt
+//-- Computer scientists --//
 vector<Scientist> Service::getAllScientistsAtoZ()
 {
     vector<Scientist> allScientists;
@@ -35,7 +17,6 @@ vector<Scientist> Service::getAllScientistsAtoZ()
 
     return allScientists;
 }
-
 vector<Scientist> Service::getAllScientistsZtoA()
 {
     vector<Scientist> allScientists;
@@ -44,7 +25,6 @@ vector<Scientist> Service::getAllScientistsZtoA()
 
     return allScientists;
 }
-
 vector<Scientist> Service::getAllScientistsByAgeAsc()
 {
     vector<Scientist> allScientists;
@@ -53,7 +33,6 @@ vector<Scientist> Service::getAllScientistsByAgeAsc()
 
     return allScientists;
 }
-
 vector<Scientist> Service::getAllDeadOrAliveScientistsAtoZ(string input)
 {
 
@@ -81,7 +60,6 @@ vector<Scientist> Service::getAllDeadOrAliveScientistsAtoZ(string input)
     return deadOrAliveScientists;
 
 }
-
 vector<Scientist> Service::searchForScientistsByName(string searchString)
 {
     vector<Scientist> allScientists;
@@ -90,8 +68,6 @@ vector<Scientist> Service::searchForScientistsByName(string searchString)
 
     return allScientists;
 }
-
-
 vector<Scientist> Service::getScientistsByGenderAtoZ(string gender)
 {
     vector<Scientist> genderScientists;
@@ -118,8 +94,25 @@ vector<Scientist> Service::getScientistsByGenderAtoZ(string gender)
 
     return genderScientists;
 }
+vector<Scientist> Service::searchForScientistsByYearOfBirthAtoZ(string yearToFind)
+{
+    vector<Scientist> allScientists;
 
-ostream& operator << (ostream& os , Scientist& TempClass)
+    allScientists = _dAccess.searchForScientistsByYearOfBirthAtoZ(yearToFind);
+
+    return allScientists;
+}
+vector<Scientist> Service::searchForScientistsByYearOfDeathAtoZ(string yearToFind)
+{
+    vector<Scientist> allScientists;
+
+    allScientists = _dAccess.searchForScientistsByYearOfDeathAtoZ(yearToFind);
+
+    return allScientists;
+}
+
+
+ostream& operator <<(ostream& os , Scientist& TempClass)
 {
         os << " |  " ;os.width(30); os << left << TempClass.getName();
         os << "  " ;os.width(13); os << left << TempClass.getGender();
@@ -129,48 +122,8 @@ ostream& operator << (ostream& os , Scientist& TempClass)
 
     return os;
 }
-
-
-
 //Gamalt
 
-
-vector<Scientist> Service::searchOfSciencetistsByYearOfBirth(string year)
-{
-    vector<Scientist> result;
-
-    for(unsigned int i = 0; i < _scientists.size();i++)
-    {
-        if(year ==  _scientists[i].getYearOfBirth())
-        {
-            result.push_back(_scientists[i]);
-        }
-    }
-
-    return result;
-}
-vector<Scientist> Service::searchOfSciencetistsByYearOfDeath(string year)
-{
-    vector<Scientist> result;
-
-    for(unsigned int i = 0; i < _scientists.size();i++)
-    {
-        if(year ==  _scientists[i].getYearOfDeath())
-        {
-            result.push_back(_scientists[i]);
-        }
-    }
-
-    sort(result.begin(), result.end(), sortYearOfBirthAsc);
-    return result;
-}
-
-
-vector<Scientist> Service::sortAllScientistsByYearOfBirthDesc()
-{
-    sort(_scientists.begin(), _scientists.end(), sortYearOfBirthDesc);
-    return _scientists;
-}
 
 /*
 void Service::addScientistToData(string inputName, string inputGender, string inputYearOfBirth, string inputYearOfDeath)
@@ -183,8 +136,6 @@ void Service::addScientistToData(string inputName, string inputGender, string in
     add.DataToFile(_scientists);
 }
 */
-
-
 bool Service::inputNameValid(string input)
 {
     if(atoi(input.c_str()))
@@ -227,10 +178,5 @@ bool Service::isAddScientistValid(string name, string gender, string yearOfBirth
     return (checkName && checkGender && checkYearOfBirth && checkYearOfDeath);
 
 }
-void Service::openDataBase()
-{
-    _dAccess.openDataBase();
-}
-
 
 

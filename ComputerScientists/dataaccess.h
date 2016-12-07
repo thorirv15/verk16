@@ -21,6 +21,7 @@ class DataAccess
 
 public:
     DataAccess();
+    ~DataAccess();
     QSqlDatabase readDataBase();
     void openDataBase();
     vector<Scientist> getAllScientistsAtoZ();
@@ -31,6 +32,9 @@ public:
     vector<Scientist> getAllAliveScientistsAtoZ();
     vector<Scientist> getAllDeceasedScientistsAtoZ();
     vector<Scientist> searchForScientistsByName(string input);
+    vector<Scientist> searchForScientistsByYearOfBirthAtoZ(string yearToFind);
+    vector<Scientist> searchForScientistsByYearOfDeathAtoZ(string yearToFind);
+    void addScientistToDataBase();
 
 private:
     QSqlDatabase _dataBaseMain;
