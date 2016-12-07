@@ -13,22 +13,54 @@ class ConsoleUI
 {
 public:
     ConsoleUI();
-    void run();
-    void consoleList();
-    void consoleAdd();
-    void consoleNameColumn();
-    void consoleStartPrint();
-    void consoleHelpPrint();
-    string userInput(string command);
-    void whereToGo();
+
+    //-- Booting functions --//
+         //Booting - Print functions.
+    void beginingOfProgramPrint();
+    void mainMenuPrint();
+         //Booting - Other functions.
     void mainMenu();
+
+    //-- Computer scientists --//
+         //Computer scientist - Menu functions.
+    void scientistMenu();
+    void scientistListMenu();
+    void scientistListAllMenu();
+    void scientistListAllGenderMenu();
+    void scientistListAllDeadOrAliveMenu();
+        //Computer scientist - Print functions.
+    void scientistMenuPrint();
+    void scientistListMenuPrint();
+    void scientistListAllMenuPrint();
+    void scientistListAllGenderMenuPrint();
+    void scientistListAllDeadOrAliveMenuPrint();
+        //Computer scientist - Other functions.
+    void scientistNameColumn();
+    void addScientist();
+
+
+    //-- Computers --//
+    //void computerMenu();
+    //void ComputerAndScientistMenu();
+
+
+
+    //Computers and computer scientists --//
+    //void BothMenu();
+
+
+
+
+
+
+
+
+    void run();
     void openDataBase();
-    void consoleListPrint();
-    void whatGenderPrint();
-    void whereToGoPrint();
-    void allInputPrint();
-    void aliveOrDeseacedPrint();
     void printScientist(vector<Scientist> temp);
+
+
+
 
 
 private:

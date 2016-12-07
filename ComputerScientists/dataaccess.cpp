@@ -252,7 +252,7 @@ vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
     vector<Scientist> allScientists;
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM Scicentists WHERE Name LIKE \'%?%\'");
+    query.prepare("SELECT * FROM Scientists WHERE Name LIKE \'%:something%\'");
     query.bindValue(0, qSearchString);
     query.exec();
 
@@ -261,7 +261,7 @@ vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
     int idGender = query.record().indexOf("Gender");
     int idYearOfBirth = query.record().indexOf("YearOfBirth");
     int idYearOfDeath = query.record().indexOf("YearOfDeath");
-
+    cout << "Hundur" << endl;
     while (query.next())
     {
         QString name = query.value(idName).toString();
@@ -278,6 +278,8 @@ vector<Scientist> DataAccess::searchForScientistsByName(string searchString)
 
         allScientists.push_back(newScientist);
     }
+
+    cout << allScientists.size() << endl;
 
     return allScientists;
 }

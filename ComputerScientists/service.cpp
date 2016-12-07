@@ -64,9 +64,18 @@ vector<Scientist> Service::getAllDeadOrAliveScientistsAtoZ(string input)
     {
         deadOrAliveScientists = _dAccess.getAllAliveScientistsAtoZ();
     }
-    else
+    else if(input == "2")
     {
         deadOrAliveScientists = _dAccess.getAllDeceasedScientistsAtoZ();
+    }
+    else
+    {
+            deadOrAliveScientists = _dAccess.getAllAliveScientistsAtoZ();
+
+            for(unsigned int i = 0; i < _dAccess.getAllDeceasedScientistsAtoZ().size(); i++)
+            {
+               deadOrAliveScientists.push_back(_dAccess.getAllDeceasedScientistsAtoZ()[i]);
+            }
     }
 
     return deadOrAliveScientists;
@@ -97,7 +106,7 @@ vector<Scientist> Service::getScientistsByGenderAtoZ(string gender)
     {
        genderScientists = _dAccess.getAllMaleScientistsAtoZ();
     }
-    else if(gender == "3")
+    else
     {
         genderScientists = _dAccess.getAllFemaleScientistsAtoZ();
 
